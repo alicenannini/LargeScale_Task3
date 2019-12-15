@@ -1,0 +1,38 @@
+CREATE
+(gg:Student {username: "geghi", password: "geghi", admin: true }),
+(aa:Student {username: "alice", password: "alice" }),
+(mm:Student {username: "marco", password: "marco" }),
+(ss:Student {username: "stefano", password: "stefano" }),
+(jj:Student {username: "jack", password: "jack" }),
+
+(aide:Degree {name: "Artificial Intelligence and Data Engineering" }),
+(be:Degree {name: "Bionics Engineering" }),
+(ce:Degree {name: "Computer Engineering" }),
+(ig:Degree {name: "Ingegneria Gestionale" }),
+(ii:Degree {name: "Ingegneria Informatica" }),
+(im:Degree {name: "Ingegneria Meccanica" }),
+
+(gl:Professor {name: "Giuseppe", surname:"Lettieri" }),
+(lb:Professor {name: "Luigi", surname:"Berselli" }),
+(mc:Professor {name: "Marco", surname:"Cococcioni" }),
+(ga:Professor {name: "Giseppe", surname:"Anastasi" }),
+(fm:Professor {name: "Francesco", surname:"Marcelloni" }),
+(gs:Professor {name: "Giovanni", surname:"Stea" }),
+(mgca:Professor {name: "Mario", middleName: "G.C.A.", surname:"Cimino" }),
+(ap:Professor {name: "Alessandro", surname:"Paoli" }),
+(lbt:Professor {name: "Leonardo", surname:"Bertini" }),
+
+(ami:Subject {name: "Analisi Matematica I", cfu:"12", info: "" }),
+(fii:Subject {name: "Fondamenti di Informatica I", cfu:"12", info: "" }),
+(ri:Subject {name: "Reti Informatiche", cfu:"9", info: "" }),
+(cel:Subject {name: "Calcolatori Elettronici", cfu:"9", info: "" }),
+(cdm:Subject {name: "Costruzioni di Macchine", cfu:"12", info: "" }),
+(pa:Subject {name: "Programmazione Avanzata", cfu:"6", info: "" }),
+(rl:Subject {name: "Reti Logiche", cfu:"9", info: "" }),
+(pe:Subject {name: "Performance Evaluation of Computer Systems and Networks", cfu:"9", info: "" }),
+(pw:Subject {name: "Progettazione Web", cfu:"6", info: "" }),
+(dm:Subject {name: "Data Mining and Machine Learnins", cfu:"12", info: "" }),
+
+(gg)-[:ATTENDS {since: 2019}]->(aide),(aa)-[:ATTENDS {since: 2019}]->(aide),(mm)-[:ATTENDS {since: 2019}]->(aide),(ss)-[:ATTENDS {since: 2019}]->(aide),(jj)-[:ATTENDS {since: 2019}]->(be),
+(gl)-[:TEACHES {since: 2019}]->(cel),(lb)-[:TEACHES {since: 2019}]->(ami),(mc)-[:TEACHES {since: 2019}]->(fii),(ga)-[:TEACHES {since: 2019}]->(ri),(fm)-[:TEACHES {since: 2019}]->(pw),(fm)-[:TEACHES {since: 2019}]->(dm),(gs)-[:TEACHES {since: 2019}]->(rl),(gs)-[:TEACHES {since: 2019}]->(pe),(mgca)-[:TEACHES {since: 2019}]->(pa),(lbt)-[:TEACHES {since: 2019}]->(cdm),
+(ami)-[:IN]->(ii),(fii)-[:IN]->(ii),(ri)-[:IN]->(ii),(cel)-[:IN]->(ii),(cdm)-[:IN]->(im),(pa)-[:IN]->(ii),(rl)-[:IN]->(ii),(pe)-[:IN]->(ce),(pw)-[:IN]->(ii),(dm)-[:IN]->(aide)
