@@ -1,0 +1,14 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+  DB levelDBStore;
+  Options options = new Options();
+  File f = new File("levelDBStore");
+  levelDBStore = factory.open(f, options);
+    	
+    	//key -> users:$user_id:$attribute_name
+  levelDBStore.put("users:1:username".getBytes(), "Geghi".getBytes());
+  levelDBStore.put("users:1:password".getBytes(), "Geghi".getBytes());
+  levelDBStore.put("users:1:degree".getBytes(), "3".getBytes());
+  levelDBStore.put("users:1:admin".getBytes(), "1".getBytes());
+
+\end{lstlisting}

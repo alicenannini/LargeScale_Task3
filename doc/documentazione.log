@@ -1,0 +1,569 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.22)  15 DEC 2019 15:29
+entering extended mode
+**./documentazione.tex
+(documentazione.tex
+LaTeX2e <2018-12-01>
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) ("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\fontenc.sty
+"
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1enc.def"
+File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.sty"
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+) ("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.st
+y"
+Package: babel 2019/06/03 3.32 The Babel package
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\switch.def
+"
+File: switch.def 2019/06/03 3.32 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/babel-english\engl
+ish.ldf"
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.def"
+File: babel.def 2019/06/03 3.32 Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\txtbabel.d
+ef")
+\bbl@dirlevel=\count89
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/frontespizio\front
+espizio.sty"
+Package: frontespizio 2011/09/21 1.4a (Enrico Gregorio)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\afterpage.st
+y"
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks16
+\AP@partial=\box27
+\AP@footins=\box28
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
+sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
+y"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
+sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
+ics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdfte
+x.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\atbegsh
+i.sty"
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infware
+rr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds
+.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.s
+ty"
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+))
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/environ\environ.st
+y"
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/trimspaces\trimspa
+ces.sty"
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)
+\@envbody=\toks18
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ifxetex\ifxetex.
+sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\front@out=\write3
+\openout3 = `documentazione-frn.tex'.
+
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
+sty"
+\lst@mode=\count90
+\lst@gtempboxa=\box29
+\lst@token=\toks19
+\lst@length=\count91
+\lst@currlwidth=\dimen106
+\lst@column=\count92
+\lst@pos=\count93
+\lst@lostspace=\dimen107
+\lst@width=\dimen108
+\lst@newlines=\count94
+\lst@lineno=\count95
+\lst@maxwidth=\dimen109
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmisc.s
+ty"
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+\c@lstnumber=\count96
+\lst@skipnumbers=\count97
+\lst@framebox=\box30
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
+cfg"
+File: listings.cfg 2019/02/27 1.8b listings configuration
+))
+Package: listings 2019/02/27 1.8b (Carsten Heinz)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrext
+end.sty"
+Package: scrextend 2019/02/01 v3.26b KOMA-Script package (extend other classes 
+with features of KOMA-Script classes)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrkba
+se.sty"
+Package: scrkbase 2019/02/01 v3.26b KOMA-Script package (KOMA-Script-dependent 
+basics and keyval usage)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrbas
+e.sty"
+Package: scrbase 2019/02/01 v3.26b KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrlfi
+le.sty"
+Package: scrlfile 2019/02/01 v3.26b KOMA-Script package (loading files)
+))))
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
+sty"
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifvtex.
+sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count98
+\Gm@cntv=\count99
+\c@Gm@tempcnt=\count100
+\Gm@bindingoffset=\dimen110
+\Gm@wd@mp=\dimen111
+\Gm@odd@mp=\dimen112
+\Gm@even@mp=\dimen113
+\Gm@layoutwidth=\dimen114
+\Gm@layoutheight=\dimen115
+\Gm@layouthoffset=\dimen116
+\Gm@layoutvoffset=\dimen117
+\Gm@dimlist=\toks20
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
+cfg"))
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.st
+y"
+Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.s
+ty"
+Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@tempdima=\dimen121
+\caption@indent=\dimen122
+\caption@parindent=\dimen123
+\caption@hangindent=\dimen124
+)
+\c@caption@flags=\count101
+\c@ContinuedFloat=\count102
+Package caption Info: listings package is loaded.
+) (documentazione.aux)
+\openout1 = `documentazione.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
+df.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count103
+\scratchdimen=\dimen125
+\scratchbox=\box31
+\nofMPsegments=\count104
+\nofMParguments=\count105
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count106
+\MPscratchDim=\dimen126
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
+\everyMPtoPDFconversion=\toks22
+)
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-
+base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.st
+y"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefin
+ekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions
+.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetke
+ys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcmd
+s.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifluate
+x.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+))))
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdftexc
+mds.sty"
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\AtBeginShipoutBox=\box32
+\c@lstlisting=\count109
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(86.72377pt, 424.06033pt, 86.72377pt)
+* v-part:(T,H,B)=(86.72377pt, 671.5993pt, 86.72377pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=424.06033pt
+* \textheight=671.5993pt
+* \oddsidemargin=14.45378pt
+* \evensidemargin=14.45378pt
+* \topmargin=-22.54622pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=57.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+Package frontespizio Warning: Missing file documentazione-frn.pdf.
+
+[1
+
+] (documentazione.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 5.
+)
+\tf@toc=\write4
+\openout4 = `documentazione.toc'.
+
+ [1
+
+{C:/Users/Marco/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<./images/diagrams/Mockup.pdf, id=11, 574.5465pt x 401.0985pt>
+File: ./images/diagrams/Mockup.pdf Graphic file (type pdf)
+<use ./images/diagrams/Mockup.pdf>
+Package pdftex.def Info: ./images/diagrams/Mockup.pdf  used on input line 55.
+(pdftex.def)             Requested size: 424.06033pt x 296.0432pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 52--61
+[]$[]$ 
+ []
+
+[1
+
+ <./images/diagrams/Mockup.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 73.
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
+
+[2
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 121--121
+[]\T1/cmr/m/n/10 Login,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+[]\T1/cmr/m/n/10 Browse,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+\T1/cmr/m/n/10 Find,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+[]\T1/cmr/m/n/10 Browse,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+\T1/cmr/m/n/10 Find,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+[]\T1/cmr/m/n/10 Browse,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
+\T1/cmr/m/n/10 Find,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--129
+[]\T1/cmr/m/n/10 Update
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
+[]\T1/cmr/m/n/10 Delete
+ []
+
+
+Overfull \hbox (32.89442pt too wide) in paragraph at lines 118--132
+ [][] 
+ []
+
+<./images/diagrams/UseCases.png, id=24, 1252.68pt x 828.09375pt>
+File: ./images/diagrams/UseCases.png Graphic file (type png)
+<use ./images/diagrams/UseCases.png>
+Package pdftex.def Info: ./images/diagrams/UseCases.png  used on input line 137
+.
+(pdftex.def)             Requested size: 473.46202pt x 312.9803pt.
+
+Overfull \hbox (49.40169pt too wide) in paragraph at lines 137--138
+ [] 
+ []
+
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 134--142
+[]$[]$ 
+ []
+
+[3
+
+] [4 <./images/diagrams/UseCases.png>]
+<./images/diagrams/AnalysisUML.png, id=32, 544.0325pt x 447.6725pt>
+File: ./images/diagrams/AnalysisUML.png Graphic file (type png)
+<use ./images/diagrams/AnalysisUML.png>
+Package pdftex.def Info: ./images/diagrams/AnalysisUML.png  used on input line 
+152.
+(pdftex.def)             Requested size: 296.84093pt x 244.27382pt.
+ [5
+
+ <./images/diagrams/AnalysisUML.png>]
+<images/screens/screen0.png, id=38, 1213.53375pt x 734.745pt>
+File: images/screens/screen0.png Graphic file (type png)
+<use images/screens/screen0.png>
+Package pdftex.def Info: images/screens/screen0.png  used on input line 169.
+(pdftex.def)             Requested size: 373.17516pt x 225.94115pt.
+<images/screens/screen1.png, id=39, 1211.52625pt x 729.72626pt>
+File: images/screens/screen1.png Graphic file (type png)
+<use images/screens/screen1.png>
+Package pdftex.def Info: images/screens/screen1.png  used on input line 178.
+(pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
+ [6
+
+ <./images/screens/screen0.png> <./images/screens/screen1.png>]
+<images/screens/screen2.png, id=45, 1211.52625pt x 732.7375pt>
+File: images/screens/screen2.png Graphic file (type png)
+<use images/screens/screen2.png>
+Package pdftex.def Info: images/screens/screen2.png  used on input line 185.
+(pdftex.def)             Requested size: 373.17516pt x 225.6928pt.
+<images/screens/screenLogin.png, id=46, 1211.52625pt x 726.715pt>
+File: images/screens/screenLogin.png Graphic file (type png)
+<use images/screens/screenLogin.png>
+Package pdftex.def Info: images/screens/screenLogin.png  used on input line 193
+.
+(pdftex.def)             Requested size: 373.17516pt x 223.83777pt.
+<images/screens/screen3.png, id=47, 1211.52625pt x 726.715pt>
+File: images/screens/screen3.png Graphic file (type png)
+<use images/screens/screen3.png>
+Package pdftex.def Info: images/screens/screen3.png  used on input line 204.
+(pdftex.def)             Requested size: 381.6517pt x 228.92752pt.
+<images/screens/screen4.png, id=48, 1315.91624pt x 738.76pt>
+File: images/screens/screen4.png Graphic file (type png)
+<use images/screens/screen4.png>
+Package pdftex.def Info: images/screens/screen4.png  used on input line 211.
+(pdftex.def)             Requested size: 381.6517pt x 214.25745pt.
+ [7
+
+ <./images/screens/screen2.png> <./images/screens/screenLogin.png>] [8 <./image
+s/screens/screen3.png> <./images/screens/screen4.png>]
+<images/screens/screen5.png, id=59, 1312.905pt x 736.7525pt>
+File: images/screens/screen5.png Graphic file (type png)
+<use images/screens/screen5.png>
+Package pdftex.def Info: images/screens/screen5.png  used on input line 222.
+(pdftex.def)             Requested size: 373.17516pt x 209.41455pt.
+ [9 <./images/screens/screen5.png>]
+<images/screens/adminLogin.png, id=64, 1211.52625pt x 731.73375pt>
+File: images/screens/adminLogin.png Graphic file (type png)
+<use images/screens/adminLogin.png>
+Package pdftex.def Info: images/screens/adminLogin.png  used on input line 238.
+
+(pdftex.def)             Requested size: 373.17516pt x 225.38362pt.
+<images/screens/admin1.png, id=65, 1209.51875pt x 731.73375pt>
+File: images/screens/admin1.png Graphic file (type png)
+<use images/screens/admin1.png>
+Package pdftex.def Info: images/screens/admin1.png  used on input line 246.
+(pdftex.def)             Requested size: 373.17516pt x 225.76324pt.
+ [10
+
+ <./images/screens/adminLogin.png> <./images/screens/admin1.png>]
+<images/screens/admin2.png, id=71, 1211.52625pt x 729.72626pt>
+File: images/screens/admin2.png Graphic file (type png)
+<use images/screens/admin2.png>
+Package pdftex.def Info: images/screens/admin2.png  used on input line 254.
+(pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
+<images/screens/admin3.png, id=72, 1209.51875pt x 733.74126pt>
+File: images/screens/admin3.png Graphic file (type png)
+<use images/screens/admin3.png>
+Package pdftex.def Info: images/screens/admin3.png  used on input line 262.
+(pdftex.def)             Requested size: 373.17516pt x 226.38263pt.
+ [11
+
+ <./images/screens/admin2.png> <./images/screens/admin3.png>]
+<images/screens/admin4.png, id=79, 1209.51875pt x 729.72626pt>
+File: images/screens/admin4.png Graphic file (type png)
+<use images/screens/admin4.png>
+Package pdftex.def Info: images/screens/admin4.png  used on input line 270.
+(pdftex.def)             Requested size: 373.17516pt x 225.14388pt.
+
+
+Package frontespizio Warning: Remember to compile documentazione-frn with
+(frontespizio)                pdflatex documentazione-frn
+(frontespizio)                and then rerun pdflatex.
+
+[12
+
+ <./images/screens/admin4.png>] (documentazione.aux) ) 
+Here is how much of TeX's memory you used:
+ 6177 strings out of 492895
+ 97120 string characters out of 3123735
+ 200819 words of memory out of 3000000
+ 9992 multiletter control sequences out of 15000+200000
+ 9803 words of font info for 22 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 51i,9n,46p,443b,353s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Marco\AppData\
+Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Marc
+o\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\
+Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx090
+0.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi6
+00\ecrm1000.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecbx1000.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljf
+our/jknappen/ec/dpi600\ecbx1440.pk><C:/Users/Marco/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on documentazione.pdf (14 pages, 940581 bytes).
+PDF statistics:
+ 312 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,34 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+public List<Subject> getSubjects(int degree) {
+
+	List<Subject> results = new ArrayList<>();
+	System.out.println("Getting a List of subjects based on the degree");
+
+	String selectionSubjects = "SELECT s FROM Subjects s ORDER BY s.name";
+	String selectionSubjectByDegree =
+			 "SELECT s FROM Subjects s WHERE degreeId = ?1 ORDER BY s.name";
+	try {
+		entityManager = factory.createEntityManager();
+		if (degree < 0) {
+			TypedQuery<Subject> query = entityManager.createQuery
+				(selectionSubjects, Subject.class);
+			results = query.getResultList();
+		} else {
+
+			TypedQuery<Subject> query = entityManager.createQuery
+				(selectionSubjectByDegree, Subject.class);
+			query.setParameter(1, degree);
+			results = query.getResultList();
+		}
+
+	} catch (Exception ex) {
+		ex.printStackTrace();
+		System.err.println("A problem occurred in retriving subjects!");
+
+	} finally {
+		entityManager.close();
+	}
+	return results;
+}
+\end{lstlisting}

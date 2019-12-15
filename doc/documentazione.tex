@@ -1,0 +1,282 @@
+\documentclass[a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{frontespizio}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{scrextend}
+\usepackage[margin=1.2in]{geometry}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\begin{document}
+\selectlanguage{english}
+\baselineskip 13pt
+	
+% ---- FRONTESPIZIO ----- 
+\begin{frontespizio} 
+ \Preambolo{\renewcommand{\frontpretitlefont}{\fontsize{15}{12}\scshape}}
+\Istituzione {University of Pisa}
+\Divisione {Scuola di Ingegneria}
+\Corso [Laurea]{Artificial Intelligence and Data Engineering}
+\Annoaccademico {2019--2020}
+\Titolo { \vspace {35mm}Task0 documentation}
+\Filigrana [height=4cm,before=0.28,after=1]{./images/stemma_unipi.png}
+\Rientro {1cm}
+\Candidato {Alice Nannini}
+\Candidato {Giacomo Mantovani}
+\Candidato {Marco Parola}
+\Candidato {Stefano Poleggi}
+\Relatore {Prof. Pietro Ducange}
+ \Punteggiatura {}
+\end{frontespizio}
+
+\clearpage
+
+% ----- INDICE -----
+	\tableofcontents\thispagestyle{empty}
+	\clearpage
+
+
+\section{Introduction}\pagenumbering{arabic}
+This is an application to browse and evaluate university courses, called \textbf{Student-Evaluation}.\\
+The application is developed to allow students (users) to view all the courses of a specific university with related comments.\\ 
+Looking the table on the right side, a user can browse all subjects and by clicking an element of this table, on the left section, the user can see more information about the chosen element: general information and comments.\\ 
+In order to filter the list of subjects, there is a choice box, thanks to which the user can select a specific degree course. \\
+In order to leave a comment, it is necessary to log in, otherwise, the application will allow interaction in read-only.\\
+There are two buttons in the bottom left corner to allow students to update or delete their comments.
+There is no form to register into the application, it is assumed that users are already registered into the system, but there is an administrator that can add, update and delete subjects and all the informations related.
+
+
+\begin{minipage}{\linewidth}
+\begin{center}
+\vspace{8mm}
+\includegraphics[width=\textwidth]{./images/diagrams/Mockup.pdf} 
+\vspace{3mm}
+\captionof{figure}{Mockup}
+\label{fig:mockup}
+\end{center}
+\end{minipage}
+
+\clearpage
+
+\section{Analysis and workflow}
+
+% ----- REQUIREMENTS -----
+\subsection{Requirements}
+
+
+\subsubsection{Functional requirements}
+The system has to allow the guest to carry out basic functions such as:
+\begin{itemize}
+\item To select a course from the list and view information and comments.
+\item To select a degree course from the list, filtering subjects.
+\end{itemize}
+In addiction to the guest functions, the system has to allow the user to carry out basic functions such as:
+\begin{itemize}
+\item To login into the system.
+\item To upload comments on a course.
+\item To update a comment of a course only if the user is the owner.
+\item To delete a comment of a course only if the user is the owner.
+\end{itemize}
+\vspace{2mm}
+The system has to allow the administrator to carry out basic functions such as:
+\begin{itemize}
+\item To login into the system.
+\item To add a course.
+\item To update a course.
+\item To delete a course.
+\item To associate to a course a professor.
+\item To delete any comment.
+\end{itemize}
+\vspace{2mm}
+
+\subsubsection{Non-functional requirements}
+\begin{itemize}
+\item Usability, ease of use and intuitiveness of the application by the user.
+\item Avaliablility, with the service guaranteed h24.
+\item The system should support simultaneous users.
+\item The system should provide access to the database with a few seconds of latency.
+\end{itemize}
+
+\clearpage
+
+% ----- USE CASES -----
+\subsection{Use cases}
+
+\textbf{Actors}
+\begin{itemize}
+\item{Guest : this actor represents a user who is not logged into the system}
+\item{Student : this actor represents a user who is logged into the system}
+\item{Admin : this actor represents the administrator of the system}
+\end{itemize}
+
+\subsubsection{Use Cases Description}
+\begin{table}[h]
+\centering
+\begin{tabular}{p{0.2\textwidth}p{0.1\textwidth}lp{0.5\textwidth}}
+\hline
+\textbf{Event} & \textbf{UseCase} & \textbf{Actor(s)} & \textbf{Description}\\ \hline
+Log in, Log out & Login,  Logout & Admin, Student & The user logs in/out the application. The system browses the professors' list by the degree course of the logged user and returns it on the interface.\\ \hline
+View all the subjects & Browse, Find, View P/S & User & The user chooses that he wants to view the list of all subjects. The system browses the data on the db and returns them on the interface.\\ \hline
+View the comments and information of a subject & Browse, Find, View C & User & The user clicks on a record of the subject table. The system browses on the db the comments related to that subject and returns them on the interface.\\ \hline
+Add a comment & Add C & Admin, Student & The user submits the text of his comment. The system updates the db and the interface.\\ \hline
+Update a comment & Update C & Admin, Student & The user selects the comment and commits the new text. The system updates the db and the interface.\\ \hline
+Delete a comment & Delete C & Admin, Student & The user selects the comment and submits the delete. The system updates the db and the interface.\\ \hline
+View the subjects by degree & Browse, Find, View P/S & User & The user selects from the choice-boxes the degree course and the list (subjects) he's interested in. The system browses on the db the subjects filtered by the chosen degree and returns them on the interface.\\ \hline
+Add a subject & Add P/S & Admin & The user submits the name and other information of the new subject. The system updates the db and the interface.\\ \hline
+Update a subject & Update P/S & Admin & The user selects the subject and commits the new information. The system updates the db and the interface.\\ \hline
+Delete a subject & Delete P/S & Admin & The user selects the subject and submits the delete. The system updates the db and the interface.\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{minipage}{\linewidth}
+\begin{center}
+\vspace{8mm}
+\includegraphics[height=11cm]{./images/diagrams/UseCases.png} 
+\captionof{figure}{Use cases diagram}
+\vspace{3mm}
+\end{center}
+\end{minipage}
+
+
+\clearpage
+
+
+\subsection{Analysis class diagram}
+This diagram represent the main entities of the application and the relations between them.
+\begin{minipage}{\linewidth}
+\begin{center}
+\vspace{4mm}
+\includegraphics[width = 0.7\textwidth]{./images/diagrams/AnalysisUML.png} 
+\vspace{2mm}
+\captionof{figure}{UML analysis diagram}
+\label{fig:analisys_diagram}
+\end{center}
+\end{minipage}
+
+
+
+
+\clearpage
+% ----- MANUAL -----
+\section{User Manual}
+When you first run the application, the interface you get is the one in figure~\ref{fig:screen0}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/screen0}
+\captionof{figure}{First view of the application}
+\label{fig:screen0}
+\end{figure}
+
+The default display includes the list of all registered professors in the table on the right. You can choose to display the professors of a single degree course, using the drop-down menu on the right (fig.~\ref{fig:screen1}), or decide to view the list of subjects (fig.~\ref{fig:screen2}), for which is also available the degree course's filter. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/screen1}
+\captionof{figure}{Selection of professors filtered by "Ingegneria Informatica" degree course}
+\label{fig:screen1}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/screen2}
+\captionof{figure}{Selection of subjects}
+\label{fig:screen2}
+\end{figure}
+
+If you have a registered account, you can log in to the application, so that the comments' operations aren't blocked. Enter your username and your password in the suited fields at the top and click on "Login" (fig.~\ref{fig:screenLogin}).
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/screenLogin}
+\captionof{figure}{Application interface after the user "Alice" has logged in}
+\label{fig:screenLogin}
+\end{figure}
+
+If you now want to be able to see the comments associated with a particular professor, you have to click on the name of the professor: in the table on the left the list of comments already received will appear (fig.~\ref{fig:screen3}). With this operation, you'll be able to visualize also the information related to that professor.
+
+To leave a comment, you need to enter the text in the field below the table and then click on the "Comment" button. The result obtained from these operations is shown in fig.~\ref{fig:screen4}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{images/screens/screen3}
+\captionof{figure}{Displaying the comments related to a professor}
+\label{fig:screen3}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{images/screens/screen4}
+\captionof{figure}{Interface after adding a comment}
+\label{fig:screen4}
+\end{figure}
+
+You can also decide to modify the comment you just uploaded or another comment you made on a previous session. To do so, you need to click on the comment you want to update, change the text in the field below the table and then click on the "Update" button (fig.~\ref{fig:screen5}).
+Finally you have the chance to delete your comment, by clicking on "Delete" after selecting it. Notice that you can modify or delete just the comments that you made.
+
+The operations of adding, updating and deleting work as well for the the subjects' comments.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/screen5}
+\captionof{figure}{Interface after updating a comment}
+\label{fig:screen5}
+\end{figure}
+
+To log out, just click on the appropriate button at the top, next to the user label.
+
+Moreover, if you don't have a registered username, you can still browse through the application, search for professors 'and subjects' information and read all comments. You are just unable to leave or change any comments.
+
+\clearpage
+%ADIMN MANUAL%
+\subsection{Admin Manual}
+If you have an admin user, you are entitled to make changes both on the professors' and the subjects' lists. You need to log in inserting your username and password, and the application will recognize you as the administrator and show up the buttons for modifying the data (fig.~\ref{fig:adminLogin}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/adminLogin}
+\captionof{figure}{Interface after the administrator has logged in}
+\label{fig:adminLogin}
+\end{figure}
+
+You can choose to add a new professor, using the input fields at the bottom left. You have to specify the name, surname, and description, then press the "Add" button (fig.~\ref{fig:admin1}).
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/admin1}
+\captionof{figure}{Adding a new professor}
+\label{fig:admin1}
+\end{figure}
+\clearpage
+You can also modify the data related to a professor: click on the professor you are interested in and change the information shown in the apposite input fields. Finally, you have the chance to delete a professor by clicking on the "Delete" button after selecting the wanted professor (fig.~\ref{fig:admin2}).
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/admin2}
+\captionof{figure}{Screen of the application's interface from which you can either update or delete a professor}
+\label{fig:admin2}
+\end{figure}
+
+All these operations are available for the subjects as well. The only difference is that when you want to add a new subject you also need to specify the id of the professor teaching it (or a list of ids, separeted by commas, if there are more professors teaching it). Moreover, you must have precisely displayed in the table the subjects of the same degree course of the new one (fig.~\ref{fig:admin3}).
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/admin3}
+\captionof{figure}{Interface after adding a new subject, ready to modify or delete it}
+\label{fig:admin3}
+\end{figure}
+\clearpage
+The administrator can delete comments posted by all the users, too. Just click on the comment and then on the "Delete" button (fig.~\ref{fig:admin4}).
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/admin4}
+\captionof{figure}{Screen of the application's interface from which the admin can delete a comment}
+\label{fig:admin4}
+\end{figure}
+
+
+\end{document}
+
+
+
+
+
+

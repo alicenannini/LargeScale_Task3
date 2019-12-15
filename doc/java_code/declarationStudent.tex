@@ -1,0 +1,26 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+@Entity(name = "Users")
+@Table(name = "users")
+public class Student extends Person {
+
+	private final boolean admin;
+	@Column(name = "username", unique = true)
+	private String username;
+	private String password;
+
+	// relation with Degree.
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "degreeId")
+	private Degree deg;
+
+	// relation with SubjectComments.
+	@OneToMany(mappedBy = "stud", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<SubjectComment> subjectComments = new ArrayList<SubjectComment>();
+
+	// relation with ProfessorComments.
+	@OneToMany(mappedBy = "stud", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ProfessorComment> professorComments = new ArrayList<ProfessorComment>();
+   ...
+}
+\end{lstlisting}

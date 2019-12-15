@@ -1,0 +1,16 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+@Entity(name = "SubjectComments")
+@Table(name = "subject_comments")
+public class SubjectComment extends Comment {
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId")
+	private Student stud;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "subjectId")
+	private Subject subj;
+   ...
+}
+\end{lstlisting}

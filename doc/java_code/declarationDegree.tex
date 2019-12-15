@@ -1,0 +1,24 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+@Entity(name = "Degree")
+@Table(name = "degree_programmes")
+public class Degree {
+
+	@Column(name = "id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Column(name = "name", unique = true)
+	private String name;
+
+	// relation with students.
+	@OneToMany(mappedBy = "deg", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Student> student = new ArrayList<Student>();
+
+	// relation with subjects.
+	@OneToMany(mappedBy = "deg", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Subject> subject = new ArrayList<Subject>();
+   ...
+}
+\end{lstlisting}

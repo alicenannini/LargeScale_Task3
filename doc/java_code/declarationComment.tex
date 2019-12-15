@@ -1,0 +1,16 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+@MappedSuperclass
+public abstract class Comment {
+
+	@Column(name = "id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String text;
+	private String date;
+        
+        private static String format = "yyyy-MM-dd HH:mm:ss";
+   ...
+}
+\end{lstlisting}
