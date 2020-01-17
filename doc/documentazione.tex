@@ -21,7 +21,7 @@
 \Divisione {Scuola di Ingegneria}
 \Corso [Laurea]{Artificial Intelligence and Data Engineering}
 \Annoaccademico {2019--2020}
-\Titolo { \vspace {35mm}Task0 documentation}
+\Titolo { \vspace {35mm}Task3 Documentation}
 \Filigrana [height=4cm,before=0.28,after=1]{./images/stemma_unipi.png}
 \Rientro {1cm}
 \Candidato {Alice Nannini}
@@ -32,11 +32,10 @@
  \Punteggiatura {}
 \end{frontespizio}
 
-\clearpage
 
 % ----- INDICE -----
-	\tableofcontents\thispagestyle{empty}
-	\clearpage
+\tableofcontents\thispagestyle{empty}
+\clearpage
 
 
 \section{Introduction}\pagenumbering{arabic}
@@ -66,7 +65,6 @@ There is no form to register into the application, it is assumed that users are 
 % ----- REQUIREMENTS -----
 \subsection{Requirements}
 
-
 \subsubsection{Functional requirements}
 The system has to allow the guest to carry out basic functions such as:
 \begin{itemize}
@@ -75,7 +73,7 @@ The system has to allow the guest to carry out basic functions such as:
 \end{itemize}
 In addiction to the guest functions, the system has to allow the user to carry out basic functions such as:
 \begin{itemize}
-\item To login into the system.
+\item To login to the system.
 \item To upload comments on a course.
 \item To update a comment of a course only if the user is the owner.
 \item To delete a comment of a course only if the user is the owner.
@@ -83,11 +81,11 @@ In addiction to the guest functions, the system has to allow the user to carry o
 \vspace{2mm}
 The system has to allow the administrator to carry out basic functions such as:
 \begin{itemize}
-\item To login into the system.
+\item To login to the system.
 \item To add a course.
 \item To update a course.
 \item To delete a course.
-\item To associate to a course a professor.
+\item To associate a professor to a course.
 \item To delete any comment.
 \end{itemize}
 \vspace{2mm}
@@ -140,11 +138,9 @@ Delete a subject & Delete P/S & Admin & The user selects the subject and submits
 \end{center}
 \end{minipage}
 
-
 \clearpage
 
-
-\subsection{Analysis class diagram}
+\subsection{Analysis of entities}
 This diagram represent the main entities of the application and the relations between them.
 \begin{minipage}{\linewidth}
 \begin{center}
@@ -156,8 +152,45 @@ This diagram represent the main entities of the application and the relations be
 \end{center}
 \end{minipage}
 
+\clearpage
+% ----- DESIGN -----
+\section{Design}
 
+\subsection{Database Choice}
+This application is based on many join operations between the entities, in order to obtain each professor associated with a subject, or each comment associated with a subject, or yet display all the subjects associated with a degree course. For this reason, if the amount of data available is very high as expected, a relational database will be computationally expensive. Then the choice fell on a graph database, which manage to work very well and very fast on a model made with a lot of entities and relations.
 
+\subsection{Software Architecture}
+The application is designed over 2 different layers, see figure \ref{fig:architecture_diagram}:
+\begin{itemize}
+\item Front-end
+\item Back-end
+\end{itemize}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{./images/diagrams/architecture_diagram.png} 
+\caption{Software architecture diagram\\}
+\label{fig:architecture_diagram}
+\end{figure}
+
+\clearpage
+
+\subsection{Structure of the database}
+
+\clearpage
+% ----- IMPLEMENTATION -----
+\section{Implementation}
+
+\subsection{Used Technologies}
+
+\subsection{Java Classes Description}
+
+\subsection{Create}
+
+\subsection{Read}
+
+\subsection{Update}
+
+\subsection{Delete}
 
 \clearpage
 % ----- MANUAL -----
@@ -274,9 +307,3 @@ The administrator can delete comments posted by all the users, too. Just click o
 
 
 \end{document}
-
-
-
-
-
-

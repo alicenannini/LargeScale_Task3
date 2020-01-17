@@ -2,8 +2,8 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**documentazione
-(./documentazione.tex
+**documentazione-frn
+(./documentazione-frn.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 30 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -23,13 +23,6 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
@@ -348,45 +341,39 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/02/14 3.18 The Babel package
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/02/14 3.18 Babel switching mechanism
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
 )
-(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2017/06/06 v3.3r English support from the babel system
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/02/14 3.18 Babel common definitions
-\babel@savecnt=\count87
-\U@D=\dimen103
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
-\bbl@dirlevel=\count88
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
-\l@british = a dialect from \language\l@english 
-\l@UKenglish = a dialect from \language\l@english 
-\l@canadian = a dialect from \language\l@american 
-\l@australian = a dialect from \language\l@british 
-\l@newzealand = a dialect from \language\l@british 
-))
-(/usr/share/texlive/texmf-dist/tex/latex/frontespizio/frontespizio.sty
-Package: frontespizio 2011/09/21 1.4a (Enrico Gregorio)
-
-(/usr/share/texlive/texmf-dist/tex/latex/tools/afterpage.sty
-Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
-\AP@output=\toks16
-\AP@partial=\box26
-\AP@footins=\box27
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks17
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
-)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
@@ -401,8 +388,37 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen104
-\Gin@req@width=\dimen105
+\Gin@req@height=\dimen111
+\Gin@req@width=\dimen112
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/svgnam.def
+File: svgnam.def 2016/05/11 v2.12 Predefined colors according to SVG 1.1 (UK)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/frontespizio/frontespizio.sty
+Package: frontespizio 2011/09/21 1.4a (Enrico Gregorio)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
+\AP@output=\toks18
+\AP@partial=\box26
+\AP@footins=\box27
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
@@ -412,9 +428,6 @@ Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
@@ -422,123 +435,77 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
-\@envbody=\toks18
+\@envbody=\toks19
 )
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+\front@candtoks=\toks20
+\front@candcount=\count90
+\front@reltoks=\toks21
+\front@relcount=\count91
+\front@correltoks=\toks22
+\front@correlcount=\count92
 )
-\front@out=\write3
-\openout3 = `documentazione-frn.tex'.
+No auxiliary output files.
 
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count89
-\lst@gtempboxa=\box28
-\lst@token=\toks19
-\lst@length=\count90
-\lst@currlwidth=\dimen106
-\lst@column=\count91
-\lst@pos=\count92
-\lst@lostspace=\dimen107
-\lst@width=\dimen108
-\lst@newlines=\count93
-\lst@lineno=\count94
-\lst@maxwidth=\dimen109
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count95
-\lst@skipnumbers=\count96
-\lst@framebox=\box29
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2015/06/04 1.6 listings configuration
-))
-Package: listings 2015/06/04 1.6 (Carsten Heinz)
-
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrextend.sty
-Package: scrextend 2017/09/07 v3.24 KOMA-Script package (extend other classes w
-ith features of KOMA-Script classes)
-
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
-Package: scrkbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-dependent b
-asics and keyval usage)
-
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-independent 
-basics and keyval usage)
-
-(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2017/09/07 v3.24 KOMA-Script package (loading files)
-)))
-LaTeX Info: Redefining \textsubscript on input line 1318.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2010/09/12 v5.6 Page Geometry
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-)
-\Gm@cnth=\count97
-\Gm@cntv=\count98
-\c@Gm@tempcnt=\count99
-\Gm@bindingoffset=\dimen110
-\Gm@wd@mp=\dimen111
-\Gm@odd@mp=\dimen112
-\Gm@even@mp=\dimen113
-\Gm@layoutwidth=\dimen114
-\Gm@layoutheight=\dimen115
-\Gm@layouthoffset=\dimen116
-\Gm@layoutvoffset=\dimen117
-\Gm@dimlist=\toks20
-)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen118
-\captionmargin@=\dimen119
-\captionwidth=\dimen120
-\caption@tempdima=\dimen121
-\caption@indent=\dimen122
-\caption@parindent=\dimen123
-\caption@hangindent=\dimen124
-)
-\c@ContinuedFloat=\count100
-Package caption Info: listings package is loaded.
-)
-(./documentazione.aux)
-\openout1 = `documentazione.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+No file documentazione-frn.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(28.45274pt, 540.60239pt, 28.45274pt)
+* v-part:(T,H,B)=(28.45274pt, 773.91498pt, 42.67912pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=540.60239pt
+* \textheight=773.91498pt
+* \oddsidemargin=-43.81725pt
+* \evensidemargin=-43.81725pt
+* \topmargin=-80.81725pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count101
-\scratchdimen=\dimen125
-\scratchbox=\box30
-\nofMPsegments=\count102
-\nofMParguments=\count103
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count104
-\MPscratchDim=\dimen126
-\MPnumerator=\count105
-\makeMPintoPDFobject=\count106
-\everyMPtoPDFconversion=\toks22
+\scratchcounter=\count93
+\scratchdimen=\dimen113
+\scratchbox=\box28
+\nofMPsegments=\count94
+\nofMParguments=\count95
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count96
+\MPscratchDim=\dimen114
+\MPnumerator=\count97
+\makeMPintoPDFobject=\count98
+\everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -585,279 +552,38 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box31
-\c@lstlisting=\count107
-
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(86.72377pt, 424.06033pt, 86.72377pt)
-* v-part:(T,H,B)=(86.72377pt, 671.5993pt, 86.72377pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=424.06033pt
-* \textheight=671.5993pt
-* \oddsidemargin=14.45378pt
-* \evensidemargin=14.45378pt
-* \topmargin=-22.54622pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=10.0pt
-* \footskip=30.0pt
-* \marginparwidth=57.0pt
-* \marginparsep=11.0pt
-* \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
-<documentazione-frn.pdf, id=1, 597.50829pt x 845.0471pt>
-File: documentazione-frn.pdf Graphic file (type pdf)
-<use documentazione-frn.pdf>
-Package pdftex.def Info: documentazione-frn.pdf  used on input line 18.
-(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
-[1
-
- <./documentazione-frn.pdf{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}>]
- (./documentazione.toc
+\AtBeginShipoutBox=\box29
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 5.
+(Font)              <12> on input line 27.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 5.
-)
-\tf@toc=\write4
-\openout4 = `documentazione.toc'.
-
- [1]
-<./images/diagrams/Mockup.pdf, id=32, 574.5465pt x 401.0985pt>
-File: ./images/diagrams/Mockup.pdf Graphic file (type pdf)
-<use ./images/diagrams/Mockup.pdf>
-Package pdftex.def Info: ./images/diagrams/Mockup.pdf  used on input line 54.
-(pdftex.def)             Requested size: 424.06033pt x 296.0432pt.
-
-Overfull \hbox (15.0pt too wide) in paragraph at lines 51--60
-[]$[]$ 
- []
+(Font)              <8> on input line 27.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 27.
+<./images/stemma_unipi.png, id=1, 287.0725pt x 293.095pt>
+File: ./images/stemma_unipi.png Graphic file (type png)
+<use ./images/stemma_unipi.png>
+Package pdftex.def Info: ./images/stemma_unipi.png  used on input line 27.
+(pdftex.def)             Requested size: 111.47159pt x 113.81102pt.
 
 [1
 
- <./images/diagrams/Mockup.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 71.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 71.
- [2
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 119--119
-[]\T1/cmr/m/n/10 Login,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--120
-[]\T1/cmr/m/n/10 Browse,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--120
-\T1/cmr/m/n/10 Find,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
-[]\T1/cmr/m/n/10 Browse,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
-\T1/cmr/m/n/10 Find,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
-[]\T1/cmr/m/n/10 Browse,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
-\T1/cmr/m/n/10 Find,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--127
-[]\T1/cmr/m/n/10 Update
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 128--128
-[]\T1/cmr/m/n/10 Delete
- []
-
-
-Overfull \hbox (32.89442pt too wide) in paragraph at lines 116--130
- [][] 
- []
-
-<./images/diagrams/UseCases.png, id=45, 1252.68pt x 828.09375pt>
-File: ./images/diagrams/UseCases.png Graphic file (type png)
-<use ./images/diagrams/UseCases.png>
-Package pdftex.def Info: ./images/diagrams/UseCases.png  used on input line 135
-.
-(pdftex.def)             Requested size: 473.46202pt x 312.9803pt.
-
-Overfull \hbox (49.40169pt too wide) in paragraph at lines 135--136
- [] 
- []
-
-
-Overfull \hbox (15.0pt too wide) in paragraph at lines 132--140
-[]$[]$ 
- []
-
-[3
-
-] [4 <./images/diagrams/UseCases.png>]
-<./images/diagrams/AnalysisUML.png, id=53, 544.0325pt x 447.6725pt>
-File: ./images/diagrams/AnalysisUML.png Graphic file (type png)
-<use ./images/diagrams/AnalysisUML.png>
-Package pdftex.def Info: ./images/diagrams/AnalysisUML.png  used on input line 
-148.
-(pdftex.def)             Requested size: 296.84093pt x 244.27382pt.
- [5
-
- <./images/diagrams/AnalysisUML.png>]
-<./images/diagrams/architecture_diagram.png, id=59, 313.77225pt x 290.2845pt>
-File: ./images/diagrams/architecture_diagram.png Graphic file (type png)
-<use ./images/diagrams/architecture_diagram.png>
-Package pdftex.def Info: ./images/diagrams/architecture_diagram.png  used on in
-put line 170.
-(pdftex.def)             Requested size: 254.43878pt x 235.39491pt.
- [6
-
- <./images/diagrams/architecture_diagram.png>] [7
-
-] [8
-
-]
-<images/screens/screen0.png, id=70, 1213.53375pt x 734.745pt>
-File: images/screens/screen0.png Graphic file (type png)
-<use images/screens/screen0.png>
-Package pdftex.def Info: images/screens/screen0.png  used on input line 202.
-(pdftex.def)             Requested size: 373.17516pt x 225.94115pt.
-<images/screens/screen1.png, id=71, 1211.52625pt x 729.72626pt>
-File: images/screens/screen1.png Graphic file (type png)
-<use images/screens/screen1.png>
-Package pdftex.def Info: images/screens/screen1.png  used on input line 211.
-(pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
- [9
-
- <./images/screens/screen0.png> <./images/screens/screen1.png>]
-<images/screens/screen2.png, id=77, 1211.52625pt x 732.7375pt>
-File: images/screens/screen2.png Graphic file (type png)
-<use images/screens/screen2.png>
-Package pdftex.def Info: images/screens/screen2.png  used on input line 218.
-(pdftex.def)             Requested size: 373.17516pt x 225.6928pt.
-<images/screens/screenLogin.png, id=78, 1211.52625pt x 726.715pt>
-File: images/screens/screenLogin.png Graphic file (type png)
-<use images/screens/screenLogin.png>
-Package pdftex.def Info: images/screens/screenLogin.png  used on input line 226
-.
-(pdftex.def)             Requested size: 373.17516pt x 223.83777pt.
-<images/screens/screen3.png, id=79, 1211.52625pt x 726.715pt>
-File: images/screens/screen3.png Graphic file (type png)
-<use images/screens/screen3.png>
-Package pdftex.def Info: images/screens/screen3.png  used on input line 237.
-(pdftex.def)             Requested size: 381.6517pt x 228.92752pt.
-<images/screens/screen4.png, id=80, 1315.91624pt x 738.76pt>
-File: images/screens/screen4.png Graphic file (type png)
-<use images/screens/screen4.png>
-Package pdftex.def Info: images/screens/screen4.png  used on input line 244.
-(pdftex.def)             Requested size: 381.6517pt x 214.25745pt.
- [10
-
- <./images/screens/screen2.png> <./images/screens/screenLogin.png>] [11 <./imag
-es/screens/screen3.png> <./images/screens/screen4.png>]
-<images/screens/screen5.png, id=92, 1312.905pt x 736.7525pt>
-File: images/screens/screen5.png Graphic file (type png)
-<use images/screens/screen5.png>
-Package pdftex.def Info: images/screens/screen5.png  used on input line 255.
-(pdftex.def)             Requested size: 373.17516pt x 209.41455pt.
- [12 <./images/screens/screen5.png>]
-<images/screens/adminLogin.png, id=97, 1211.52625pt x 731.73375pt>
-File: images/screens/adminLogin.png Graphic file (type png)
-<use images/screens/adminLogin.png>
-Package pdftex.def Info: images/screens/adminLogin.png  used on input line 271.
-
-(pdftex.def)             Requested size: 373.17516pt x 225.38362pt.
-<images/screens/admin1.png, id=98, 1209.51875pt x 731.73375pt>
-File: images/screens/admin1.png Graphic file (type png)
-<use images/screens/admin1.png>
-Package pdftex.def Info: images/screens/admin1.png  used on input line 279.
-(pdftex.def)             Requested size: 373.17516pt x 225.76324pt.
- [13
-
- <./images/screens/adminLogin.png> <./images/screens/admin1.png>]
-<images/screens/admin2.png, id=104, 1211.52625pt x 729.72626pt>
-File: images/screens/admin2.png Graphic file (type png)
-<use images/screens/admin2.png>
-Package pdftex.def Info: images/screens/admin2.png  used on input line 287.
-(pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
-<images/screens/admin3.png, id=105, 1209.51875pt x 733.74126pt>
-File: images/screens/admin3.png Graphic file (type png)
-<use images/screens/admin3.png>
-Package pdftex.def Info: images/screens/admin3.png  used on input line 295.
-(pdftex.def)             Requested size: 373.17516pt x 226.38263pt.
- [14
-
- <./images/screens/admin2.png> <./images/screens/admin3.png>]
-<images/screens/admin4.png, id=111, 1209.51875pt x 729.72626pt>
-File: images/screens/admin4.png Graphic file (type png)
-<use images/screens/admin4.png>
-Package pdftex.def Info: images/screens/admin4.png  used on input line 303.
-(pdftex.def)             Requested size: 373.17516pt x 225.14388pt.
- [15
-
- <./images/screens/admin4.png>]
-(./documentazione.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/stemma_unipi.png>
+] ) 
 Here is how much of TeX's memory you used:
- 6406 strings out of 494333
- 96504 string characters out of 6164079
- 187401 words of memory out of 5000000
- 9648 multiletter control sequences out of 15000+600000
- 9803 words of font info for 22 fonts, out of 8000000 for 9000
+ 3186 strings out of 494333
+ 43689 string characters out of 6164079
+ 115429 words of memory out of 5000000
+ 6497 multiletter control sequences out of 15000+600000
+ 7297 words of font info for 26 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 51i,11n,46p,530b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jk
-nappen/ec/ecbx1200.600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecrm0900.600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/
-jknappen/ec/ecbx0900.600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecrm1000.600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecbx1000.600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/ecbx1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on documentazione.pdf (17 pages, 1029320 bytes).
+ 41i,14n,35p,282b,248s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on documentazione-frn.pdf (1 page, 78991 bytes).
 PDF statistics:
- 374 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
+ 23 PDF objects out of 1000 (max. 8388607)
+ 14 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
