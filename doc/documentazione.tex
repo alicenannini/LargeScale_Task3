@@ -156,9 +156,11 @@ This diagram represent the main entities of the application and the relations be
 % ----- DESIGN -----
 \section{Design}
 
+% ----- DATABASE -----
 \subsection{Database Choice}
-This application is based on many join operations between the entities, in order to obtain each professor associated with a subject, or each comment associated with a subject, or yet display all the subjects associated with a degree course. For this reason, if the amount of data available is very high as expected, a relational database will be computationally expensive. Then the choice fell on a graph database, which manage to work very well and very fast on a model made with a lot of entities and relations.
+This application is based on many join operations between the entities, in order to obtain each professor associated with a subject, or each comment associated with a subject, or yet display all the subjects associated with a degree course. For this reason, if the amount of data available is very high as expected, a relational database will be computationally expensive. Then the choice fell on a graph database, which manage to work very well and very fast on a model made with a lot of entities and relations.\\
 
+% ----- ARCHITECTURE -----
 \subsection{Software Architecture}
 The application is designed over 2 different layers, see figure \ref{fig:architecture_diagram}:
 \begin{itemize}
@@ -167,20 +169,48 @@ The application is designed over 2 different layers, see figure \ref{fig:archite
 \end{itemize}
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\textwidth]{./images/diagrams/architecture_diagram.png} 
+\includegraphics[width=0.4\textwidth]{./images/diagrams/architecture_diagram.png} 
 \caption{Software architecture diagram\\}
 \label{fig:architecture_diagram}
 \end{figure}
 
-\clearpage
-
+% ----- GRAPH MODEL -----
 \subsection{Structure of the database}
+In graph databases the entities are modeling using the vertexes, in our model there are the following entities:
+\begin{itemize}
+\item Professor
+\item Student
+\item Degree
+\item Subject
+\item SubjectComment
+\end{itemize}
+Moreover the relations are modeling using the edges, in our model there are the following edges:
+\begin{itemize}
+\item Attends, connects a students to a degree
+\item Teaches, connects a professor to a subject
+\item Belongs, connects a course to a degree
+\item Wrote, connects a student to a subject
+\end{itemize}
 
+
+\begin{minipage}{\linewidth}
+\begin{center}
+\vspace{4mm}
+\includegraphics[width = 1\textwidth]{./images/diagrams/graphDb.png} 
+\vspace{2mm}
+\captionof{figure}{Graph model}
+\label{fig:analisys_diagram}
+\end{center}
+\end{minipage}
 \clearpage
 % ----- IMPLEMENTATION -----
 \section{Implementation}
 
 \subsection{Used Technologies}
+The application is developed in java programming language, version 11.0.4, and in JavaFX system to create the GUI, version 11, so it should run on each platform in which JVM is installed, but the application is tested and guardantee on Ubuntu 16 and Window OS. Moreover Maven is used  to build and mantain the project, version 3.8.0. \\
+The java driver for Neo4j manage the comunication between client application layer and mongo backend layer, version 3.2.1.\\ 
+For the backend layer it is used a graph database: Neo4j, version 3.2.1.\\
+So this application is tested using these technologies, considering these particular versions: for other versions the correct execution isn't guaranteed .\\
 
 \subsection{Java Classes Description}
 
