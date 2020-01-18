@@ -1,44 +1,32 @@
 package task3;
 
 import java.util.*;
-import org.neo4j.ogm.annotation.*;
+import javafx.beans.property.*;
 
-@NodeEntity
-public class Comment {
-	@Id @GeneratedValue Long id;
-	@Property private String text;
-	@Property private String date;
-	
-	@Relationship(type = "WROTE", direction = Relationship.INCOMING)
-	private Student stud;
-	
-	@Relationship(type = "ABOUT", direction = Relationship.OUTGOING)
-	private Subject subj;
-        
-    //private static String format = "yyyy-MM-dd HH:mm:ss";
-        
-	public Comment() {}
+public abstract class Comment{
 
-	public Comment(String t, Date d) {
-		text = t;
-		date = d.toString();//new SimpleDateFormat(format).format(d);
-	}
+    private final SimpleIntegerProperty id;
+    private final SimpleStringProperty text;
+    private final SimpleIntegerProperty student;
+    private final SimpleStringProperty date;
+    private final SimpleIntegerProperty subject;
 
-	public void setText(String text) { this.text = text; }
-
-	public void setDate(Date date) {
-		this.date = date.toString();//new SimpleDateFormat(format).format(date);
-	}
-
-	public String getText() { return text; }
-
-	public String getDate() { return date; }
-	
-	public Subject getSubj() { return subj; }
-
-	public void setSubj(Subject subj) { this.subj = subj; }
-
-	public Student getStud() { return stud; }
-
-	public void setStud(Student stud) { this.stud = stud; }
-}
+    public Comment(int i, String t, int s, int sub, Date d) {
+        id = new SimpleIntegerProperty(i);
+        text = new SimpleStringProperty(t);
+        student = new SimpleIntegerProperty(s);
+        date = new SimpleStringProperty(d.toString());
+        subject = new SimpleIntegerProperty(sub);
+    }
+    
+    public int getId(){ return id.get(); }
+    public String getText(){ return text.get(); }
+    public int getStudent(){ return student.get(); }
+    public String getDate(){ return date.get(); }
+    public int getSubject(){ return subject.get(); }
+    public void setSubject(int s){ subject.set(s); }
+    public void setId(int i){ id.set(i); }
+    public void setText(String t){ text.set(t); }
+    public void setStudent(int s){ student.set(s); }
+    public void setDate(Date d){ date.set(d.toString()); }
+}	

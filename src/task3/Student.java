@@ -1,53 +1,44 @@
 package task3;
 
 import java.util.*;
-import org.neo4j.ogm.annotation.*;
+import javafx.beans.property.*;
 
-@NodeEntity
-public class Student {
-	@Id @GeneratedValue Long id;
-	@Property private final boolean admin;
-	@Property private String username;
-	@Property private String password;
+public class Student{
+	private final SimpleIntegerProperty id;
+    private final SimpleBooleanProperty admin;
+    private final SimpleStringProperty username;
+    private final SimpleStringProperty password;
+    private final SimpleObjectProperty<Degree> degree;
+    
+    private List<Comment> comments = new ArrayList<Comment>();
+    
+    // CONSTRUCTOR
+    public Student(int i, String u, String p, Degree d, boolean a) {
+        id = new SimpleIntegerProperty(i);
+        admin = new SimpleBooleanProperty(a);
+        username = new SimpleStringProperty(u);
+        password = new SimpleStringProperty(p);
+        degree = new SimpleObjectProperty(d);		
+    }
+    
+    public int getId(){ return id.get(); }
+    
+    public void setId(int i){ id.set(i); }
+    
+    public boolean getAdmin() { return admin.get(); }
+    
+    public void setAdmin(Boolean b) { admin.set(b); }
+    
+    public String getUsername() { return username.get(); }
+    
+    public void setUsername(String n) { username.set(n); }
+    
+    public String getPassword() { return password.get(); }
+    
+    public void setPassword(String n) { password.set(n); }
 
-	// relation with Degree
-	@Relationship(type = "ATTENDS", direction = Relationship.OUTGOING)
-	private Degree deg;
-
-	// relation with Comments
-	@Relationship(type = "WROTE", direction = Relationship.OUTGOING)
-	private List<Comment> comments = new ArrayList<Comment>();
-
-	public Student() {
-		admin = false;
-		username = "";
-	}
-
-	public Student(int i, String u, String p, boolean a) {
-		this.admin = a;
-		this.username = u;
-		this.password = p;
-	}
-
-	public List<Comment> getComments() { return comments; }
-
-	public void setSubjectComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-
-	public Degree getDeg() { return deg; }
-
-	public void setDeg(Degree deg) { this.deg = deg; }
-
-	public Student getStudent() { return this; }
-
-	public boolean getAdmin() { return admin; }
-
-	public String getUsername() { return username; }
-
-	public String getPassword() { return password; }
-
-	public void setPassword(String password) { this.password = password; }
-
-	public void setUsername(String username) { this.username = username; }
+    public Degree getDegree() { return degree.getValue(); }
+    
+    public void setDegree(Degree d) { degree.set(d); }
+	
 }

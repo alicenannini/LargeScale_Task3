@@ -1,60 +1,61 @@
 package task3;
 
 import java.util.*;
-import org.neo4j.ogm.annotation.*;
+import javafx.beans.property.*;
 
-@NodeEntity
 public class Subject {
-	@Id @GeneratedValue Long id;
-	@Property private String name;
-	@Property("cfu") private int credits;
-	@Property private String info;
+
+	private final SimpleIntegerProperty id;
+	private final SimpleStringProperty name;
+	private final SimpleIntegerProperty credits;
+	private final SimpleStringProperty info;
+	private final SimpleIntegerProperty degree;
 	
-	@Relationship(type = "COVERED IN", direction = Relationship.OUTGOING)
-	private Degree deg;
-	
-	@Relationship(type = "ABOUT", direction = Relationship.INCOMING)
 	private List<Comment> comments = new ArrayList<Comment>();
-	
-	@Relationship(type = "TEACHES", direction = Relationship.INCOMING)
 	private Set<Professor> professors = new HashSet<Professor>();
 	
-	public Subject() {}
-
 	// CONSTRUCTOR
-	public Subject(String n, int c, String inf) {
-		name = n;
-		credits = c;
-		info = inf;
+	public Subject(int i, String n, int c, String inf, int d) {
+		id = new SimpleIntegerProperty(i);
+		name = new SimpleStringProperty(n);
+		credits = new SimpleIntegerProperty(c);
+		info = new SimpleStringProperty(inf);
+		degree = new SimpleIntegerProperty(d);
 	}
 	
-	public void removeProf(Professor prof) {
-        this.professors.remove(prof);
-        prof.getSubject().remove(this);
-    }
-
-	public Set<Professor> getProfessors() { return professors; }
-
-	public void setProfessors(Set<Professor> professors) { this.professors = professors; }
-
-	public List<Comment> getComments() { return comments; }
-
-	public void setComments(List<Comment> comments) { this.comments = comments; }
+	public int getId() {
+		return id.getValue();
+	}
+	public void setId(int i) {
+		id.set(i);
+	}
 	
-	public String getName() { return name; }
-
-	public void setName(String name) { this.name = name; }
-
-	public int getCredits() { return credits; }
-
-	public void setCredits(int credits) { this.credits = credits; }
+	public String getName() {
+		return name.getValue();
+	}
+	public void setName(String n) {
+		name.set(n);
+	}
 	
-	public String getInfo() { return info; }
-
-	public void setInfo(String info) { this.info = info; }
-
-	public Degree getDeg() { return deg; }
-
-	public void setDeg(Degree deg) { this.deg = deg; }
-
+	public int getCredits() {
+		return credits.getValue();
+	}
+	public void setCredits(int c) {
+		credits.set(c);
+	}
+	
+	public String getInfo() {
+		return info.getValue();
+	}
+	public void setInfo(String i) {
+		info.set(i);
+	}
+	
+	public int getDegree() {
+		return degree.getValue();
+	}
+	public void setDegree(int d) {
+		degree.set(d);
+	}
 }
+	
