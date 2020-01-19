@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.22)  18 JAN 2020 15:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.22)  19 JAN 2020 14:02
 entering extended mode
 **./documentazione.tex
 (documentazione.tex
@@ -493,87 +493,104 @@ Underfull \hbox (badness 10000) in paragraph at lines 210--214
 
  []
 
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 228.
+
+("C:\Users\Marco\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
 [8
 
 ]
-<images/screens/screen0.png, id=70, 1213.53375pt x 734.745pt>
+Overfull \hbox (58.82175pt too wide) in paragraph at lines 301--301
+[]\T1/cmtt/m/n/10 public void createSubject(String name, int credits, String in
+fo, int profId, int degreeId) {[] 
+ []
+
+[9]
+Overfull \hbox (6.33456pt too wide) in paragraph at lines 323--323
+[]        \T1/cmtt/m/n/10 list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd
+.name").asString()));[] 
+ []
+
+[10]
+<images/screens/screen0.png, id=77, 1213.53375pt x 734.745pt>
 File: images/screens/screen0.png Graphic file (type png)
 <use images/screens/screen0.png>
-Package pdftex.def Info: images/screens/screen0.png  used on input line 232.
+Package pdftex.def Info: images/screens/screen0.png  used on input line 337.
 (pdftex.def)             Requested size: 373.17516pt x 225.94115pt.
-<images/screens/screen1.png, id=71, 1211.52625pt x 729.72626pt>
+<images/screens/screen1.png, id=78, 1211.52625pt x 729.72626pt>
 File: images/screens/screen1.png Graphic file (type png)
 <use images/screens/screen1.png>
-Package pdftex.def Info: images/screens/screen1.png  used on input line 241.
+Package pdftex.def Info: images/screens/screen1.png  used on input line 346.
 (pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
- [9
+ [11
 
  <./images/screens/screen0.png> <./images/screens/screen1.png>]
-<images/screens/screen2.png, id=77, 1211.52625pt x 732.7375pt>
+<images/screens/screen2.png, id=85, 1211.52625pt x 732.7375pt>
 File: images/screens/screen2.png Graphic file (type png)
 <use images/screens/screen2.png>
-Package pdftex.def Info: images/screens/screen2.png  used on input line 248.
+Package pdftex.def Info: images/screens/screen2.png  used on input line 353.
 (pdftex.def)             Requested size: 373.17516pt x 225.6928pt.
-<images/screens/screenLogin.png, id=78, 1211.52625pt x 726.715pt>
+<images/screens/screenLogin.png, id=86, 1211.52625pt x 726.715pt>
 File: images/screens/screenLogin.png Graphic file (type png)
 <use images/screens/screenLogin.png>
-Package pdftex.def Info: images/screens/screenLogin.png  used on input line 256
+Package pdftex.def Info: images/screens/screenLogin.png  used on input line 361
 .
 (pdftex.def)             Requested size: 373.17516pt x 223.83777pt.
-<images/screens/screen3.png, id=79, 1211.52625pt x 726.715pt>
+<images/screens/screen3.png, id=87, 1211.52625pt x 726.715pt>
 File: images/screens/screen3.png Graphic file (type png)
 <use images/screens/screen3.png>
-Package pdftex.def Info: images/screens/screen3.png  used on input line 267.
+Package pdftex.def Info: images/screens/screen3.png  used on input line 372.
 (pdftex.def)             Requested size: 381.6517pt x 228.92752pt.
-<images/screens/screen4.png, id=80, 1315.91624pt x 738.76pt>
+<images/screens/screen4.png, id=88, 1315.91624pt x 738.76pt>
 File: images/screens/screen4.png Graphic file (type png)
 <use images/screens/screen4.png>
-Package pdftex.def Info: images/screens/screen4.png  used on input line 274.
+Package pdftex.def Info: images/screens/screen4.png  used on input line 379.
 (pdftex.def)             Requested size: 381.6517pt x 214.25745pt.
- [10
 
- <./images/screens/screen2.png> <./images/screens/screenLogin.png>] [11 <./imag
+[12
+
+ <./images/screens/screen2.png> <./images/screens/screenLogin.png>] [13 <./imag
 es/screens/screen3.png> <./images/screens/screen4.png>]
-<images/screens/screen5.png, id=92, 1312.905pt x 736.7525pt>
+<images/screens/screen5.png, id=99, 1312.905pt x 736.7525pt>
 File: images/screens/screen5.png Graphic file (type png)
 <use images/screens/screen5.png>
-Package pdftex.def Info: images/screens/screen5.png  used on input line 285.
+Package pdftex.def Info: images/screens/screen5.png  used on input line 390.
 (pdftex.def)             Requested size: 373.17516pt x 209.41455pt.
- [12 <./images/screens/screen5.png>]
-<images/screens/adminLogin.png, id=97, 1211.52625pt x 731.73375pt>
+ [14 <./images/screens/screen5.png>]
+<images/screens/adminLogin.png, id=104, 1211.52625pt x 731.73375pt>
 File: images/screens/adminLogin.png Graphic file (type png)
 <use images/screens/adminLogin.png>
-Package pdftex.def Info: images/screens/adminLogin.png  used on input line 301.
+Package pdftex.def Info: images/screens/adminLogin.png  used on input line 406.
 
 (pdftex.def)             Requested size: 373.17516pt x 225.38362pt.
-<images/screens/admin1.png, id=98, 1209.51875pt x 731.73375pt>
+<images/screens/admin1.png, id=105, 1209.51875pt x 731.73375pt>
 File: images/screens/admin1.png Graphic file (type png)
 <use images/screens/admin1.png>
-Package pdftex.def Info: images/screens/admin1.png  used on input line 309.
+Package pdftex.def Info: images/screens/admin1.png  used on input line 414.
 (pdftex.def)             Requested size: 373.17516pt x 225.76324pt.
- [13
+ [15
 
  <./images/screens/adminLogin.png> <./images/screens/admin1.png>]
-<images/screens/admin2.png, id=104, 1211.52625pt x 729.72626pt>
+<images/screens/admin2.png, id=111, 1211.52625pt x 729.72626pt>
 File: images/screens/admin2.png Graphic file (type png)
 <use images/screens/admin2.png>
-Package pdftex.def Info: images/screens/admin2.png  used on input line 317.
+Package pdftex.def Info: images/screens/admin2.png  used on input line 422.
 (pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
-<images/screens/admin3.png, id=105, 1209.51875pt x 733.74126pt>
+<images/screens/admin3.png, id=112, 1209.51875pt x 733.74126pt>
 File: images/screens/admin3.png Graphic file (type png)
 <use images/screens/admin3.png>
-Package pdftex.def Info: images/screens/admin3.png  used on input line 325.
+Package pdftex.def Info: images/screens/admin3.png  used on input line 430.
 (pdftex.def)             Requested size: 373.17516pt x 226.38263pt.
-
-[14
+ [16
 
  <./images/screens/admin2.png> <./images/screens/admin3.png>]
-<images/screens/admin4.png, id=111, 1209.51875pt x 729.72626pt>
+<images/screens/admin4.png, id=118, 1209.51875pt x 729.72626pt>
 File: images/screens/admin4.png Graphic file (type png)
 <use images/screens/admin4.png>
-Package pdftex.def Info: images/screens/admin4.png  used on input line 333.
+Package pdftex.def Info: images/screens/admin4.png  used on input line 438.
 (pdftex.def)             Requested size: 373.17516pt x 225.14388pt.
- [15
+ [17
 
  <./images/screens/admin4.png>] (documentazione.aux)
 
@@ -581,28 +598,29 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6192 strings out of 492895
- 97723 string characters out of 3123735
- 200873 words of memory out of 3000000
- 10005 multiletter control sequences out of 15000+200000
- 9803 words of font info for 22 fonts, out of 3000000 for 9000
+ 6211 strings out of 492895
+ 98368 string characters out of 3123735
+ 201875 words of memory out of 3000000
+ 10020 multiletter control sequences out of 15000+200000
+ 10116 words of font info for 23 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  51i,11n,46p,539b,353s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-ecbx1200.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecrm0900.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Marco\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Marco\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><C:/Users/Marco/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
-Users/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r10.pfb><C:/Users/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr12.pfb><C:/Users/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb>
-Output written on documentazione.pdf (17 pages, 1210060 bytes).
+ectt1000.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecbx1200.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
+/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Marco\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Marco\AppData\Local\MiKTeX
+\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Marco\AppData\Lo
+cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Marco\
+AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><C:/Use
+rs/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb><C:/Users/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr10.pfb><C:/Users/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr12.pfb><C:/Users/Marco/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on documentazione.pdf (19 pages, 1235125 bytes).
 PDF statistics:
- 376 PDF objects out of 1000 (max. 8388607)
+ 457 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

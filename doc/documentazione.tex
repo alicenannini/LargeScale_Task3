@@ -212,15 +212,120 @@ The java driver for Neo4j manage the comunication between client application lay
 For the backend layer it is used a graph database: Neo4j, version 3.2.1.\\
 So this application is tested using these technologies, considering these particular versions: for other versions the correct execution isn't guaranteed .\\
 
+% ----- CODE -----
 \subsection{Java Classes Description}
+\subsubsection{Entities}
+In this section is listed the classes who model the entities.
+\begin{itemize}
+\item Student
+\item Professor
+\item Subject
+\item Comment
+\item Degree
+\end{itemize}
+Each of them have some attributes and the related Get and Set methods, in order to avoid too much redundancy code, it is reported only an example of declaration.
 
-\subsection{Create}
+\begin{verbatim}
+  public class Student{
+     private final SimpleIntegerProperty id;
+     private final SimpleBooleanProperty admin;
+     private final SimpleStringProperty username;
+     private final SimpleStringProperty password;
+     private final SimpleObjectProperty<Degree> degree;
+     private List<Comment> comments = new ArrayList<Comment>();
+    
+     public Student(int i, String u, String p, Degree d, boolean a) {
+         id = new SimpleIntegerProperty(i);
+         admin = new SimpleBooleanProperty(a);
+         username = new SimpleStringProperty(u);
+         password = new SimpleStringProperty(p);
+         degree = new SimpleObjectProperty(d);		
+     }
+    
+     public int getId(){ return id.get(); }
+     public void setId(int i){ id.set(i); }
+     public boolean getAdmin() { return admin.get(); }
+     public void setAdmin(Boolean b) { admin.set(b); }
+     public String getUsername() { return username.get(); }
+     public void setUsername(String n) { username.set(n); }
+     public String getPassword() { return password.get(); }
+     public void setPassword(String n) { password.set(n); }
+     public Degree getDegree() { return degree.getValue(); }
+     public void setDegree(Degree d) { degree.set(d); }
+  }
+\end{verbatim}
 
-\subsection{Read}
+\subsubsection{Database manager}
+The other class in the project is DbManager. It handles the connection with Neo4j and provides all methods to interact with it.
 
-\subsection{Update}
+\begin{verbatim}
+  public class DbManager implements AutoCloseable {
+       private final Driver driver;
+       private final String uri = "bolt://localhost:7687";
+       private final String user = "user";
+       private final String password = "pwd";
 
-\subsection{Delete}
+       public DbManager() {
+       driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
+       }
+
+    // ... crud operation ...
+
+       @Override
+       public void close() throws Exception {
+       driver.close();
+       }
+  }
+\end{verbatim}
+
+
+% ----- CRUD OPERATION ------
+\subsection{CRUD operations}
+All crud operations are implemented using \textbf{Cypher query language}; it is a declarative graph query language that allows for expressive and efficient querying and updating of a property graph.
+
+
+\subsubsection{Create}
+This method of DbManager class guarantees the creation of a subject. A new vertex is inserted on the graph and  is connected with a professor node using an incoming edge called TEACHES, moreover it is connected with degree node, using an outcoming edge called BELONGS.
+
+\begin{verbatim}
+public void createSubject(String name, int credits, String info, int profId, int degreeId) {
+  try(Session session = driver.session(AccessMode.WRITE)){
+     session.run("MATCH (p:Professor) WHERE id(p) = $profId " + 
+                 "MATCH (d:Degree) WHERE id(d) = $degreeId " +
+                 "CREATE (a:Subject {name:$name, cfu:$cfu, info:$info})," +
+                 "(p)-[:TEACHES]->(a), (a)-[:BELONGS]->(d);", 
+     Values.parameters("name",name,"cfu",credits,"info",info,
+                       "profId",profId,"degreeId",degreeId) );
+   }
+}
+\end{verbatim}
+
+
+\subsubsection{Read}
+This method reads from database all degrees and inserts them in a list.
+
+\begin{verbatim}
+public List<Degree> getDegreeCourses() {
+   List<Degree> list = new ArrayList<>();
+ 
+   try(Session session = driver.session(AccessMode.READ)){
+     StatementResult sr = session.run("MATCH (dd:Degree)''+
+                                      "RETURN ID(dd), dd.name;");
+
+     while(sr.hasNext()) {
+        Record r = sr.next();
+        System.out.println(r.toString());
+        list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd.name").asString()));
+     }
+  }
+  return list;
+}
+\end{verbatim}
+
+
+\subsubsection{Update}
+
+\subsubsection{Delete}
 
 \clearpage
 % ----- MANUAL -----
