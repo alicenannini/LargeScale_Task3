@@ -324,9 +324,30 @@ public List<Degree> getDegreeCourses() {
 
 
 \subsubsection{Update}
+The following snippet of shows how to execute an updating operation of an entity professor.
+\begin{verbatim}
+  public void updateProfessor(int profId, String name, String surname) {
+     try(Session session = driver.session(AccessMode.WRITE)){
+        session.run("MATCH (p:Professor) WHERE ID(s) = $profId\n" + 
+                    "SET p.name = $name, p.surname = $surname;",
+        Values.parameters("profId",profId,"name",name,"surname",surname) );
+     }
+  }
+\end{verbatim}
 
 \subsubsection{Delete}
+This example of deleting operation shows how to remove subject, given its id and related relations.
 
+\begin{verbatim}
+   public void deleteSubject(int subjectId) {
+       try(Session session = driver.session(AccessMode.WRITE)){
+              session.run("MATCH (n:Subject)" +
+                          "WHERE id(n) = $idSubject" +
+                          "DETACH DELETE n;",
+              Values.parameters("idSubject",subjectId));
+        }
+   }
+\end{verbatim}
 \clearpage
 % ----- MANUAL -----
 \section{User Manual}

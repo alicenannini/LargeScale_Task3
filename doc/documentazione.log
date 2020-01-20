@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.22)  19 JAN 2020 14:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.7.22)  20 JAN 2020 22:21
 entering extended mode
 **./documentazione.tex
 (documentazione.tex
@@ -516,12 +516,12 @@ Overfull \hbox (6.33456pt too wide) in paragraph at lines 323--323
 <images/screens/screen0.png, id=77, 1213.53375pt x 734.745pt>
 File: images/screens/screen0.png Graphic file (type png)
 <use images/screens/screen0.png>
-Package pdftex.def Info: images/screens/screen0.png  used on input line 337.
+Package pdftex.def Info: images/screens/screen0.png  used on input line 358.
 (pdftex.def)             Requested size: 373.17516pt x 225.94115pt.
 <images/screens/screen1.png, id=78, 1211.52625pt x 729.72626pt>
 File: images/screens/screen1.png Graphic file (type png)
 <use images/screens/screen1.png>
-Package pdftex.def Info: images/screens/screen1.png  used on input line 346.
+Package pdftex.def Info: images/screens/screen1.png  used on input line 367.
 (pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
  [11
 
@@ -529,23 +529,23 @@ Package pdftex.def Info: images/screens/screen1.png  used on input line 346.
 <images/screens/screen2.png, id=85, 1211.52625pt x 732.7375pt>
 File: images/screens/screen2.png Graphic file (type png)
 <use images/screens/screen2.png>
-Package pdftex.def Info: images/screens/screen2.png  used on input line 353.
+Package pdftex.def Info: images/screens/screen2.png  used on input line 374.
 (pdftex.def)             Requested size: 373.17516pt x 225.6928pt.
 <images/screens/screenLogin.png, id=86, 1211.52625pt x 726.715pt>
 File: images/screens/screenLogin.png Graphic file (type png)
 <use images/screens/screenLogin.png>
-Package pdftex.def Info: images/screens/screenLogin.png  used on input line 361
+Package pdftex.def Info: images/screens/screenLogin.png  used on input line 382
 .
 (pdftex.def)             Requested size: 373.17516pt x 223.83777pt.
 <images/screens/screen3.png, id=87, 1211.52625pt x 726.715pt>
 File: images/screens/screen3.png Graphic file (type png)
 <use images/screens/screen3.png>
-Package pdftex.def Info: images/screens/screen3.png  used on input line 372.
+Package pdftex.def Info: images/screens/screen3.png  used on input line 393.
 (pdftex.def)             Requested size: 381.6517pt x 228.92752pt.
 <images/screens/screen4.png, id=88, 1315.91624pt x 738.76pt>
 File: images/screens/screen4.png Graphic file (type png)
 <use images/screens/screen4.png>
-Package pdftex.def Info: images/screens/screen4.png  used on input line 379.
+Package pdftex.def Info: images/screens/screen4.png  used on input line 400.
 (pdftex.def)             Requested size: 381.6517pt x 214.25745pt.
 
 [12
@@ -555,19 +555,19 @@ es/screens/screen3.png> <./images/screens/screen4.png>]
 <images/screens/screen5.png, id=99, 1312.905pt x 736.7525pt>
 File: images/screens/screen5.png Graphic file (type png)
 <use images/screens/screen5.png>
-Package pdftex.def Info: images/screens/screen5.png  used on input line 390.
+Package pdftex.def Info: images/screens/screen5.png  used on input line 411.
 (pdftex.def)             Requested size: 373.17516pt x 209.41455pt.
  [14 <./images/screens/screen5.png>]
 <images/screens/adminLogin.png, id=104, 1211.52625pt x 731.73375pt>
 File: images/screens/adminLogin.png Graphic file (type png)
 <use images/screens/adminLogin.png>
-Package pdftex.def Info: images/screens/adminLogin.png  used on input line 406.
+Package pdftex.def Info: images/screens/adminLogin.png  used on input line 427.
 
 (pdftex.def)             Requested size: 373.17516pt x 225.38362pt.
 <images/screens/admin1.png, id=105, 1209.51875pt x 731.73375pt>
 File: images/screens/admin1.png Graphic file (type png)
 <use images/screens/admin1.png>
-Package pdftex.def Info: images/screens/admin1.png  used on input line 414.
+Package pdftex.def Info: images/screens/admin1.png  used on input line 435.
 (pdftex.def)             Requested size: 373.17516pt x 225.76324pt.
  [15
 
@@ -575,12 +575,12 @@ Package pdftex.def Info: images/screens/admin1.png  used on input line 414.
 <images/screens/admin2.png, id=111, 1211.52625pt x 729.72626pt>
 File: images/screens/admin2.png Graphic file (type png)
 <use images/screens/admin2.png>
-Package pdftex.def Info: images/screens/admin2.png  used on input line 422.
+Package pdftex.def Info: images/screens/admin2.png  used on input line 443.
 (pdftex.def)             Requested size: 373.17516pt x 224.76529pt.
 <images/screens/admin3.png, id=112, 1209.51875pt x 733.74126pt>
 File: images/screens/admin3.png Graphic file (type png)
 <use images/screens/admin3.png>
-Package pdftex.def Info: images/screens/admin3.png  used on input line 430.
+Package pdftex.def Info: images/screens/admin3.png  used on input line 451.
 (pdftex.def)             Requested size: 373.17516pt x 226.38263pt.
  [16
 
@@ -588,7 +588,7 @@ Package pdftex.def Info: images/screens/admin3.png  used on input line 430.
 <images/screens/admin4.png, id=118, 1209.51875pt x 729.72626pt>
 File: images/screens/admin4.png Graphic file (type png)
 <use images/screens/admin4.png>
-Package pdftex.def Info: images/screens/admin4.png  used on input line 438.
+Package pdftex.def Info: images/screens/admin4.png  used on input line 459.
 (pdftex.def)             Requested size: 373.17516pt x 225.14388pt.
  [17
 
@@ -618,9 +618,9 @@ rs/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx1
 onts/cm/cmr10.pfb><C:/Users/Marco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmr12.pfb><C:/Users/Marco/AppData/Local/Programs/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on documentazione.pdf (19 pages, 1235125 bytes).
+Output written on documentazione.pdf (19 pages, 1235944 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
+ 458 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
