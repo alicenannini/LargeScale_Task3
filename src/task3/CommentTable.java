@@ -10,9 +10,9 @@ public class CommentTable extends TableView<Comment> {
 	ObservableList<Comment> commentsList;
 	TableColumn textColumn, dateColumn;
 
-	GraphicInterface graphic;
+	Main graphic;
 
-	CommentTable(GraphicInterface g) {
+	CommentTable(Main g) {
 		graphic = g;
 
 		commentsList = FXCollections.observableArrayList();

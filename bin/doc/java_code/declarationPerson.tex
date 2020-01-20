@@ -1,0 +1,12 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+@MappedSuperclass
+public abstract class Person {
+
+	@Column(name = "id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+   ...
+}
+\end{lstlisting}

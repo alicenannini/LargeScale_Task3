@@ -1,5 +1,6 @@
 package task3;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.*;
 
@@ -46,7 +47,7 @@ public class DbManager implements AutoCloseable {
 			if(sr.hasNext()) {
 				for (String p : professorsId) {
 					int profId = Integer.parseInt(p);
-					if(profId > 0) {
+					if(profId >= 0) {
 						createTeachingRelation(profId, sr.next().get("ID(a)").asInt());
 					}
 				}
@@ -63,7 +64,7 @@ public class DbManager implements AutoCloseable {
 		}
 	}
 	
-	public void createComment(String text, Date date, Student student, int subjectId) {
+	public void createComment(String text, Student student, int subjectId) {
 		try(Session session = driver.session(AccessMode.WRITE)){
 			session.run( 	"MATCH (e:Student) WHERE id(e) = $idStudent " + 
 							"MATCH (s:Subject) WHERE id(s) = $idSubject " +
@@ -71,8 +72,8 @@ public class DbManager implements AutoCloseable {
 							"(a:Comment {text: $text, date: $date})," + 
 							"(e)-[:WROTE]->(a)," + 
 							"(a)-[:ABOUT]->(s);", 
-					Values.parameters("idStudent",student.getId(),"idSubject",subjectId,
-							"text",text,"date",date.toString()) );
+					Values.parameters("idStudent",student.getId(),"idSubject",subjectId,"text",text,
+							"date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
 		}
 	}
 	
@@ -91,19 +92,20 @@ public class DbManager implements AutoCloseable {
 				if(sr.hasNext()) {
 					System.err.println("In the Database are present more than one user with the same username");
 				}else {
-					System.out.println(r.toString());
+					boolean admin = r.get("s.admin").isNull()? false : r.get("s.admin").asBoolean();
+					
 					student = new Student(r.get("ID(s)").asInt(),r.get("s.username").asString(),
 							r.get("s.password").asString(),new Degree(r.get("ID(d)").asInt(),
-									r.get("d.name").asString()),r.get("s.admin").asBoolean());
+									r.get("d.name").asString()),admin);
 				}
 			}
 		}
 		return student;
 	}
 	
-	public List<Professor> getProfessors(int subjectId) {
+	public String getProfessors(int subjectId) {
 
-		List<Professor> list = new ArrayList<>();
+		String professors = "";
 		
 		try(Session session = driver.session(AccessMode.READ)){
 			StatementResult sr = session.run( 
@@ -114,13 +116,13 @@ public class DbManager implements AutoCloseable {
 			
 			while(sr.hasNext()) {
 				Record r = sr.next();
-				System.out.println(r.toString());
-				
-				list.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),
-						r.get("p.surname").asString()));
+				professors += r.get("ID(p)").asInt() +": "+ r.get("p.name").asString() +" "+
+						r.get("p.surname").asString();
+				if(sr.hasNext())
+					professors += ", ";
 			}
 		}		
-		return list;
+		return professors;
 	}
 	
 	public List<Subject> getSubjects(int degree) {
@@ -128,20 +130,26 @@ public class DbManager implements AutoCloseable {
 		List<Subject> list = new ArrayList<>();
 		
 		try(Session session = driver.session(AccessMode.READ)){
-			StatementResult sr = session.run( 
-					"MATCH (s:Subject)-[:BELONGS]->(d:Degree) \n" + 
-					"WHERE id(d) = $idDegree \n" + 
-					"RETURN ID(s),s.name,s.cfu,s.info", 
-					Values.parameters("idDegree",degree) );
+			StatementResult sr;
+			if(degree > 0) {
+				sr = session.run( 
+						"MATCH (s:Subject)-[:BELONGS]->(d:Degree) \n" + 
+						"WHERE id(d) = $idDegree \n" + 
+						"RETURN ID(s),s.name,s.cfu,s.info", 
+						Values.parameters("idDegree",degree) );
+			}else {
+				sr = session.run( 
+						"MATCH (s:Subject) " + 
+						"RETURN ID(s),s.name,s.cfu,s.info", 
+						Values.parameters("idDegree",degree) );
+			}
 			
 			while(sr.hasNext()) {
 				Record r = sr.next();
-				System.out.println(r.toString());
-				
 				list.add(new Subject(r.get("ID(s)").asInt(),r.get("s.name").asString(),
 						r.get("s.cfu").asInt(),r.get("s.info").asString(),degree));
 				
-				list.get(list.size()).setProfessors( this.getProfessors(r.get("ID(s)").asInt()) );
+				list.get(list.size()-1).setProfessors( this.getProfessors(r.get("ID(s)").asInt()) );
 			}
 		}
 		return list;
@@ -163,8 +171,6 @@ public class DbManager implements AutoCloseable {
 			
 			while(sr.hasNext()) {
 				Record r = sr.next();
-				System.out.println(r.toString());
-				
 				list.add(new Comment(r.get("ID(c)").asInt(),r.get("c.text").asString(),
 						r.get("ID(st)").asInt(),subjectId,r.get("c.date").asString()));
 			}
@@ -180,8 +186,6 @@ public class DbManager implements AutoCloseable {
 		
 			while(sr.hasNext()) {
 				Record r = sr.next();
-				System.out.println(r.toString());
-				
 				list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd.name").asString()));
 			}
 		}
@@ -215,7 +219,7 @@ public class DbManager implements AutoCloseable {
 		    			Values.parameters("userId",userId,"idComment",commentId) );
 		    }
 		    
-		    if(sr.hasNext() && sr.next().get("id(c)").asInt() > 0)
+		    if(sr.hasNext() && sr.next().get("id(c)").asInt() >= 0)
 		    	return true;
 		    else return false;
 		}
@@ -254,10 +258,10 @@ public class DbManager implements AutoCloseable {
 						"WHERE ID(s) = $userId AND ID(c) = $commentId " + 
 						"SET c.text = $text, c.date = $date " +
 						"RETURN ID(c);",
-	    			Values.parameters("userId",userId,"commentId",commentId,
-	    					"text",text,"date",new Date().toString()) );
+	    			Values.parameters("userId",userId,"commentId",commentId,"text",text,
+	    					"date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
 			
-			if(sr.hasNext() && sr.next().get("id(c)").asInt() > 0)
+			if(sr.hasNext() && sr.next().get("ID(c)").asInt() >= 0)
 		    	return true;
 		    else return false;
 		}
@@ -275,4 +279,5 @@ public class DbManager implements AutoCloseable {
 	public void close() throws Exception {
 		driver.close();
 	}
+	
 }

@@ -10,9 +10,7 @@ public class Subject {
 	private final SimpleIntegerProperty credits;
 	private final SimpleStringProperty info;
 	private final SimpleIntegerProperty degree;
-	//private ListProperty<Professor> profs;
-	private List<Comment> comments = new ArrayList<Comment>();
-	private List<Professor> professors = new ArrayList<Professor>();
+	private final SimpleStringProperty professors;
 	
 	// CONSTRUCTOR
 	public Subject(int i, String n, int c, String inf, int d) {
@@ -21,6 +19,7 @@ public class Subject {
 		credits = new SimpleIntegerProperty(c);
 		info = new SimpleStringProperty(inf);
 		degree = new SimpleIntegerProperty(d);
+		professors = new SimpleStringProperty("");
 	}
 	
 	public int getId() { return id.getValue(); }
@@ -38,7 +37,7 @@ public class Subject {
 	public int getDegree() { return degree.getValue(); }
 	public void setDegree(int d) { degree.set(d); }
 	
-	public List<Professor> getProfessors(){ return professors; }
-	public void setProfessors(List<Professor> l) { professors = l; }
+	public String getProfessors(){ return professors.getValue(); }
+	public void setProfessors(String profs) { professors.set(profs);; }
 }
 	

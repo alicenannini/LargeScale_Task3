@@ -1,0 +1,33 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+public boolean deleteCommentSubject(int subjectCommentId, int userId, boolean admin) {
+	boolean deleted = false;
+	try {
+		entityManager = factory.createEntityManager();
+		entityManager.getTransaction().begin();
+		SubjectComment subjectComment = entityManager.find(SubjectComment.class,
+							subjectCommentId);
+
+		// if user is owner OR admin he can delete the comment
+		if (subjectComment.getStud().getId() == userId || admin) {
+			entityManager.remove(subjectComment);
+			deleted = true;
+		} else { // if user is not owner AND he is not admin --> error
+			System.err.println("You are not the owner of that comment,
+							please select another comment");
+			return deleted;
+		}
+
+		entityManager.getTransaction().commit();
+		System.out.println("subject comment removed");
+
+	} catch (Exception ex) {
+		ex.printStackTrace();
+		System.err.println("A problem occurred in removing a subject comment!");
+
+	} finally {
+		entityManager.close();
+	}
+	return deleted;
+}
+\end{lstlisting}

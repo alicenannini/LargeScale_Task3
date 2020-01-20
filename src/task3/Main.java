@@ -1,19 +1,28 @@
 package task3;
 
-import java.util.*;
-import javafx.application.*;
-import javafx.beans.value.*;
-import javafx.collections.*;
-import javafx.event.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.stage.*;
+import java.util.Date;
 
-public class GraphicInterface extends Application {
-	
-    Label usernameLab, passwordLab, nameLab, surnameAndCreditsLab, infoLab, studentLab, profIdLab;
+import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+	Label usernameLab, passwordLab, nameLab, surnameAndCreditsLab, infoLab, studentLab, profIdLab;
     TextField username, name, surnameAndCredits, profId;
     PasswordField password;
     TextArea info, comment, addInfo;
@@ -28,11 +37,10 @@ public class GraphicInterface extends Application {
     Student student;
     CommentTable comments;
     SubjectTable table;	
-  
-  @Override
-    public void start(Stage primaryStage) {
-    	
-    	manager = new DbManager();
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		manager = new DbManager();
     	table = new SubjectTable(this);
     	comments = new CommentTable(this);
     	 
@@ -58,7 +66,7 @@ public class GraphicInterface extends Application {
         
         //box on the left
         info = new TextArea("");
-        info.setPromptText("Informations about Professors are visualized here");
+        info.setPromptText("Information about subjects are visualized here");
         info.setWrapText(true);
         info.setEditable(false);
         
@@ -250,7 +258,10 @@ public class GraphicInterface extends Application {
             table.setSubjectsList(manager.getSubjects(student.getDegree().getId()));    
             
             //update the degree course choice box based on the student degree course.
-            chooseDegree.setValue(student.getDegree());
+            for(Degree d : degreeList) {
+            	if(d.getId() == student.getDegree().getId())
+            		chooseDegree.setValue(d);
+            }
             
             //show/hide admin buttons 
             adminButtonsBox.setVisible(student.getAdmin());
@@ -302,7 +313,7 @@ public class GraphicInterface extends Application {
     	if(student != null) {
             Subject s = (Subject) table.getSelectionModel().getSelectedItem();
             
-            manager.createComment(comment.getText(), new Date(), student, s.getId());
+            manager.createComment(comment.getText(), student, s.getId());
             comments.setCommentsList(manager.getComments(s.getId()));
             
             this.comment.setText("");
@@ -350,7 +361,7 @@ public class GraphicInterface extends Application {
                 System.err.println("Select a subject");
                 return;
             }
-            int professorId = 0;
+            
             int credits = 0;
             try{
                 if(!surnameAndCredits.getText().isEmpty())
@@ -359,7 +370,7 @@ public class GraphicInterface extends Application {
                 System.err.println("Invalid input in numeric fields");
                 return;
             }
-            if(manager.updateSubject(subject.getId() ,name.getText(), credits, addInfo.getText(), profId.getText())) {
+            if(manager.updateSubject(subject.getId(), name.getText(), credits, addInfo.getText(), profId.getText())) {
                 info.setText(addInfo.getText());
                 name.clear();
                 surnameAndCredits.clear();
@@ -422,9 +433,10 @@ public class GraphicInterface extends Application {
 	        System.err.println("Select a Degree program");
         
     }
-   
-    // MAIN
-    public static void main(String[] args) {
-        launch(args);
-    }
+	
+	public static void main(String[] args) {
+		launch(args);
+		System.out.println("End");
+	}
+
 }

@@ -11,9 +11,9 @@ public class SubjectTable extends TableView<Subject> {
 
 	TableColumn<Subject, String> idSubjectColumn, nameSubjectColumn, creditSubjectColumn, professorsColumn;
 
-	GraphicInterface graphic;
+	Main graphic;
 
-	SubjectTable(GraphicInterface g) {
+	SubjectTable(Main g) {
 
 		graphic = g;
 
@@ -28,16 +28,16 @@ public class SubjectTable extends TableView<Subject> {
 		nameSubjectColumn = new TableColumn("NAME");
 		nameSubjectColumn.setCellValueFactory(new PropertyValueFactory("name"));
 
-		creditSubjectColumn = new TableColumn("CREDITS");
+		creditSubjectColumn = new TableColumn("CFU");
 		creditSubjectColumn.setCellValueFactory(new PropertyValueFactory("credits"));
 		
 		professorsColumn = new TableColumn("PROFESSORS");
 		professorsColumn.setCellValueFactory(new PropertyValueFactory("professors"));
 		
 		// setProfessorsList();
-		this.getColumns().addAll(idSubjectColumn, nameSubjectColumn, creditSubjectColumn, professorsColumn);
+		this.getColumns().addAll(/*idSubjectColumn,*/ nameSubjectColumn, creditSubjectColumn, professorsColumn);
 		this.setItems(subjectsList);
-		this.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
+		this.setColumnResizePolicy(UNCONSTRAINED_RESIZE_POLICY);
 		this.setEditable(true);
 	}
 

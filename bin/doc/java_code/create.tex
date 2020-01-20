@@ -1,0 +1,45 @@
+% ----- android wearable module -----
+\begin{lstlisting}[language=Java,  basicstyle=\footnotesize]
+public Subject createSubject(String name, int credits, String info, 
+					String profIdStr, int degreeId){
+	System.out.println("Creating a new subject");
+
+	Subject subject = new Subject(0, name, credits, info);
+	String[] professorsId = profIdStr.split(",", 5);
+	try {
+		entityManager = factory.createEntityManager();
+		Degree degree = entityManager.find(Degree.class, degreeId);
+		int profId = 0;
+		for (String p : professorsId) {
+			profId = Integer.parseInt(p);
+			Professor professor = null;
+			if (profId > 0) {
+				professor = entityManager.find(Professor.class, profId);
+			}
+			if (profId > 0 && professor == null) {
+				System.err.println("the inserted prof Id doesn't exixst");
+				entityManager.close();
+				return null;
+			}
+			subject.getProfessor().add(professor);
+			professor.getSubject().add(subject);
+		}
+		degree.getSubject().add(subject);
+		subject.setDeg(degree);
+
+		entityManager.getTransaction().begin();
+		entityManager.persist(subject);
+		entityManager.getTransaction().commit();
+		System.out.println("subject Added");
+		return subject;
+
+	} catch (Exception ex) {
+		ex.printStackTrace();
+		System.err.println("A problem occurred in updating a subject!");
+	} finally {
+		entityManager.close();
+	}
+	return subject;
+
+}
+\end{lstlisting}
