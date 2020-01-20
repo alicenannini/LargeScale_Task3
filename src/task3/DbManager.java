@@ -248,28 +248,28 @@ public class DbManager implements AutoCloseable {
 	}
 	
 	public boolean updateComment(int commentId, String text, int userId) {
-		
-		return false;
-	}
-	
-	public void updateProfessor(int profId, String name, String surname, String info) {
-		
-	}
-	
-	public static void main(String[] args) {
-		DbManager m = new DbManager();
-		
-		//m.createComment("commento", new Date(), new Student(1,"A","A",new Degree(0,"D"),false), 34);
-		//m.createSubject("Prova", 12, "info", 21, 10);
-		
-		try {
-			m.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		try(Session session = driver.session(AccessMode.WRITE)){
+			StatementResult sr = session.run(
+						"MATCH (s:Student)-[:WROTE]->(c:Comment) " +
+						"WHERE ID(s) = $userId AND ID(c) = $commentId " + 
+						"SET c.text = $text, c.date = $date " +
+						"RETURN ID(c);",
+	    			Values.parameters("userId",userId,"commentId",commentId,
+	    					"text",text,"date",new Date().toString()) );
+			
+			if(sr.hasNext() && sr.next().get("id(c)").asInt() > 0)
+		    	return true;
+		    else return false;
 		}
 	}
-
+	
+	public void updateProfessor(int profId, String name, String surname) {
+		try(Session session = driver.session(AccessMode.WRITE)){
+			session.run("MATCH (p:Professor) WHERE ID(s) = $profId\n" + 
+						"SET p.name = $name, p.surname = $surname;",
+	    			Values.parameters("profId",profId,"name",name,"surname",surname) );
+		}
+	}
 
 	@Override
 	public void close() throws Exception {
