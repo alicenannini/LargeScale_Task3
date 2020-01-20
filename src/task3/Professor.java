@@ -8,8 +8,6 @@ public class Professor{
     private final SimpleIntegerProperty id;
     private final SimpleStringProperty name;
     private final SimpleStringProperty surname;
-
-	private Set<Subject> subjects = new HashSet<Subject>();
 	
     // CONSTRUCTOR
     public Professor(int i, String n, String s) {
@@ -29,6 +27,10 @@ public class Professor{
     public String getSurname() { return surname.get(); }
     
     public void setSurname(String s) { surname.set(s); }
+    
+    public String toString() {
+    	return name +" "+ surname;
+    }
 
 }
 	

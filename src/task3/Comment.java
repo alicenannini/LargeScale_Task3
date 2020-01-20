@@ -3,7 +3,7 @@ package task3;
 import java.util.*;
 import javafx.beans.property.*;
 
-public abstract class Comment{
+public class Comment{
 
     private final SimpleIntegerProperty id;
     private final SimpleStringProperty text;
@@ -11,11 +11,11 @@ public abstract class Comment{
     private final SimpleStringProperty date;
     private final SimpleIntegerProperty subject;
 
-    public Comment(int i, String t, int s, int sub, Date d) {
+    public Comment(int i, String t, int s, int sub, String d) {
         id = new SimpleIntegerProperty(i);
         text = new SimpleStringProperty(t);
         student = new SimpleIntegerProperty(s);
-        date = new SimpleStringProperty(d.toString());
+        date = new SimpleStringProperty(d);
         subject = new SimpleIntegerProperty(sub);
     }
     

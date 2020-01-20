@@ -7,7 +7,6 @@ public class Degree {
 
 	private final SimpleIntegerProperty id;
     private final SimpleStringProperty name;
-	private List<Student> students = new ArrayList<Student>();
 	private List<Subject> subjects = new ArrayList<Subject>();
     
     public Degree(int i, String n) {
