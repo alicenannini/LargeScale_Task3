@@ -105,9 +105,8 @@ public class DbManager implements AutoCloseable {
 		return student;
 	}
 	
-	public List<Professor> getProfessors(int subjectId) {
+	public List<Professor> getProfessorsBySubject(int subjectId) {
 		List<Professor> professors = FXCollections.observableArrayList();
-		//String professors = "";
 		
 		try(Session session = driver.session(AccessMode.READ)){
 			StatementResult sr = session.run( 
@@ -115,14 +114,35 @@ public class DbManager implements AutoCloseable {
 					"WHERE id(s) = $subjectId \n" + 
 					"RETURN ID(p),p.name,p.surname", 
 					Values.parameters("subjectId",subjectId) );
+						
+			while(sr.hasNext()) {
+				Record r = sr.next();
+				professors.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),r.get("p.surname").asString()));
+			}
+		}
+		return professors;
+	}
+	
+	public List<Professor> getProfessorsByDegree(int degreeId) {
+		List<Professor> professors = FXCollections.observableArrayList();
+		
+		StatementResult sr;
+		try(Session session = driver.session(AccessMode.READ)){
+			if(degreeId >= 0) {
+				sr = session.run( 
+						"MATCH (p:Professor)-[:TEACHES]->(s:Subject)-[:BELONGS]->(d:Degree) " + 
+						"WHERE id(d) = $degreeId \n" + 
+						"RETURN ID(p),p.name,p.surname", 
+						Values.parameters("degreeId",degreeId) );
+			}else {
+				sr = session.run( 
+						"MATCH (p:Professor) " + 
+						"RETURN ID(p),p.name,p.surname" );
+			}
 			
 			while(sr.hasNext()) {
 				Record r = sr.next();
 				professors.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),r.get("p.surname").asString()));
-				/*professors += r.get("ID(p)").asInt() +": "+ r.get("p.name").asString() +" "+
-						r.get("p.surname").asString();
-				if(sr.hasNext())
-					professors += ", ";*/
 			}
 		}
 		return professors;
@@ -134,7 +154,7 @@ public class DbManager implements AutoCloseable {
 		
 		try(Session session = driver.session(AccessMode.READ)){
 			StatementResult sr;
-			if(degree > 0) {
+			if(degree >= 0) {
 				sr = session.run( 
 						"MATCH (s:Subject)-[:BELONGS]->(d:Degree) \n" + 
 						"WHERE id(d) = $idDegree \n" + 
@@ -152,7 +172,7 @@ public class DbManager implements AutoCloseable {
 				list.add(new Subject(r.get("ID(s)").asInt(),r.get("s.name").asString(),
 						r.get("s.cfu").asInt(),r.get("s.info").asString(),degree));
 				
-				list.get(list.size()-1).setProfessors( this.getProfessors(r.get("ID(s)").asInt()) );
+				list.get(list.size()-1).setProfessors( this.getProfessorsBySubject(r.get("ID(s)").asInt()) );
 			}
 		}
 		return list;
@@ -275,7 +295,7 @@ public class DbManager implements AutoCloseable {
 	
 	public void updateProfessor(int profId, String name, String surname) {
 		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run("MATCH (p:Professor) WHERE ID(s) = $profId\n" + 
+			session.run("MATCH (p:Professor) WHERE ID(p) = $profId\n" + 
 						"SET p.name = $name, p.surname = $surname;",
 	    			Values.parameters("profId",profId,"name",name,"surname",surname) );
 		}

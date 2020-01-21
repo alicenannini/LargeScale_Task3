@@ -25,6 +25,7 @@ public class GraphicInterface extends Application {
     PasswordField password;
     TextArea info, comment, addInfo;
     Button loginBtn, logoutBtn, commentBtn, deleteBtn, updateBtn, addBtn, editBtn, deleteBtnProfSubj;
+    ChoiceBox<String> choosePS; //PS -> ProfessorSubject
     ChoiceBox<Degree> chooseDegree;
     HBox loginBox, logoutBox, commentBox, adminButtonsBox, FieldsAdminBox, chooseBox;
     VBox leftBox, rightBox, nameSurnameBox, InfoVBox, profIdBox;
@@ -33,12 +34,12 @@ public class GraphicInterface extends Application {
     ObservableList<Degree> degreeList;
     Student student;
     CommentTable comments;
-    SubjectTable table;	
+    ProfSubjectTable table;	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		manager = new DbManager();
-    	table = new SubjectTable(this);
+    	table = new ProfSubjectTable(this);
     	comments = new CommentTable(this);
     	 
         //login box on the top
@@ -71,7 +72,7 @@ public class GraphicInterface extends Application {
         leftBox.getChildren().addAll(info,comments);
           
         //info Vbox creation for the admin
-        infoLab = new Label("Professor Informations:");
+        infoLab = new Label("Subject Information:");
         addInfo = new TextArea("");
         addInfo.setWrapText(true);
         
@@ -101,6 +102,11 @@ public class GraphicInterface extends Application {
         FieldsAdminBox.setVisible(false);
         
         //box on the right
+        choosePS = new ChoiceBox<>(); //Professor/subject choice box
+        choosePS.getItems().addAll("Subjects","Professors");
+        choosePS.getSelectionModel().selectFirst();
+        choosePS.setVisible(false);
+        
         chooseDegree = new ChoiceBox<>(); //degree choice box
         degreeList = FXCollections.observableArrayList();
         degreeList.addAll(manager.getDegreeCourses());
@@ -109,6 +115,22 @@ public class GraphicInterface extends Application {
         chooseDegree.getSelectionModel().selectFirst();
         
         table.setSubjectsList(manager.getSubjects(-1));
+        
+     // add event to chooseProfSubject changing selection value
+        choosePS.getSelectionModel().selectedIndexProperty().addListener((ChangeListener<? super Number>) new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                
+                int degreeId = chooseDegree.getValue().getId();
+                if("Subjects".equals(choosePS.getItems().get((Integer) newValue))) {
+                	table.setSubjectsList(manager.getSubjects(degreeId));
+                }
+                else if("Professors".equals(choosePS.getItems().get((Integer) newValue))) {
+                	table.setProfessorsList(manager.getProfessorsByDegree(degreeId));
+                }
+            }
+        });
        
         // add event to chooseDegree changing selection value 
         chooseDegree.getSelectionModel().selectedIndexProperty().addListener((ChangeListener<? super Number>) new ChangeListener<Number>() {
@@ -117,10 +139,10 @@ public class GraphicInterface extends Application {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {      	
             	  
             	if( "All".equals(chooseDegree.getItems().get((int) newValue).getName())){
-            		table.setSubjectsList(manager.getSubjects(-1));
+            		setSubjProfList(-1);
             	} else {
                     int degreeId = chooseDegree.getItems().get((int) newValue).getId();
-                    table.setSubjectsList(manager.getSubjects(degreeId));
+                    setSubjProfList(degreeId);
             	}
             }
         });     
@@ -139,7 +161,7 @@ public class GraphicInterface extends Application {
         table.lookup(".scroll-bar:vertical"); 
         
         chooseBox = new HBox(10);
-        chooseBox.getChildren().addAll(chooseDegree);
+        chooseBox.getChildren().addAll(chooseDegree,choosePS);
         
         rightBox = new VBox(10);
         rightBox.getChildren().addAll(chooseBox,table);
@@ -176,7 +198,7 @@ public class GraphicInterface extends Application {
         comments.setOnMouseClicked((MouseEvent ev)-> commentSelectionButton());
         
         //update comment
-         updateBtn.setOnAction((ActionEvent ev)->updateCommentButton());
+        updateBtn.setOnAction((ActionEvent ev)->updateCommentButton());
         
         //delete comment
         deleteBtn.setOnAction((ActionEvent ev)-> deleteCommentButton());
@@ -202,6 +224,7 @@ public class GraphicInterface extends Application {
         comment.setMaxHeight(50); 
 
         //right box
+        choosePS.setMinSize(150,30);
         chooseDegree.setMinSize(350,30); chooseDegree.setMaxWidth(350);
         table.setMinHeight(500);
         rightBox.setMinWidth(500);
@@ -262,6 +285,7 @@ public class GraphicInterface extends Application {
             
             //show/hide admin buttons 
             adminButtonsBox.setVisible(student.getAdmin());
+            choosePS.setVisible(student.getAdmin());
             
             //updates STYLE sizes based on the logged user (admin or not)
             updateSizes();
@@ -278,6 +302,7 @@ public class GraphicInterface extends Application {
     	loginBox.setVisible(true);
     	adminButtonsBox.setVisible(false); 
     	FieldsAdminBox.setVisible(false);
+    	choosePS.setVisible(false);
     	student = null;
     	table.setSubjectsList(manager.getSubjects(-1));
     	updateSizes();
@@ -285,16 +310,33 @@ public class GraphicInterface extends Application {
     	this.password.setText("");
     }
     
+    private void setSubjProfList(int degree){
+        if("Subjects".equals((String)choosePS.getValue())){
+            table.setSubjectsList(manager.getSubjects(degree));
+    	} else {
+            table.setProfessorsList(manager.getProfessorsByDegree(degree));
+    	}
+    }
+        
     private void profSubjectSelectionButton() {
-    	Object o = table.getSelectionModel().getSelectedItem();
+    	String type = (String) choosePS.getValue();
+        Object o = table.getSelectionModel().getSelectedItem();
         if(o != null){
-            Subject s = (Subject)o;
-            info.setText(s.getInfo());
-            comments.setCommentsList(manager.getComments(s.getId()));
-            if( student != null && student.getAdmin()) { // if admin is operating
-                name.setText(s.getName());
-                surnameAndCredits.setText(Integer.toString(s.getCredits()));
-                addInfo.setText(s.getInfo());
+            if("Professors".equals(type)){
+                Professor p = (Professor)o;
+                if( student != null && student.getAdmin()){ // if admin is operating
+                    name.setText(p.getName());
+                    surnameAndCredits.setText(p.getSurname());
+                }
+            }else{
+            	Subject s = (Subject)o;
+                info.setText(s.getInfo());
+                comments.setCommentsList(manager.getComments(s.getId()));
+                if( student != null && student.getAdmin()) { // if admin is operating
+                    name.setText(s.getName());
+                    surnameAndCredits.setText(Integer.toString(s.getCredits()));
+                    addInfo.setText(s.getInfo());
+                }
             }
         }
     }
@@ -353,28 +395,42 @@ public class GraphicInterface extends Application {
             }
             int degreeId = chooseDegree.getValue().getId();
             
-            Subject subject = (Subject) table.getSelectionModel().getSelectedItem();
-            if(subject == null) {
-                System.err.println("Select a subject");
-                return;
-            }
-            
-            int credits = 0;
-            try{
-                if(!surnameAndCredits.getText().isEmpty())
-                    credits = Integer.valueOf(surnameAndCredits.getText());
-            } catch(NumberFormatException e) {
-                System.err.println("Invalid input in numeric fields");
-                return;
-            }
-            if(manager.updateSubject(subject.getId(), name.getText(), credits, addInfo.getText(), profId.getText())) {
-                info.setText(addInfo.getText());
+            String type = (String) choosePS.getValue();
+            if("Professors".equals(type)) {
+                Professor professor = (Professor) table.getSelectionModel().getSelectedItem();
+                if(professor == null) {
+                    System.err.println("Select a professor");
+                    return;
+                }
+                manager.updateProfessor(professor.getId(), name.getText(), surnameAndCredits.getText());
                 name.clear();
                 surnameAndCredits.clear();
                 addInfo.clear();
-                profId.clear();
-                table.setSubjectsList(manager.getSubjects(degreeId));
-            }
+                table.setProfessorsList(manager.getProfessorsByDegree(degreeId));
+            }else{
+	            Subject subject = (Subject) table.getSelectionModel().getSelectedItem();
+	            if(subject == null) {
+	                System.err.println("Select a subject");
+	                return;
+	            }
+	            
+	            int credits = 0;
+	            try{
+	                if(!surnameAndCredits.getText().isEmpty())
+	                    credits = Integer.valueOf(surnameAndCredits.getText());
+	            } catch(NumberFormatException e) {
+	                System.err.println("Invalid input in numeric fields");
+	                return;
+	            }
+	            if(manager.updateSubject(subject.getId(), name.getText(), credits, addInfo.getText(), profId.getText())) {
+	                info.setText(addInfo.getText());
+	                name.clear();
+	                surnameAndCredits.clear();
+	                addInfo.clear();
+	                profId.clear();
+	                table.setSubjectsList(manager.getSubjects(degreeId));
+	            }
+    		}
         }else{
             System.err.println("You have to login as an admin!\n");
     	}
@@ -382,18 +438,32 @@ public class GraphicInterface extends Application {
     
     private void adminDeleteAction() {
     	if(student != null) {
-            Subject subject = (Subject) table.getSelectionModel().getSelectedItem();
-            if(subject == null) {
-                System.err.println("Select a subject");
-                return;
+    		String type = (String) choosePS.getValue();
+            if("Professors".equals(type)){
+                Professor professor = (Professor) table.getSelectionModel().getSelectedItem();
+                if(professor == null) {
+                    System.err.println("Select a professor");
+                    return;
+                }
+                manager.deleteProfessor(professor.getId());
+                info.clear();
+                name.clear();
+                surnameAndCredits.clear();
+                table.setProfessorsList(manager.getProfessorsByDegree(chooseDegree.getValue().getId()));
+            }else {
+	            Subject subject = (Subject) table.getSelectionModel().getSelectedItem();
+	            if(subject == null) {
+	                System.err.println("Select a subject");
+	                return;
+	            }
+	            manager.deleteSubject(subject.getId());
+	            info.clear();
+	            name.clear();
+	            surnameAndCredits.clear();
+	            addInfo.clear();
+	            comments.setCommentsList(manager.getComments(-1));
+	            table.setSubjectsList(manager.getSubjects(chooseDegree.getValue().getId()));
             }
-            manager.deleteSubject(subject.getId());
-            info.clear();
-            name.clear();
-            surnameAndCredits.clear();
-            addInfo.clear();
-            comments.setCommentsList(manager.getComments(-1));
-            table.setSubjectsList(manager.getSubjects(chooseDegree.getValue().getId()));
         }else{
             System.err.println("You have to login as an admin!\n");
     	}
@@ -401,39 +471,49 @@ public class GraphicInterface extends Application {
     
     private void addProfSubjectButton() {
     	int degreeId;
-    	
-	    if(name.getText().isEmpty() || surnameAndCredits.getText().isEmpty() || profId.getText().isEmpty()) {
-	        System.err.println("Insert name, credits, info(optional) and the id of a professor for the new subject.");
-	        return;
-	    }
-	    
-	    if(!"All".equals(chooseDegree.getValue().getName())) {
-	        degreeId = chooseDegree.getValue().getId();
-	        try {
-	            int credits = Integer.parseInt(surnameAndCredits.getText());
-	            if(credits > 0 && credits < 50 )
-	                manager.createSubject(name.getText(), credits, addInfo.getText(), profId.getText(), degreeId);
-	            else {
-	                System.err.println("invalid credits value, insert a number between 1 and 50");
-	                return;
-	            }
-	        }catch(NumberFormatException e) {
-	            System.err.println("Please, insert a numeric value in \"Credits\" and \"Professor Id\" fields");
-	            return;
-	        }
-	        name.setText("");
-	        surnameAndCredits.setText("");
-	        addInfo.setText("");	
-	        profId.setText("");
-	        table.setSubjectsList(manager.getSubjects(degreeId));
-	    }else 
-	        System.err.println("Select a Degree program");
-        
+    	if("Subjects".equals((String)choosePS.getValue())){
+		    if(name.getText().isEmpty() || surnameAndCredits.getText().isEmpty() || profId.getText().isEmpty()) {
+		        System.err.println("Insert name, credits, info(optional) and the id of a professor for the new subject.");
+		        return;
+		    }
+		    
+		    if(!"All".equals(chooseDegree.getValue().getName())) {
+		        degreeId = chooseDegree.getValue().getId();
+		        try {
+		            int credits = Integer.parseInt(surnameAndCredits.getText());
+		            if(credits > 0 && credits < 50 )
+		                manager.createSubject(name.getText(), credits, addInfo.getText(), profId.getText(), degreeId);
+		            else {
+		                System.err.println("invalid credits value, insert a number between 1 and 50");
+		                return;
+		            }
+		        }catch(NumberFormatException e) {
+		            System.err.println("Please, insert a numeric value in \"Credits\" and \"Professor Id\" fields");
+		            return;
+		        }
+		        name.setText("");
+		        surnameAndCredits.setText("");
+		        addInfo.setText("");	
+		        profId.setText("");
+		        table.setSubjectsList(manager.getSubjects(degreeId));
+		    }else 
+		        System.err.println("Select a Degree program");
+    	}else{
+            if(name.getText().isEmpty() || surnameAndCredits.getText().isEmpty()) {
+                System.err.println("Insert name, surname and info(optional) for the new professor.");
+                return;
+            }
+            manager.createProfessor(name.getText(),surnameAndCredits.getText());
+            name.setText("");
+            surnameAndCredits.setText("");
+            addInfo.setText(""); 
+            table.setProfessorsList(manager.getProfessorsByDegree(chooseDegree.getValue().getId()));
+        }
     }
 	
 	public static void main(String[] args) {
 		launch(args);
-		System.out.println("End");
+		System.out.println("\nEND");
 	}
 
 }

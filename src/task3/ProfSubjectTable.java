@@ -6,22 +6,25 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.*;
 import javafx.util.*;
 
-public class SubjectTable extends TableView<Subject> {
+public class ProfSubjectTable extends TableView<Object> {
 
-	ObservableList<Subject> subjectsList;
+	ObservableList<Object> subjectsList;
+	ObservableList<Object> professorsList;
 
 	TableColumn idSubjectColumn, nameSubjectColumn, creditSubjectColumn, professorsColumn;
+	TableColumn idProfColumn, nameProfColumn, surnameProfColumn;
 
 	GraphicInterface graphic;
 
-	SubjectTable(GraphicInterface g) {
+	ProfSubjectTable(GraphicInterface g) {
 
 		graphic = g;
 
 		subjectsList = FXCollections.observableArrayList();
-		subjectsList.addAll(graphic.manager.getSubjects(-1));
-
-		// table = new TableView<>();
+		//subjectsList.addAll(graphic.manager.getSubjects(-1));
+		
+		professorsList = FXCollections.observableArrayList();
+		//professorsList.addAll(graphic.manager.getProfessors(-1));
 
 		idSubjectColumn = new TableColumn<Subject, Integer>("ID");
 		idSubjectColumn.setCellValueFactory(new PropertyValueFactory("id"));
@@ -56,8 +59,15 @@ public class SubjectTable extends TableView<Subject> {
             }
         });
 		
-		this.getColumns().addAll(/*idSubjectColumn,*/ nameSubjectColumn, creditSubjectColumn, professorsColumn);
-		this.setItems(subjectsList);
+		idProfColumn = new TableColumn("ID");
+		idProfColumn.setCellValueFactory(new PropertyValueFactory<Professor, Integer>("id"));
+
+		nameProfColumn = new TableColumn("NAME");
+		nameProfColumn.setCellValueFactory(new PropertyValueFactory<Professor, String>("name"));
+
+		surnameProfColumn = new TableColumn("SURNAME");
+		surnameProfColumn.setCellValueFactory(new PropertyValueFactory<Professor, String>("surname"));
+		
 		this.setColumnResizePolicy(UNCONSTRAINED_RESIZE_POLICY);
 		this.setEditable(true);
 	}
@@ -67,13 +77,43 @@ public class SubjectTable extends TableView<Subject> {
 		this.subjectsList.clear();
 		this.subjectsList.addAll(l);
 
+		this.getColumns().clear();
+		this.getColumns().addAll(/*idSubjectColumn,*/ nameSubjectColumn, creditSubjectColumn, professorsColumn);
+		this.setItems(subjectsList);
 
 		if (graphic.student != null && graphic.student.getAdmin()) {
+			graphic.commentBtn.setDisable(false);
+			graphic.updateBtn.setDisable(false);
+			graphic.deleteBtn.setDisable(false);
 			graphic.FieldsAdminBox.setVisible(true);
-			graphic.infoLab.setText("Subject Informations:");
+			graphic.infoLab.setVisible(true);
+			graphic.addInfo.setVisible(true);
 			graphic.surnameAndCreditsLab.setText("Credits:");
 			if (!graphic.FieldsAdminBox.getChildren().contains(graphic.profIdBox))
 				graphic.FieldsAdminBox.getChildren().add(2, graphic.profIdBox);
+		} else {
+			graphic.FieldsAdminBox.setVisible(false);
+		}
+	}
+	
+	void setProfessorsList(List<Professor> l) {
+		this.professorsList.clear();
+		this.professorsList.addAll(l);
+
+		this.getColumns().clear();
+		this.getColumns().addAll(idProfColumn, nameProfColumn, surnameProfColumn);
+		this.setItems(professorsList);
+
+		if (graphic.student != null && graphic.student.getAdmin()) {
+			graphic.commentBtn.setDisable(true);
+			graphic.updateBtn.setDisable(true);
+			graphic.deleteBtn.setDisable(true);
+			graphic.FieldsAdminBox.setVisible(true);
+			graphic.infoLab.setVisible(false);
+			graphic.addInfo.setVisible(false);
+			graphic.surnameAndCreditsLab.setText("Surname:");
+			graphic.FieldsAdminBox.getChildren().remove(graphic.profIdBox);
+
 		} else {
 			graphic.FieldsAdminBox.setVisible(false);
 		}

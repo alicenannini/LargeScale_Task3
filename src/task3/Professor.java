@@ -29,7 +29,7 @@ public class Professor{
     
     @Override
     public String toString() {
-    	return getName() +" "+ getSurname() +" ("+ getId() +") ";
+    	return getName() +" "+ getSurname();
     }
 
 }
