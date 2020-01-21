@@ -2,6 +2,7 @@ package task3;
 
 import java.util.*;
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 
 public class Subject {
 
@@ -10,7 +11,7 @@ public class Subject {
 	private final SimpleIntegerProperty credits;
 	private final SimpleStringProperty info;
 	private final SimpleIntegerProperty degree;
-	private final SimpleStringProperty professors;
+	private final SimpleListProperty<Professor> professors;
 	
 	// CONSTRUCTOR
 	public Subject(int i, String n, int c, String inf, int d) {
@@ -19,7 +20,7 @@ public class Subject {
 		credits = new SimpleIntegerProperty(c);
 		info = new SimpleStringProperty(inf);
 		degree = new SimpleIntegerProperty(d);
-		professors = new SimpleStringProperty("");
+		professors = new SimpleListProperty<Professor>(null);
 	}
 	
 	public int getId() { return id.getValue(); }
@@ -37,7 +38,15 @@ public class Subject {
 	public int getDegree() { return degree.getValue(); }
 	public void setDegree(int d) { degree.set(d); }
 	
-	public String getProfessors(){ return professors.getValue(); }
-	public void setProfessors(String profs) { professors.set(profs);; }
+	public List<Professor> getProfessors(){ return professors.getValue(); }
+	/*public String getProfessors() {
+		String s = "";
+		for(Professor p : this.professors)
+			s += p.toString() +", ";
+		return s;
+	}*/
+	public void setProfessors(List<Professor> profs) { 
+		professors.set((ObservableList<Professor>) profs); 
+	}
 }
 	

@@ -1,6 +1,5 @@
 package task3;
 
-import java.util.*;
 import javafx.beans.property.*;
 
 public class Student{
@@ -10,15 +9,13 @@ public class Student{
     private final SimpleStringProperty password;
     private final SimpleObjectProperty<Degree> degree;
     
-    private List<Comment> comments = new ArrayList<Comment>();
-    
     // CONSTRUCTOR
     public Student(int i, String u, String p, Degree d, boolean a) {
         id = new SimpleIntegerProperty(i);
         admin = new SimpleBooleanProperty(a);
         username = new SimpleStringProperty(u);
         password = new SimpleStringProperty(p);
-        degree = new SimpleObjectProperty(d);		
+        degree = new SimpleObjectProperty<Degree>(d);		
     }
     
     public int getId(){ return id.get(); }

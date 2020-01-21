@@ -176,20 +176,20 @@ The application is designed over 2 different layers, see figure \ref{fig:archite
 
 % ----- GRAPH MODEL -----
 \subsection{Structure of the database}
-In graph databases the entities are modeling using the vertexes, in our model there are the following entities:
+In graph databases the entities are modeling using the vertexes; in our model there are the following entities:
 \begin{itemize}
 \item Professor
 \item Student
 \item Degree
 \item Subject
-\item SubjectComment
+\item Comment
 \end{itemize}
-Moreover the relations are modeling using the edges, in our model there are the following edges:
+Moreover the relations are modeling using the edges; in our model there are the following edges:
 \begin{itemize}
-\item Attends, connects a students to a degree
+\item Attends, connects a student to a degree
 \item Teaches, connects a professor to a subject
-\item Belongs, connects a course to a degree
-\item Wrote, connects a student to a subject
+\item Belongs, connects a subject to a degree
+\item Wrote, connects a student to a comment
 \end{itemize}
 
 
@@ -208,7 +208,7 @@ Moreover the relations are modeling using the edges, in our model there are the 
 
 \subsection{Used Technologies}
 The application is developed in java programming language, version 11.0.4, and in JavaFX system to create the GUI, version 11, so it should run on each platform in which JVM is installed, but the application is tested and guardantee on Ubuntu 16 and Window OS. Moreover Maven is used  to build and mantain the project, version 3.8.0. \\
-The java driver for Neo4j manage the comunication between client application layer and mongo backend layer, version 3.2.1.\\ 
+The java driver for Neo4j manages the comunication between the client application layer and the database backend layer, version 3.2.1.\\ 
 For the backend layer it is used a graph database: Neo4j, version 3.2.1.\\
 So this application is tested using these technologies, considering these particular versions: for other versions the correct execution isn't guaranteed .\\
 
@@ -232,7 +232,6 @@ Each of them have some attributes and the related Get and Set methods, in order 
      private final SimpleStringProperty username;
      private final SimpleStringProperty password;
      private final SimpleObjectProperty<Degree> degree;
-     private List<Comment> comments = new ArrayList<Comment>();
     
      public Student(int i, String u, String p, Degree d, boolean a) {
          id = new SimpleIntegerProperty(i);
@@ -256,7 +255,7 @@ Each of them have some attributes and the related Get and Set methods, in order 
 \end{verbatim}
 
 \subsubsection{Database manager}
-The other class in the project is DbManager. It handles the connection with Neo4j and provides all methods to interact with it.
+The other important class in the project is the DbManager. It handles the connection with Neo4j and provides all methods to interact with it.
 
 \begin{verbatim}
   public class DbManager implements AutoCloseable {
@@ -266,14 +265,14 @@ The other class in the project is DbManager. It handles the connection with Neo4
        private final String password = "pwd";
 
        public DbManager() {
-       driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
+          driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
        }
 
-    // ... crud operation ...
+    // ... crud operations ...
 
        @Override
        public void close() throws Exception {
-       driver.close();
+          driver.close();
        }
   }
 \end{verbatim}
@@ -281,20 +280,20 @@ The other class in the project is DbManager. It handles the connection with Neo4
 
 % ----- CRUD OPERATION ------
 \subsection{CRUD operations}
-All crud operations are implemented using \textbf{Cypher query language}; it is a declarative graph query language that allows for expressive and efficient querying and updating of a property graph.
+All crud operations are implemented using the \textbf{Cypher query language}; it is a declarative graph query language that allows for expressive and efficient querying and updating of a property graph.
 
 
 \subsubsection{Create}
-This method of DbManager class guarantees the creation of a subject. A new vertex is inserted on the graph and  is connected with a professor node using an incoming edge called TEACHES, moreover it is connected with degree node, using an outcoming edge called BELONGS.
+This method of the DbManager class guarantees the creation of a subject. A new vertex is inserted on the graph and  is connected with a professor node using an incoming edge called TEACHES. Moreover it is connected with degree node, using an outgoing edge called BELONGS.
 
 \begin{verbatim}
-public void createSubject(String name, int credits, String info, int profId, int degreeId) {
+public void createSubject(String name, int cfu, String info, int profId, int degreeId){
   try(Session session = driver.session(AccessMode.WRITE)){
      session.run("MATCH (p:Professor) WHERE id(p) = $profId " + 
                  "MATCH (d:Degree) WHERE id(d) = $degreeId " +
                  "CREATE (a:Subject {name:$name, cfu:$cfu, info:$info})," +
                  "(p)-[:TEACHES]->(a), (a)-[:BELONGS]->(d);", 
-     Values.parameters("name",name,"cfu",credits,"info",info,
+     Values.parameters("name",name,"cfu",cfu,"info",info,
                        "profId",profId,"degreeId",degreeId) );
    }
 }
@@ -302,19 +301,18 @@ public void createSubject(String name, int credits, String info, int profId, int
 
 
 \subsubsection{Read}
-This method reads from database all degrees and inserts them in a list.
+This method reads from the database all the degrees and inserts them in a list.
 
 \begin{verbatim}
 public List<Degree> getDegreeCourses() {
    List<Degree> list = new ArrayList<>();
  
    try(Session session = driver.session(AccessMode.READ)){
-     StatementResult sr = session.run("MATCH (dd:Degree)''+
+     StatementResult sr = session.run("MATCH (dd:Degree)" +
                                       "RETURN ID(dd), dd.name;");
 
      while(sr.hasNext()) {
         Record r = sr.next();
-        System.out.println(r.toString());
         list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd.name").asString()));
      }
   }
@@ -324,7 +322,7 @@ public List<Degree> getDegreeCourses() {
 
 
 \subsubsection{Update}
-The following snippet of shows how to execute an updating operation of an entity professor.
+The following snippet of code shows how to execute an updating operation of an entity professor.
 \begin{verbatim}
   public void updateProfessor(int profId, String name, String surname) {
      try(Session session = driver.session(AccessMode.WRITE)){
@@ -336,7 +334,7 @@ The following snippet of shows how to execute an updating operation of an entity
 \end{verbatim}
 
 \subsubsection{Delete}
-This example of deleting operation shows how to remove subject, given its id and related relations.
+This example of deleting operation shows how to remove a subject, given its id, and the related relations.
 
 \begin{verbatim}
    public void deleteSubject(int subjectId) {

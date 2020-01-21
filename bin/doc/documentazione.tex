@@ -176,20 +176,20 @@ The application is designed over 2 different layers, see figure \ref{fig:archite
 
 % ----- GRAPH MODEL -----
 \subsection{Structure of the database}
-In graph databases the entities are modeling using the vertexes, in our model there are the following entities:
+In graph databases the entities are modeling using the vertexes; in our model there are the following entities:
 \begin{itemize}
 \item Professor
 \item Student
 \item Degree
 \item Subject
-\item SubjectComment
+\item Comment
 \end{itemize}
-Moreover the relations are modeling using the edges, in our model there are the following edges:
+Moreover the relations are modeling using the edges; in our model there are the following edges:
 \begin{itemize}
-\item Attends, connects a students to a degree
+\item Attends, connects a student to a degree
 \item Teaches, connects a professor to a subject
-\item Belongs, connects a course to a degree
-\item Wrote, connects a student to a subject
+\item Belongs, connects a subject to a degree
+\item Wrote, connects a student to a comment
 \end{itemize}
 
 
@@ -208,7 +208,7 @@ Moreover the relations are modeling using the edges, in our model there are the 
 
 \subsection{Used Technologies}
 The application is developed in java programming language, version 11.0.4, and in JavaFX system to create the GUI, version 11, so it should run on each platform in which JVM is installed, but the application is tested and guardantee on Ubuntu 16 and Window OS. Moreover Maven is used  to build and mantain the project, version 3.8.0. \\
-The java driver for Neo4j manage the comunication between client application layer and mongo backend layer, version 3.2.1.\\ 
+The java driver for Neo4j manages the comunication between the client application layer and the database backend layer, version 3.2.1.\\ 
 For the backend layer it is used a graph database: Neo4j, version 3.2.1.\\
 So this application is tested using these technologies, considering these particular versions: for other versions the correct execution isn't guaranteed .\\
 
@@ -232,7 +232,6 @@ Each of them have some attributes and the related Get and Set methods, in order 
      private final SimpleStringProperty username;
      private final SimpleStringProperty password;
      private final SimpleObjectProperty<Degree> degree;
-     private List<Comment> comments = new ArrayList<Comment>();
     
      public Student(int i, String u, String p, Degree d, boolean a) {
          id = new SimpleIntegerProperty(i);
@@ -256,7 +255,7 @@ Each of them have some attributes and the related Get and Set methods, in order 
 \end{verbatim}
 
 \subsubsection{Database manager}
-The other class in the project is DbManager. It handles the connection with Neo4j and provides all methods to interact with it.
+The other important class in the project is the DbManager. It handles the connection with Neo4j and provides all methods to interact with it.
 
 \begin{verbatim}
   public class DbManager implements AutoCloseable {
@@ -324,9 +323,30 @@ public List<Degree> getDegreeCourses() {
 
 
 \subsubsection{Update}
+The following snippet of shows how to execute an updating operation of an entity professor.
+\begin{verbatim}
+  public void updateProfessor(int profId, String name, String surname) {
+     try(Session session = driver.session(AccessMode.WRITE)){
+        session.run("MATCH (p:Professor) WHERE ID(s) = $profId\n" + 
+                    "SET p.name = $name, p.surname = $surname;",
+        Values.parameters("profId",profId,"name",name,"surname",surname) );
+     }
+  }
+\end{verbatim}
 
 \subsubsection{Delete}
+This example of deleting operation shows how to remove subject, given its id and related relations.
 
+\begin{verbatim}
+   public void deleteSubject(int subjectId) {
+       try(Session session = driver.session(AccessMode.WRITE)){
+              session.run("MATCH (n:Subject)" +
+                          "WHERE id(n) = $idSubject" +
+                          "DETACH DELETE n;",
+              Values.parameters("idSubject",subjectId));
+        }
+   }
+\end{verbatim}
 \clearpage
 % ----- MANUAL -----
 \section{User Manual}

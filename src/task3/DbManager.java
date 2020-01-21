@@ -8,6 +8,8 @@ import org.neo4j.driver.v1.*;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.types.*;
 
+import javafx.collections.FXCollections;
+
 public class DbManager implements AutoCloseable {
 	private final Driver driver;
 	private final String uri = "bolt://localhost:7687";
@@ -59,7 +61,7 @@ public class DbManager implements AutoCloseable {
 		try(Session session = driver.session(AccessMode.WRITE)){
 			session.run( 	"MATCH (p:Professor) WHERE id(p) = $profId " + 
 							"MATCH (s:Subject) WHERE id(s) = $subjectId " +
-							"CREATE (p)-[:THEACHES]->(s);", 
+							"CREATE (p)-[:TEACHES]->(s);", 
 					Values.parameters("profId",profId,"subjectId",subjectId) );
 		}
 	}
@@ -103,9 +105,9 @@ public class DbManager implements AutoCloseable {
 		return student;
 	}
 	
-	public String getProfessors(int subjectId) {
-
-		String professors = "";
+	public List<Professor> getProfessors(int subjectId) {
+		List<Professor> professors = FXCollections.observableArrayList();
+		//String professors = "";
 		
 		try(Session session = driver.session(AccessMode.READ)){
 			StatementResult sr = session.run( 
@@ -116,12 +118,13 @@ public class DbManager implements AutoCloseable {
 			
 			while(sr.hasNext()) {
 				Record r = sr.next();
-				professors += r.get("ID(p)").asInt() +": "+ r.get("p.name").asString() +" "+
+				professors.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),r.get("p.surname").asString()));
+				/*professors += r.get("ID(p)").asInt() +": "+ r.get("p.name").asString() +" "+
 						r.get("p.surname").asString();
 				if(sr.hasNext())
-					professors += ", ";
+					professors += ", ";*/
 			}
-		}		
+		}
 		return professors;
 	}
 	
@@ -228,8 +231,10 @@ public class DbManager implements AutoCloseable {
 	public boolean updateSubject(int subjectId, String name, int credits, String info, String profIdStr) {
 		try(Session session = driver.session(AccessMode.WRITE)){
 			
-			session.run("MATCH (s:Subject) WHERE id(s) = $subjectId\n" + 
-						"SET s.info = $info, s.name = $name, s.cfu = $cfu",
+			StatementResult sr = session.run(
+						"MATCH (s:Subject) WHERE id(s) = $subjectId\n" + 
+						"SET s.info = $info, s.name = $name, s.cfu = $cfu " +
+						"RETURN ID(s);",
 	    			Values.parameters("subjectId",subjectId,"info",info,"name",name,"cfu",credits) );
 			
 			if(!profIdStr.isEmpty()) {
@@ -241,14 +246,15 @@ public class DbManager implements AutoCloseable {
 				
 				for(String p : professorsId) {
 					int profId = Integer.parseInt(p);
-					if (profId > 0) {
+					if (profId >= 0) {
 						createTeachingRelation(profId, subjectId);
 					}
 				}	
 			}
+			if(sr.hasNext() && sr.next().get("ID(s)").asInt() >= 0)
+		    	return true;
+		    else return false;
 		}
-		
-		return false;
 	}
 	
 	public boolean updateComment(int commentId, String text, int userId) {

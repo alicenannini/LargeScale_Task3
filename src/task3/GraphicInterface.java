@@ -1,7 +1,5 @@
 package task3;
 
-import java.util.Date;
-
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,13 +19,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class GraphicInterface extends Application {
 	Label usernameLab, passwordLab, nameLab, surnameAndCreditsLab, infoLab, studentLab, profIdLab;
     TextField username, name, surnameAndCredits, profId;
     PasswordField password;
     TextArea info, comment, addInfo;
     Button loginBtn, logoutBtn, commentBtn, deleteBtn, updateBtn, addBtn, editBtn, deleteBtnProfSubj;
-    //ChoiceBox<String> choosePS; //PS -> ProfessorSubject
     ChoiceBox<Degree> chooseDegree;
     HBox loginBox, logoutBox, commentBox, adminButtonsBox, FieldsAdminBox, chooseBox;
     VBox leftBox, rightBox, nameSurnameBox, InfoVBox, profIdBox;

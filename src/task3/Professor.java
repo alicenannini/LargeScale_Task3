@@ -1,6 +1,5 @@
 package task3;
 
-import java.util.*;
 import javafx.beans.property.*;
 
 public class Professor{
@@ -28,8 +27,9 @@ public class Professor{
     
     public void setSurname(String s) { surname.set(s); }
     
+    @Override
     public String toString() {
-    	return name +" "+ surname;
+    	return getName() +" "+ getSurname() +" ("+ getId() +") ";
     }
 
 }
