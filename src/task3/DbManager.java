@@ -57,7 +57,7 @@ public class DbManager implements AutoCloseable {
 					for (String p : professorsId) {
 						int profId = Integer.parseInt(p);
 						if(profId >= 0) {
-							createTeachingRelation(profId, sr.next().get("ID(a)").asInt());
+							createTeachingRelation(profId, sr.next().get("ID(a)").asInt(),tx);
 						}
 					}
 				}
@@ -66,13 +66,11 @@ public class DbManager implements AutoCloseable {
 		}
 	}
 	
-	private void createTeachingRelation(int profId, int subjectId) {
-		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run( 	"MATCH (p:Professor) WHERE id(p) = $profId " + 
-							"MATCH (s:Subject) WHERE id(s) = $subjectId " +
-							"CREATE (p)-[:TEACHES]->(s);", 
-				Values.parameters("profId",profId,"subjectId",subjectId) );
-		}
+	private void createTeachingRelation(int profId, int subjectId, Transaction tx) {
+		tx.run( 	"MATCH (p:Professor) WHERE id(p) = $profId " + 
+						"MATCH (s:Subject) WHERE id(s) = $subjectId " +
+						"CREATE (p)-[:TEACHES]->(s);", 
+			Values.parameters("profId",profId,"subjectId",subjectId) );
 	}
 	
 	public void createComment(String text, Student student, int subjectId) {
@@ -297,7 +295,7 @@ public class DbManager implements AutoCloseable {
 					for(String p : professorsId) {
 						int profId = Integer.parseInt(p);
 						if (profId >= 0) {
-							createTeachingRelation(profId, subjectId);
+							createTeachingRelation(profId, subjectId,tx);
 						}
 					}	
 				}
