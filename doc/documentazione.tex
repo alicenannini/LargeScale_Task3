@@ -294,8 +294,9 @@ This method of the DbManager class guarantees the creation of a comment. A new v
 
 \begin{verbatim}
 public void createComment(String text, Student student, int subjectId) {
-   try(Session session = driver.session(AccessMode.WRITE)){
-      session.run( "MATCH (e:Student) WHERE id(e) = $idStudent " + 
+   try(Session session = driver.session()){
+       session.writeTransaction( tx -> {
+           tx.run( "MATCH (e:Student) WHERE id(e) = $idStudent " + 
                    "MATCH (s:Subject) WHERE id(s) = $idSubject " +
                    "CREATE " + 
                    "(a:Comment {text: $text, date: $date})," + 
@@ -303,6 +304,8 @@ public void createComment(String text, Student student, int subjectId) {
                    "(a)-[:ABOUT]->(s);", 
              Values.parameters("idStudent",student.getId(),"idSubject",subjectId,"text",text,
                    "date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
+           return null;
+       });
    }
 }
 \end{verbatim}
@@ -313,18 +316,18 @@ This method reads from the database all the degrees and inserts them in a list.
 
 \begin{verbatim}
 public List<Degree> getDegreeCourses() {
-   List<Degree> list = new ArrayList<>();
- 
-   try(Session session = driver.session(AccessMode.READ)){
-     StatementResult sr = session.run("MATCH (dd:Degree)" +
-                                      "RETURN ID(dd), dd.name;");
-
-     while(sr.hasNext()) {
-        Record r = sr.next();
-        list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd.name").asString()));
-     }
-  }
-  return list;
+   try(Session session = driver.session()){
+      return session.readTransaction( tx -> {
+         List<Degree> list = new ArrayList<>();
+         StatementResult sr = tx.run( "MATCH (dd:Degree) RETURN ID(dd), dd.name;");
+			
+         while(sr.hasNext()) {
+            Record r = sr.next();
+            list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd.name").asString()));
+         }
+         return list;
+      });
+   }
 }
 \end{verbatim}
 
@@ -333,10 +336,13 @@ public List<Degree> getDegreeCourses() {
 The following snippet of code shows how to execute an updating operation of an entity professor.
 \begin{verbatim}
   public void updateProfessor(int profId, String name, String surname) {
-     try(Session session = driver.session(AccessMode.WRITE)){
-        session.run("MATCH (p:Professor) WHERE ID(p) = $profId\n" + 
-                    "SET p.name = $name, p.surname = $surname;",
-        Values.parameters("profId",profId,"name",name,"surname",surname) );
+     try(Session session = driver.session()){
+        session.writeTransaction( tx -> {
+           tx.run("MATCH (p:Professor) WHERE ID(p) = $profId\n" + 
+                  "SET p.name = $name, p.surname = $surname;",
+             Values.parameters("profId",profId,"name",name,"surname",surname) );
+           return null;
+        });
      }
   }
 \end{verbatim}
@@ -345,14 +351,15 @@ The following snippet of code shows how to execute an updating operation of an e
 This example of deleting operation shows how to remove a subject, given its id, and the related relations.
 
 \begin{verbatim}
-   public void deleteSubject(int subjectId) {
-       try(Session session = driver.session(AccessMode.WRITE)){
-              session.run("MATCH (n:Subject)" +
-                          "WHERE id(n) = $idSubject" +
-                          "DETACH DELETE n;",
-              Values.parameters("idSubject",subjectId));
-        }
-   }
+  public void deleteSubject(int subjectId) {
+     try(Session session = driver.session()){
+        session.writeTransaction( tx -> {
+           tx.run( "MATCH (n:Subject) WHERE id(n) = $idSubject DETACH DELETE n;",
+             Values.parameters("idSubject",subjectId));
+           return null;
+        });
+     }
+  }
 \end{verbatim}
 \clearpage
 % ----- MANUAL -----

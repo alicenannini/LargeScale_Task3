@@ -22,53 +22,63 @@ public class DbManager implements AutoCloseable {
 
 	
 	public void createDegree(String name) {
-		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run( "CREATE (a:Degree {name: $name});", 
-					Values.parameters("name",name) );
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				tx.run( "CREATE (a:Degree {name: $name});", 
+						Values.parameters("name",name) );
+				return null;
+				}
+			);
 		}
 	}
 	
 	public void createProfessor(String name, String surname) {
-		
-		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run( "CREATE (a:Professor {name: $name, surname: $surname});", 
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				tx.run( "CREATE (a:Professor {name: $name, surname: $surname});", 
 					Values.parameters("name",name,"surname",surname) );
+				return null;
+			});
 		}
 	}
 	
 	public void createSubject(String name, int credits, String info, String profIdStr, int degreeId) {
 		String[] professorsId = profIdStr.split(",", 5);
 		
-		try(Session session = driver.session(AccessMode.WRITE)){
-			StatementResult sr = session.run( 	
-							"MATCH (d:Degree) WHERE id(d) = $degreeId " +
-							"CREATE (a:Subject {name:$name, cfu:$cfu, info:$info})," +
-							"(a)-[:BELONGS]->(d) RETURN ID(a);", 
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				StatementResult sr = tx.run( 	
+						"MATCH (d:Degree) WHERE id(d) = $degreeId " +
+						"CREATE (a:Subject {name:$name, cfu:$cfu, info:$info})," +
+						"(a)-[:BELONGS]->(d) RETURN ID(a);", 
 					Values.parameters("name",name,"cfu",credits,"info",info,"degreeId",degreeId) );
 			
-			if(sr.hasNext()) {
-				for (String p : professorsId) {
-					int profId = Integer.parseInt(p);
-					if(profId >= 0) {
-						createTeachingRelation(profId, sr.next().get("ID(a)").asInt());
+				if(sr.hasNext()) {
+					for (String p : professorsId) {
+						int profId = Integer.parseInt(p);
+						if(profId >= 0) {
+							createTeachingRelation(profId, sr.next().get("ID(a)").asInt());
+						}
 					}
 				}
-			}
+				return null;
+			});
 		}
 	}
 	
-	public void createTeachingRelation(int profId, int subjectId) {
+	private void createTeachingRelation(int profId, int subjectId) {
 		try(Session session = driver.session(AccessMode.WRITE)){
 			session.run( 	"MATCH (p:Professor) WHERE id(p) = $profId " + 
 							"MATCH (s:Subject) WHERE id(s) = $subjectId " +
 							"CREATE (p)-[:TEACHES]->(s);", 
-					Values.parameters("profId",profId,"subjectId",subjectId) );
+				Values.parameters("profId",profId,"subjectId",subjectId) );
 		}
 	}
 	
 	public void createComment(String text, Student student, int subjectId) {
-		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run( 	"MATCH (e:Student) WHERE id(e) = $idStudent " + 
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				tx.run( 	"MATCH (e:Student) WHERE id(e) = $idStudent " + 
 							"MATCH (s:Subject) WHERE id(s) = $idSubject " +
 							"CREATE " + 
 							"(a:Comment {text: $text, date: $date})," + 
@@ -76,228 +86,254 @@ public class DbManager implements AutoCloseable {
 							"(a)-[:ABOUT]->(s);", 
 					Values.parameters("idStudent",student.getId(),"idSubject",subjectId,"text",text,
 							"date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
+				return null;
+			});
 		}
 	}
 	
 	public Student checkUser(String username, String password) {
 		Student student = null;
 		
-		try(Session session = driver.session(AccessMode.READ)){
-			StatementResult sr = session.run( 
+		try(Session session = driver.session()){
+			student = session.readTransaction( tx -> {
+				StatementResult sr = tx.run( 
 					"MATCH (s:Student)-[:ATTENDS]->(d:Degree) " +
 					"WHERE s.username = $username AND s.password = $password "+
 					"RETURN ID(s),s.username,s.password,s.admin, ID(d),d.name;", 
 					Values.parameters("username",username,"password",password) );
 						
-			if(sr.hasNext()) {
-				Record r = sr.next();
 				if(sr.hasNext()) {
-					System.err.println("In the Database are present more than one user with the same username");
-				}else {
-					boolean admin = r.get("s.admin").isNull()? false : r.get("s.admin").asBoolean();
-					
-					student = new Student(r.get("ID(s)").asInt(),r.get("s.username").asString(),
-							r.get("s.password").asString(),new Degree(r.get("ID(d)").asInt(),
-									r.get("d.name").asString()),admin);
+					Record r = sr.next();
+					if(sr.hasNext()) {
+						System.err.println("In the Database are present more than one user with the same username");
+					}else {
+						boolean admin = r.get("s.admin").isNull()? false : r.get("s.admin").asBoolean();
+						
+						return new Student(r.get("ID(s)").asInt(),r.get("s.username").asString(),
+								r.get("s.password").asString(),new Degree(r.get("ID(d)").asInt(),
+										r.get("d.name").asString()),admin);
+					}
 				}
-			}
+				return null;
+			});
 		}
 		return student;
 	}
 	
 	public List<Professor> getProfessorsBySubject(int subjectId) {
-		List<Professor> professors = FXCollections.observableArrayList();
 		
-		try(Session session = driver.session(AccessMode.READ)){
-			StatementResult sr = session.run( 
+		try(Session session = driver.session()){
+			return session.readTransaction( tx -> {
+				List<Professor> professors = FXCollections.observableArrayList();
+				StatementResult sr = tx.run( 
 					"MATCH (p:Professor)-[:TEACHES]->(s:Subject) \n" + 
 					"WHERE id(s) = $subjectId \n" + 
 					"RETURN ID(p),p.name,p.surname", 
 					Values.parameters("subjectId",subjectId) );
 						
-			while(sr.hasNext()) {
-				Record r = sr.next();
-				professors.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),r.get("p.surname").asString()));
-			}
+				while(sr.hasNext()) {
+					Record r = sr.next();
+					professors.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),r.get("p.surname").asString()));
+				}
+				return professors;
+			});
 		}
-		return professors;
 	}
 	
 	public List<Professor> getProfessorsByDegree(int degreeId) {
-		List<Professor> professors = FXCollections.observableArrayList();
-		
-		StatementResult sr;
-		try(Session session = driver.session(AccessMode.READ)){
-			if(degreeId >= 0) {
-				sr = session.run( 
-						"MATCH (p:Professor)-[:TEACHES]->(s:Subject)-[:BELONGS]->(d:Degree) " + 
-						"WHERE id(d) = $degreeId \n" + 
-						"RETURN ID(p),p.name,p.surname", 
-						Values.parameters("degreeId",degreeId) );
-			}else {
-				sr = session.run( 
-						"MATCH (p:Professor) " + 
-						"RETURN ID(p),p.name,p.surname" );
-			}
-			
-			while(sr.hasNext()) {
-				Record r = sr.next();
-				professors.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),r.get("p.surname").asString()));
-			}
+		try(Session session = driver.session()){
+			return session.readTransaction( tx -> {
+				List<Professor> professors = FXCollections.observableArrayList();
+				StatementResult sr;
+				if(degreeId >= 0) {
+					sr = tx.run( 
+							"MATCH (p:Professor)-[:TEACHES]->(s:Subject)-[:BELONGS]->(d:Degree) " + 
+							"WHERE id(d) = $degreeId \n" + 
+							"RETURN DISTINCT ID(p),p.name,p.surname", 
+							Values.parameters("degreeId",degreeId) );
+				}else {
+					sr = tx.run( 
+							"MATCH (p:Professor) " + 
+							"RETURN ID(p),p.name,p.surname" );
+				}
+				
+				while(sr.hasNext()) {
+					Record r = sr.next();
+					professors.add(new Professor(r.get("ID(p)").asInt(),r.get("p.name").asString(),r.get("p.surname").asString()));
+				}
+				return professors;
+			});
 		}
-		return professors;
 	}
 	
 	public List<Subject> getSubjects(int degree) {
-
-		List<Subject> list = new ArrayList<>();
-		
-		try(Session session = driver.session(AccessMode.READ)){
-			StatementResult sr;
-			if(degree >= 0) {
-				sr = session.run( 
-						"MATCH (s:Subject)-[:BELONGS]->(d:Degree) \n" + 
-						"WHERE id(d) = $idDegree \n" + 
-						"RETURN ID(s),s.name,s.cfu,s.info", 
-						Values.parameters("idDegree",degree) );
-			}else {
-				sr = session.run( 
-						"MATCH (s:Subject) " + 
-						"RETURN ID(s),s.name,s.cfu,s.info", 
-						Values.parameters("idDegree",degree) );
-			}
-			
-			while(sr.hasNext()) {
-				Record r = sr.next();
-				list.add(new Subject(r.get("ID(s)").asInt(),r.get("s.name").asString(),
-						r.get("s.cfu").asInt(),r.get("s.info").asString(),degree));
+		try(Session session = driver.session()){
+			return session.readTransaction( tx -> {
+				List<Subject> list = new ArrayList<>();
+				StatementResult sr;
+				if(degree >= 0) {
+					sr = tx.run( 
+							"MATCH (s:Subject)-[:BELONGS]->(d:Degree) \n" + 
+							"WHERE id(d) = $idDegree \n" + 
+							"RETURN ID(s),s.name,s.cfu,s.info", 
+							Values.parameters("idDegree",degree) );
+				}else {
+					sr = tx.run( 
+							"MATCH (s:Subject) " + 
+							"RETURN ID(s),s.name,s.cfu,s.info", 
+							Values.parameters("idDegree",degree) );
+				}
 				
-				list.get(list.size()-1).setProfessors( this.getProfessorsBySubject(r.get("ID(s)").asInt()) );
-			}
+				while(sr.hasNext()) {
+					Record r = sr.next();
+					list.add(new Subject(r.get("ID(s)").asInt(),r.get("s.name").asString(),
+							r.get("s.cfu").asInt(),r.get("s.info").asString(),degree));
+					
+					list.get(list.size()-1).setProfessors( this.getProfessorsBySubject(r.get("ID(s)").asInt()) );
+				}
+				return list;
+			});
 		}
-		return list;
 	}
 	
 	public List<Comment> getComments(int subjectId) {
-		List<Comment> list = new ArrayList<>();
 		
 		if (subjectId == -1)
-			return list;
+			return null;
 		
-		try(Session session = driver.session(AccessMode.READ)){
-			StatementResult sr = session.run( 
-					"MATCH (s:Subject) WHERE id(s) = $idSubject\n" + 
-					"MATCH (c:Comment)-[:ABOUT]->(s)\n" + 
-					"MATCH (st:Student)-[:WROTE]->(c)" +
-					"RETURN ID(c),c.text,c.date,ID(st);", 
-					Values.parameters("idSubject",subjectId) );
-			
-			while(sr.hasNext()) {
-				Record r = sr.next();
-				list.add(new Comment(r.get("ID(c)").asInt(),r.get("c.text").asString(),
-						r.get("ID(st)").asInt(),subjectId,r.get("c.date").asString()));
-			}
+		try(Session session = driver.session()){
+			return session.readTransaction( tx -> {
+				List<Comment> list = new ArrayList<>();
+				StatementResult sr = tx.run( 
+						"MATCH (s:Subject) WHERE id(s) = $idSubject\n" + 
+						"MATCH (c:Comment)-[:ABOUT]->(s)\n" + 
+						"MATCH (st:Student)-[:WROTE]->(c)" +
+						"RETURN ID(c),c.text,c.date,ID(st);", 
+						Values.parameters("idSubject",subjectId) );
+				
+				while(sr.hasNext()) {
+					Record r = sr.next();
+					list.add(new Comment(r.get("ID(c)").asInt(),r.get("c.text").asString(),
+							r.get("ID(st)").asInt(),subjectId,r.get("c.date").asString()));
+				}
+				return list;
+			});
 		}		
-		return list;
 	}
 	
 	public List<Degree> getDegreeCourses() {
-		List<Degree> list = new ArrayList<>();
-		
-		try(Session session = driver.session(AccessMode.READ)){
-			StatementResult sr = session.run( "MATCH (dd:Degree) RETURN ID(dd), dd.name;");
-		
-			while(sr.hasNext()) {
-				Record r = sr.next();
-				list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd.name").asString()));
-			}
+		try(Session session = driver.session()){
+			return session.readTransaction( tx -> {
+				List<Degree> list = new ArrayList<>();
+				StatementResult sr = tx.run( "MATCH (dd:Degree) RETURN ID(dd), dd.name;");
+			
+				while(sr.hasNext()) {
+					Record r = sr.next();
+					list.add(new Degree(r.get("ID(dd)").asInt(),r.get("dd.name").asString()));
+				}
+				return list;
+			});
 		}
-		return list;
 	}
 	
 	public void deleteProfessor(int profId) {
-		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run( "MATCH (n:Professor) WHERE id(n) = $idProf DETACH DELETE n;",
-					Values.parameters("idProf",profId));
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				tx.run( "MATCH (n:Professor) WHERE id(n) = $idProf DETACH DELETE n;",
+						Values.parameters("idProf",profId));
+				return null;
+			});
 		}
 	}
 	
 	public void deleteSubject(int subjectId) {
-		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run( "MATCH (n:Subject) WHERE id(n) = $idSubject DETACH DELETE n;",
-					Values.parameters("idSubject",subjectId));
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				tx.run( "MATCH (n:Subject) WHERE id(n) = $idSubject DETACH DELETE n;",
+						Values.parameters("idSubject",subjectId));
+				return null;
+			});
 		}
 	}
 	
 	public boolean deleteComment(int commentId, int userId, boolean admin){
-		try(Session session = driver.session(AccessMode.WRITE)){
-		    StatementResult sr;
-			if(admin){
-		    	sr = session.run( "MATCH (c:Comment) WHERE id(c) = $idComment DETACH DELETE c RETURN id(c);",
-		    			Values.parameters("idComment",commentId) );
-		    }else{
-		    	sr = session.run("MATCH (s:Student)-[:WROTE]->(c:Comment) " +
-				        		"WHERE id(s) = $userId AND id(c) = $idComment " +
-				        		"DETACH DELETE c RETURN id(c)",
-		    			Values.parameters("userId",userId,"idComment",commentId) );
-		    }
-		    
-		    if(sr.hasNext() && sr.next().get("id(c)").asInt() >= 0)
-		    	return true;
-		    else return false;
+		try(Session session = driver.session()){
+			return session.writeTransaction( tx -> {
+			    StatementResult sr;
+				if(admin){
+			    	sr = tx.run( "MATCH (c:Comment) WHERE id(c) = $idComment DETACH DELETE c RETURN id(c);",
+			    			Values.parameters("idComment",commentId) );
+			    }else{
+			    	sr = tx.run("MATCH (s:Student)-[:WROTE]->(c:Comment) " +
+					        		"WHERE id(s) = $userId AND id(c) = $idComment " +
+					        		"DETACH DELETE c RETURN id(c)",
+			    			Values.parameters("userId",userId,"idComment",commentId) );
+			    }
+			    
+			    if(sr.hasNext() && sr.next().get("id(c)").asInt() >= 0)
+			    	return true;
+			    else return false;
+			});
 		}
 	}
 	
 	public boolean updateSubject(int subjectId, String name, int credits, String info, String profIdStr) {
-		try(Session session = driver.session(AccessMode.WRITE)){
+		try(Session session = driver.session()){
+			return session.writeTransaction( tx -> {
 			
-			StatementResult sr = session.run(
-						"MATCH (s:Subject) WHERE id(s) = $subjectId\n" + 
-						"SET s.info = $info, s.name = $name, s.cfu = $cfu " +
-						"RETURN ID(s);",
-	    			Values.parameters("subjectId",subjectId,"info",info,"name",name,"cfu",credits) );
-			
-			if(!profIdStr.isEmpty()) {
-				session.run("MATCH (p:Professor)-[r:TEACHES]->(s:Subject) " + 
-							"WHERE id(s) = $subjectId DELETE r",
-	    			Values.parameters("subjectId",subjectId) );
+				StatementResult sr = tx.run(
+							"MATCH (s:Subject) WHERE id(s) = $subjectId\n" + 
+							"SET s.info = $info, s.name = $name, s.cfu = $cfu " +
+							"RETURN ID(s);",
+		    			Values.parameters("subjectId",subjectId,"info",info,"name",name,"cfu",credits) );
 				
-				String[] professorsId = profIdStr.split("," , 5);
-				
-				for(String p : professorsId) {
-					int profId = Integer.parseInt(p);
-					if (profId >= 0) {
-						createTeachingRelation(profId, subjectId);
-					}
-				}	
-			}
-			if(sr.hasNext() && sr.next().get("ID(s)").asInt() >= 0)
-		    	return true;
-		    else return false;
+				if(!profIdStr.isEmpty()) {
+					tx.run("MATCH (p:Professor)-[r:TEACHES]->(s:Subject) " + 
+								"WHERE id(s) = $subjectId DELETE r",
+		    			Values.parameters("subjectId",subjectId) );
+					
+					String[] professorsId = profIdStr.split("," , 5);
+					
+					for(String p : professorsId) {
+						int profId = Integer.parseInt(p);
+						if (profId >= 0) {
+							createTeachingRelation(profId, subjectId);
+						}
+					}	
+				}
+				if(sr.hasNext() && sr.next().get("ID(s)").asInt() >= 0)
+			    	return true;
+			    else return false;
+			});
 		}
 	}
 	
 	public boolean updateComment(int commentId, String text, int userId) {
-		try(Session session = driver.session(AccessMode.WRITE)){
-			StatementResult sr = session.run(
-						"MATCH (s:Student)-[:WROTE]->(c:Comment) " +
-						"WHERE ID(s) = $userId AND ID(c) = $commentId " + 
-						"SET c.text = $text, c.date = $date " +
-						"RETURN ID(c);",
-	    			Values.parameters("userId",userId,"commentId",commentId,"text",text,
-	    					"date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
-			
-			if(sr.hasNext() && sr.next().get("ID(c)").asInt() >= 0)
-		    	return true;
-		    else return false;
+		try(Session session = driver.session()){
+			return session.writeTransaction( tx -> {
+				StatementResult sr = session.run(
+							"MATCH (s:Student)-[:WROTE]->(c:Comment) " +
+							"WHERE ID(s) = $userId AND ID(c) = $commentId " + 
+							"SET c.text = $text, c.date = $date " +
+							"RETURN ID(c);",
+		    			Values.parameters("userId",userId,"commentId",commentId,"text",text,
+		    					"date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
+				
+				if(sr.hasNext() && sr.next().get("ID(c)").asInt() >= 0)
+			    	return true;
+			    else return false;
+			});
 		}
 	}
 	
 	public void updateProfessor(int profId, String name, String surname) {
-		try(Session session = driver.session(AccessMode.WRITE)){
-			session.run("MATCH (p:Professor) WHERE ID(p) = $profId\n" + 
-						"SET p.name = $name, p.surname = $surname;",
-	    			Values.parameters("profId",profId,"name",name,"surname",surname) );
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				tx.run("MATCH (p:Professor) WHERE ID(p) = $profId\n" + 
+							"SET p.name = $name, p.surname = $surname;",
+		    			Values.parameters("profId",profId,"name",name,"surname",surname) );
+				return null;
+			});
 		}
 	}
 

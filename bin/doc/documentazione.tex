@@ -85,6 +85,9 @@ The system has to allow the administrator to carry out basic functions such as:
 \item To add a course.
 \item To update a course.
 \item To delete a course.
+\item To add a professor.
+\item To update a professor.
+\item To delete a professor.
 \item To associate a professor to a course.
 \item To delete any comment.
 \end{itemize}
@@ -126,6 +129,9 @@ View the subjects by degree & Browse, Find, View P/S & User & The user selects f
 Add a subject & Add P/S & Admin & The user submits the name and other information of the new subject. The system updates the db and the interface.\\ \hline
 Update a subject & Update P/S & Admin & The user selects the subject and commits the new information. The system updates the db and the interface.\\ \hline
 Delete a subject & Delete P/S & Admin & The user selects the subject and submits the delete. The system updates the db and the interface.\\ \hline
+Add a professor & Add P/S & Admin & The user submits the name and other information of the new professor. The system updates the db and the interface.\\ \hline
+Update a professor & Update prof & Admin & The user selects the professor and commits the new information. The system updates the db and the interface.\\ \hline
+Delete a professor & Delete prof & Admin & The user selects the professor and submits the delete. The system updates the db and the interface.\\ \hline
 \end{tabular}
 \end{table}
 
@@ -284,17 +290,19 @@ All crud operations are implemented using the \textbf{Cypher query language}; it
 
 
 \subsubsection{Create}
-This method of the DbManager class guarantees the creation of a subject. A new vertex is inserted on the graph and  is connected with a professor node using an incoming edge called TEACHES. Moreover it is connected with degree node, using an outgoing edge called BELONGS.
+This method of the DbManager class guarantees the creation of a comment. A new vertex is inserted on the graph and  is connected with a student node using an incoming edge called WROTE. Moreover it is connected with subject node, using an outgoing edge called ABOUT.
 
 \begin{verbatim}
-public void createSubject(String name, int cfu, String info, int profId, int degreeId){
-  try(Session session = driver.session(AccessMode.WRITE)){
-     session.run("MATCH (p:Professor) WHERE id(p) = $profId " + 
-                 "MATCH (d:Degree) WHERE id(d) = $degreeId " +
-                 "CREATE (a:Subject {name:$name, cfu:$cfu, info:$info})," +
-                 "(p)-[:TEACHES]->(a), (a)-[:BELONGS]->(d);", 
-     Values.parameters("name",name,"cfu",cfu,"info",info,
-                       "profId",profId,"degreeId",degreeId) );
+public void createComment(String text, Student student, int subjectId) {
+   try(Session session = driver.session(AccessMode.WRITE)){
+      session.run( "MATCH (e:Student) WHERE id(e) = $idStudent " + 
+                   "MATCH (s:Subject) WHERE id(s) = $idSubject " +
+                   "CREATE " + 
+                   "(a:Comment {text: $text, date: $date})," + 
+                   "(e)-[:WROTE]->(a)," + 
+                   "(a)-[:ABOUT]->(s);", 
+             Values.parameters("idStudent",student.getId(),"idSubject",subjectId,"text",text,
+                   "date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
    }
 }
 \end{verbatim}
@@ -326,7 +334,7 @@ The following snippet of code shows how to execute an updating operation of an e
 \begin{verbatim}
   public void updateProfessor(int profId, String name, String surname) {
      try(Session session = driver.session(AccessMode.WRITE)){
-        session.run("MATCH (p:Professor) WHERE ID(s) = $profId\n" + 
+        session.run("MATCH (p:Professor) WHERE ID(p) = $profId\n" + 
                     "SET p.name = $name, p.surname = $surname;",
         Values.parameters("profId",profId,"name",name,"surname",surname) );
      }
@@ -358,21 +366,15 @@ When you first run the application, the interface you get is the one in figure~\
 \label{fig:screen0}
 \end{figure}
 
-The default display includes the list of all registered professors in the table on the right. You can choose to display the professors of a single degree course, using the drop-down menu on the right (fig.~\ref{fig:screen1}), or decide to view the list of subjects (fig.~\ref{fig:screen2}), for which is also available the degree course's filter. 
+The default display includes the list of all registered subjects in the table on the right. You can also choose to display the subjects of a single degree course, using the drop-down menu on the right (fig.~\ref{fig:screen1}).
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.88\textwidth]{images/screens/screen1}
-\captionof{figure}{Selection of professors filtered by "Ingegneria Informatica" degree course}
+\captionof{figure}{Selection of subjects filtered by the "Ingegneria Informatica" degree course}
 \label{fig:screen1}
 \end{figure}
 \clearpage
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.88\textwidth]{images/screens/screen2}
-\captionof{figure}{Selection of subjects}
-\label{fig:screen2}
-\end{figure}
 
 If you have a registered account, you can log in to the application, so that the comments' operations aren't blocked. Enter your username and your password in the suited fields at the top and click on "Login" (fig.~\ref{fig:screenLogin}).
 \begin{figure}[h]
@@ -382,14 +384,14 @@ If you have a registered account, you can log in to the application, so that the
 \label{fig:screenLogin}
 \end{figure}
 
-If you now want to be able to see the comments associated with a particular professor, you have to click on the name of the professor: in the table on the left the list of comments already received will appear (fig.~\ref{fig:screen3}). With this operation, you'll be able to visualize also the information related to that professor.
+If you now want to be able to see the comments associated with a particular subject, you have to click on the name of the subject: in the table on the left the list of comments already received will appear (fig.~\ref{fig:screen3}). With this operation, you'll be able to visualize also the information related to that particular subject.
 
 To leave a comment, you need to enter the text in the field below the table and then click on the "Comment" button. The result obtained from these operations is shown in fig.~\ref{fig:screen4}.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{images/screens/screen3}
-\captionof{figure}{Displaying the comments related to a professor}
+\captionof{figure}{Displaying the comments related to a subject}
 \label{fig:screen3}
 \end{figure}
 
@@ -403,7 +405,6 @@ To leave a comment, you need to enter the text in the field below the table and 
 You can also decide to modify the comment you just uploaded or another comment you made on a previous session. To do so, you need to click on the comment you want to update, change the text in the field below the table and then click on the "Update" button (fig.~\ref{fig:screen5}).
 Finally you have the chance to delete your comment, by clicking on "Delete" after selecting it. Notice that you can modify or delete just the comments that you made.
 
-The operations of adding, updating and deleting work as well for the the subjects' comments.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.88\textwidth]{images/screens/screen5}
@@ -413,7 +414,7 @@ The operations of adding, updating and deleting work as well for the the subject
 
 To log out, just click on the appropriate button at the top, next to the user label.
 
-Moreover, if you don't have a registered username, you can still browse through the application, search for professors 'and subjects' information and read all comments. You are just unable to leave or change any comments.
+Moreover, if you don't have a registered username, you can still browse through the application, search for subjects' information and read all comments. You are just unable to leave or change any comments.
 
 \clearpage
 %ADIMN MANUAL%
@@ -426,8 +427,16 @@ If you have an admin user, you are entitled to make changes both on the professo
 \captionof{figure}{Interface after the administrator has logged in}
 \label{fig:adminLogin}
 \end{figure}
+As an administrator, there's one extra table available, that you can view by choosing on the choice box appeared on the right (fig.~\ref{fig:admin0}). So you can see all the professors on the database and also adding new ones or updating the ones already in there.
 
-You can choose to add a new professor, using the input fields at the bottom left. You have to specify the name, surname, and description, then press the "Add" button (fig.~\ref{fig:admin1}).
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/admin0}
+\captionof{figure}{Displaying the professors' table }
+\label{fig:admin0}
+\end{figure}
+
+You can choose to add a new professor, using the input fields at the bottom left. You have to specify the name and the surname, then press the "Add" button (fig.~\ref{fig:admin1}).
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.88\textwidth]{images/screens/admin1}

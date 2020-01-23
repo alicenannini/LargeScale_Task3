@@ -30,6 +30,7 @@ public class CommentTable extends TableView<Comment> {
 
 	void setCommentsList(List<Comment> l) {
 		commentsList.clear();
-		commentsList.addAll(l);
+		if(l != null)
+			commentsList.addAll(l);
 	}
 }
