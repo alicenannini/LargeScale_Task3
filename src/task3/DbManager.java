@@ -13,8 +13,8 @@ import javafx.collections.FXCollections;
 public class DbManager implements AutoCloseable {
 	private final Driver driver;
 	private final String uri = "bolt://localhost:7687";
-	private final String user = "alice";
-	private final String password = "alice";
+	private final String user = "neo4j";
+	private final String password = "geghi";
 	
 	public DbManager() {
 		driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
@@ -334,6 +334,18 @@ public class DbManager implements AutoCloseable {
 			});
 		}
 	}
+
+	public List<Student> getSuggestedFriends(){
+		List<Student> list = null;
+		//TODO query and save in the list the result.
+		
+		return list;
+	}
+	
+	public void addFriend() {
+		//TODO 
+	}
+
 
 	@Override
 	public void close() throws Exception {
