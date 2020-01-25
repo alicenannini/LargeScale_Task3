@@ -44,8 +44,7 @@ The application is developed to allow students (users) to view all the courses o
 Looking the table on the right side, a user can browse all subjects and by clicking an element of this table, on the left section, the user can see more information about the chosen element: general information and comments.\\ 
 In order to filter the list of subjects, there is a choice box, thanks to which the user can select a specific degree course. \\
 In order to leave a comment, it is necessary to log in, otherwise, the application will allow interaction in read-only.\\
-There are two buttons in the bottom left corner to allow students to update or delete their comments.
-There is no form to register into the application, it is assumed that users are already registered into the system, but there is an administrator that can add, update and delete subjects and all the informations related.
+There are two buttons in the bottom left corner to allow students to update or delete their comments. There is another button that allows a user to search students from a suggested list.
 
 
 \begin{minipage}{\linewidth}
@@ -77,6 +76,7 @@ In addiction to the guest functions, the system has to allow the user to carry o
 \item To upload comments on a course.
 \item To update a comment of a course only if the user is the owner.
 \item To delete a comment of a course only if the user is the owner.
+\item To add a friend.
 \end{itemize}
 \vspace{2mm}
 The system has to allow the administrator to carry out basic functions such as:
@@ -96,8 +96,6 @@ The system has to allow the administrator to carry out basic functions such as:
 \subsubsection{Non-functional requirements}
 \begin{itemize}
 \item Usability, ease of use and intuitiveness of the application by the user.
-\item Avaliablility, with the service guaranteed h24.
-\item The system should support simultaneous users.
 \item The system should provide access to the database with a few seconds of latency.
 \end{itemize}
 
@@ -116,29 +114,41 @@ The system has to allow the administrator to carry out basic functions such as:
 \subsubsection{Use Cases Description}
 \begin{table}[h]
 \centering
-\begin{tabular}{p{0.2\textwidth}p{0.1\textwidth}lp{0.5\textwidth}}
+\begin{tabular}{p{0.1\textwidth}p{0.1\textwidth}lp{0.5\textwidth}}
 \hline
 \textbf{Event} & \textbf{UseCase} & \textbf{Actor(s)} & \textbf{Description}\\ \hline
+
 Log in, Log out & Login,  Logout & Admin, Student & The user logs in/out the application. The system browses the professors' list by the degree course of the logged user and returns it on the interface.\\ \hline
-View all the subjects & Browse, Find, View P/S & User & The user chooses that he wants to view the list of all subjects. The system browses the data on the db and returns them on the interface.\\ \hline
-View the comments and information of a subject & Browse, Find, View C & User & The user clicks on a record of the subject table. The system browses on the db the comments related to that subject and returns them on the interface.\\ \hline
+
+View all the subjects & Browse, Find, Display S & Admin, Student, Guest & The user chooses that he wants to view the list of all subjects. The system browses the data on the db and returns them on the interface.\\ \hline
+
+View the comments of a subject & Browse, Find, View C & Admin, Student, Guest & The user clicks on a record of the subject table. The system browses on the db the comments related to that subject and returns them on the interface.\\ \hline
+
 Add a comment & Add C & Admin, Student & The user submits the text of his comment. The system updates the db and the interface.\\ \hline
-Update a comment & Update C & Admin, Student & The user selects the comment and commits the new text. The system updates the db and the interface.\\ \hline
+
+Update a comment & Update C & Student & The user selects the comment and commits the new text. The system updates the db and the interface.\\ \hline
+
 Delete a comment & Delete C & Admin, Student & The user selects the comment and submits the delete. The system updates the db and the interface.\\ \hline
-View the subjects by degree & Browse, Find, View P/S & User & The user selects from the choice-boxes the degree course and the list (subjects) he's interested in. The system browses on the db the subjects filtered by the chosen degree and returns them on the interface.\\ \hline
-Add a subject & Add P/S & Admin & The user submits the name and other information of the new subject. The system updates the db and the interface.\\ \hline
-Update a subject & Update P/S & Admin & The user selects the subject and commits the new information. The system updates the db and the interface.\\ \hline
-Delete a subject & Delete P/S & Admin & The user selects the subject and submits the delete. The system updates the db and the interface.\\ \hline
-Add a professor & Add P/S & Admin & The user submits the name and other information of the new professor. The system updates the db and the interface.\\ \hline
-Update a professor & Update prof & Admin & The user selects the professor and commits the new information. The system updates the db and the interface.\\ \hline
-Delete a professor & Delete prof & Admin & The user selects the professor and submits the delete. The system updates the db and the interface.\\ \hline
+
+View degree courses & Browse, Find, Display D & Admin, Student, Guest & The system browses the degree courses list and returns them on the interface.\\ \hline
+
+Add a subject/professor & Add P/S & Admin & The admin submits the name and other information of the new subject/professor. The system updates the db and the interface.\\ \hline
+
+Update a subject/professor & Update P/S & Admin & The user selects the subject/professor and commits the new information. The system updates the db and the interface.\\ \hline
+
+Delete a subject/professor & Delete P/S & Admin & The user selects the subject/professor and submits the delete. The system updates the db and the interface.\\ \hline
+
+View suggested friends & Browse, Find, Display Student & Student, Admin & The user chooses that he wants to view the suggested friends. The system browses on the db the students and returns them on the interface.\\ \hline
+
+Set find parameter & By Degree, By Subject & Admin, Student, Guest & The user chooses the filter to apply to the query on the database. The system uses it to find the results.\\ \hline
+
 \end{tabular}
 \end{table}
 
 \begin{minipage}{\linewidth}
 \begin{center}
 \vspace{8mm}
-\includegraphics[height=11cm]{./images/diagrams/UseCases.png} 
+\includegraphics[height=11cm]{./images/diagrams/UseCases} 
 \captionof{figure}{Use cases diagram}
 \vspace{3mm}
 \end{center}
