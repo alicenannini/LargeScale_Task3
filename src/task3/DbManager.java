@@ -90,10 +90,11 @@ public class DbManager implements AutoCloseable {
 	}
 	
 	public Student checkUser(String username, String password) {
-		Student student = null;
+		
 		
 		try(Session session = driver.session()){
-			student = session.readTransaction( tx -> {
+			return session.readTransaction( tx -> {
+				Student student = null;
 				StatementResult sr = tx.run( 
 					"MATCH (s:Student)-[:ATTENDS]->(d:Degree) " +
 					"WHERE s.username = $username AND s.password = $password "+
@@ -107,15 +108,15 @@ public class DbManager implements AutoCloseable {
 					}else {
 						boolean admin = r.get("s.admin").isNull()? false : r.get("s.admin").asBoolean();
 						
-						return new Student(r.get("ID(s)").asInt(),r.get("s.username").asString(),
+						student = new Student(r.get("ID(s)").asInt(),r.get("s.username").asString(),
 								r.get("s.password").asString(),new Degree(r.get("ID(d)").asInt(),
 										r.get("d.name").asString()),admin);
+						student.setFriends(this.getFriends(student, tx));
 					}
 				}
-				return null;
+				return student;
 			});
 		}
-		return student;
 	}
 	
 	public List<Professor> getProfessorsBySubject(int subjectId) {
@@ -335,15 +336,53 @@ public class DbManager implements AutoCloseable {
 		}
 	}
 
-	public List<Student> getSuggestedFriends(){
-		List<Student> list = null;
-		//TODO query and save in the list the result.
-		
+	public List<Student> getSuggestedFriends(Student user){
+		try(Session session = driver.session()){
+			return session.readTransaction( tx -> {
+				List<Student> list = FXCollections.observableArrayList();
+				StatementResult sr = tx.run("MATCH (friend:Student)-[:ATTENDS]->(d:Degree)," +
+											"(s:Student)-[:ATTENDS]->(d:Degree)," +
+											"WHERE ID(s) = $idUser AND" +
+											"NOT (s)-[:KNOWS]-(friend)" +
+											"RETURN ID(friend), friend.username, friend.admin;",
+										Values.parameters("idUser", user.getId()) );
+			
+				while(sr.hasNext()) {
+					Record r = sr.next();
+					list.add(new Student(r.get("ID(friend)").asInt(),r.get("friend.username").asString(),
+							"",user.getDegree(),r.get("friend.admin").asBoolean()));
+				}
+				return list;
+			});
+		}
+	}
+	
+	private List<Student> getFriends(Student s, Transaction tx) {
+		List<Student> list = FXCollections.observableArrayList();
+		StatementResult sr = tx.run( 
+				"MATCH (s:Student)-[:KNOWS]->(friend:Student) " +
+				"WHERE id(s) = $studentId " + 
+				"RETURN ID(friend), friend.username, friend.admin;", 
+				Values.parameters("studentId", s.getId()) );
+		while(sr.hasNext()) {
+			Record r = sr.next();
+			list.add(new Student(r.get("ID(friend)").asInt(),r.get("friend.username").asString(),
+					"",s.getDegree(),r.get("friend.admin").asBoolean()));
+		}
 		return list;
 	}
 	
-	public void addFriend() {
-		//TODO 
+	public void addFriend(Student user, Student friend) {
+		try(Session session = driver.session()){
+			session.writeTransaction( tx -> {
+				tx.run( 	"MATCH (s:Student) WHERE id(s) = $idUser " + 
+							"MATCH (friend:Student) WHERE id(friend) = $idFriend " +
+							"CREATE " + 
+							"(s)-[:KNOWS]->(friend);", 
+					Values.parameters("idUser",user.getId(),"idFriend", friend.getId()) );
+				return null;
+			});
+		}
 	}
 
 

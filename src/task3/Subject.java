@@ -39,12 +39,6 @@ public class Subject {
 	public void setDegree(int d) { degree.set(d); }
 	
 	public List<Professor> getProfessors(){ return professors.getValue(); }
-	/*public String getProfessors() {
-		String s = "";
-		for(Professor p : this.professors)
-			s += p.toString() +", ";
-		return s;
-	}*/
 	public void setProfessors(List<Professor> profs) { 
 		professors.set((ObservableList<Professor>) profs); 
 	}

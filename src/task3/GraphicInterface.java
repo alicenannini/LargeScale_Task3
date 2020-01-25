@@ -449,7 +449,7 @@ public class GraphicInterface extends Application {
 
 	private void searchFriendsBtn() {
 		
-		List<Student> list = manager.getSuggestedFriends();
+		List<Student> list = manager.getSuggestedFriends(this.student);
 		ObservableList<Student> suggestedStudents = FXCollections.observableArrayList();
 		if(list != null) {
 			suggestedStudents.addAll(list);
@@ -510,7 +510,11 @@ public class GraphicInterface extends Application {
 	}
 
 	private void addFriendAction(){
-		//TODO Add a friend			
+		Student newFriend = studentsTable.getSelectionModel().getSelectedItem();
+		if(newFriend != null)
+			manager.addFriend(this.student, newFriend);
+		else
+			System.err.println("Error: you need to select a student!");
 		
 	}
 	

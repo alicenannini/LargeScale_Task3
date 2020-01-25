@@ -1,6 +1,9 @@
 package task3;
 
+import java.util.List;
+
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 
 public class Student{
 	private final SimpleIntegerProperty id;
@@ -8,6 +11,7 @@ public class Student{
     private final SimpleStringProperty username;
     private final SimpleStringProperty password;
     private final SimpleObjectProperty<Degree> degree;
+    private final SimpleListProperty<Student> friends;
     
     // CONSTRUCTOR
     public Student(int i, String u, String p, Degree d, boolean a) {
@@ -15,7 +19,8 @@ public class Student{
         admin = new SimpleBooleanProperty(a);
         username = new SimpleStringProperty(u);
         password = new SimpleStringProperty(p);
-        degree = new SimpleObjectProperty<Degree>(d);		
+        degree = new SimpleObjectProperty<Degree>(d);
+        friends = new SimpleListProperty<Student>(null);
     }
     
     public int getId(){ return id.get(); }
@@ -37,5 +42,11 @@ public class Student{
     public Degree getDegree() { return degree.getValue(); }
     
     public void setDegree(Degree d) { degree.set(d); }
+    
+    public List<Student> getFriends(){ return friends.getValue(); }
+    
+	public void setFriends(List<Student> f) { 
+		friends.set((ObservableList<Student>) f); 
+	}
 	
 }
