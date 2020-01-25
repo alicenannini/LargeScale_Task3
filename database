@@ -1,9 +1,16 @@
 CREATE
 (gg:Student {username: "geghi", password: "geghi", admin: true }),
-(aa:Student {username: "alice", password: "alice" }),
+(aa:Student {username: "alice", password: "alice"}),
 (mm:Student {username: "marco", password: "marco" }),
 (ss:Student {username: "stefano", password: "stefano" }),
 (jj:Student {username: "jack", password: "jack" }),
+(ggg:Student {username: "givanni", password: "giovanni" }),
+(aaa:Student {username: "augusto", password: "augusto" }),
+(ggf:Student {username: "ginevra", password: "ginevra" }),
+(aua:Student {username: "aurelia", password: "aurelia" }),
+(ff:Student {username: "francesco", password: "francesco" }),
+(cc:Student {username: "camilla", password: "camilla" }),
+
 
 (aide:Degree {name: "Artificial Intelligence and Data Engineering" }),
 (be:Degree {name: "Bionics Engineering" }),
@@ -42,6 +49,10 @@ CREATE
 (neupro:Subject {name: "NEURAL PROSTHESES", cfu:12, info:"Il modulo “Neural Tissue Engineering” ha l’obiettivo di far acquisire agli studenti le conoscenze e gli strumenti metodologici caratteristici della ingegneria tissutale relativa al settore neurale ed in particolare relative allo sviluppo di sistemi in vitro ed in vitro per la rigenerazione nervosa. Il modulo “Neural Interfaces and Bioelectronic Medicine” ha l’obiettivo di far acquisire agli studenti le conoscenze e gli strumenti metodologici caratteristici della neuroingegneria ed in particolare relative allo sviluppo di sistemi impiantabili per il recupero di funzioni sensoriali e motorie e di sistemi per la “medicina bioelettronica”." }),
 (neueng:Subject {name: "NEUROMORPHIC ENGINEERING", cfu:6, info:"" }),
 
-(gg)-[:ATTENDS]->(aide),(aa)-[:ATTENDS]->(aide),(mm)-[:ATTENDS]->(aide),(ss)-[:ATTENDS]->(aide),(jj)-[:ATTENDS]->(be),
+(gg)-[:ATTENDS]->(aide),(ggg)-[:ATTENDS]->(aide),(aaa)-[:ATTENDS]->(aide),(ggf)-[:ATTENDS]->(aide),(aua)-[:ATTENDS]->(aide),(cc)-[:ATTENDS]->(aide),(ff)-[:ATTENDS]->(aide),(aa)-[:ATTENDS]->(aide),(mm)-[:ATTENDS]->(aide),(ss)-[:ATTENDS]->(aide),(jj)-[:ATTENDS]->(be),
+
 (gl)-[:TEACHES]->(cel),(lb)-[:TEACHES]->(ami),(mc)-[:TEACHES]->(fii),(ga)-[:TEACHES]->(ri),(fm)-[:TEACHES]->(pw),(fm)-[:TEACHES]->(dm),(gs)-[:TEACHES]->(rl),(gs)-[:TEACHES]->(pe),(mgca)-[:TEACHES]->(pa),(lbt)-[:TEACHES]->(cdm),(almi)-[:TEACHES]->(abs),(dedr)-[:TEACHES]->(biose),(giov)-[:TEACHES]->(neupro),(calo)-[:TEACHES]->(neueng),(mazzo)-[:TEACHES]->(neupro),(mazzo)-[:TEACHES]->(neueng),
-(ami)-[:BELONGS]->(ii),(fii)-[:BELONGS]->(ii),(ri)-[:BELONGS]->(ii),(cel)-[:BELONGS]->(ii),(cdm)-[:BELONGS]->(im),(pa)-[:BELONGS]->(ii),(rl)-[:BELONGS]->(ii),(pe)-[:BELONGS]->(ce),(pw)-[:BELONGS]->(ii),(dm)-[:BELONGS]->(aide),(abs)-[:BELONGS]->(be),(biose)-[:BELONGS]->(be),(neupro)-[:BELONGS]->(be),(neueng)-[:BELONGS]->(be)
+
+(ami)-[:BELONGS]->(ii),(fii)-[:BELONGS]->(ii),(ri)-[:BELONGS]->(ii),(cel)-[:BELONGS]->(ii),(cdm)-[:BELONGS]->(im),(pa)-[:BELONGS]->(ii),(rl)-[:BELONGS]->(ii),(pe)-[:BELONGS]->(ce),(pw)-[:BELONGS]->(ii),(dm)-[:BELONGS]->(aide),(abs)-[:BELONGS]->(be),(biose)-[:BELONGS]->(be),(neupro)-[:BELONGS]->(be),(neueng)-[:BELONGS]->(be), 
+
+(gg)-[:KNOWS]->(aa),(gg)-[:KNOWS]->(mm),(aa)-[:KNOWS]->(gg),(ggg)-[:KNOWS]->(aa),(aaa)-[:KNOWS]->(aua),(aua)-[:KNOWS]->(mm)

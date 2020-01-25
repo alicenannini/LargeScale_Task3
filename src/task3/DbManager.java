@@ -110,7 +110,7 @@ public class DbManager implements AutoCloseable {
 						
 						student = new Student(r.get("ID(s)").asInt(),r.get("s.username").asString(),
 								r.get("s.password").asString(),new Degree(r.get("ID(d)").asInt(),
-										r.get("d.name").asString()),admin);
+										r.get("d.name").asString()), admin);
 						student.setFriends(this.getFriends(student, tx));
 					}
 				}
@@ -340,17 +340,17 @@ public class DbManager implements AutoCloseable {
 		try(Session session = driver.session()){
 			return session.readTransaction( tx -> {
 				List<Student> list = FXCollections.observableArrayList();
-				StatementResult sr = tx.run("MATCH (friend:Student)-[:ATTENDS]->(d:Degree)," +
-											"(s:Student)-[:ATTENDS]->(d:Degree)," +
-											"WHERE ID(s) = $idUser AND" +
-											"NOT (s)-[:KNOWS]-(friend)" +
+				StatementResult sr = tx.run("MATCH (friend:Student)-[:ATTENDS]->(d:Degree), " +
+											"(s:Student)-[:ATTENDS]->(d:Degree) " +
+											"WHERE ID(s) = $idUser AND " +
+											"NOT (s)-[:KNOWS]-(friend) " +
 											"RETURN ID(friend), friend.username, friend.admin;",
 										Values.parameters("idUser", user.getId()) );
 			
 				while(sr.hasNext()) {
 					Record r = sr.next();
 					list.add(new Student(r.get("ID(friend)").asInt(),r.get("friend.username").asString(),
-							"",user.getDegree(),r.get("friend.admin").asBoolean()));
+							"",user.getDegree(), false));
 				}
 				return list;
 			});
@@ -367,7 +367,7 @@ public class DbManager implements AutoCloseable {
 		while(sr.hasNext()) {
 			Record r = sr.next();
 			list.add(new Student(r.get("ID(friend)").asInt(),r.get("friend.username").asString(),
-					"",s.getDegree(),r.get("friend.admin").asBoolean()));
+					"",s.getDegree(), false));
 		}
 		return list;
 	}
