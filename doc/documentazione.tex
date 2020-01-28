@@ -174,7 +174,7 @@ This diagram represent the main entities of the application and the relations be
 
 % ----- DATABASE -----
 \subsection{Database Choice}
-This application is based on many join operations between the entities, in order to obtain each professor associated with a subject, or each comment associated with a subject, or yet display all the subjects associated with a degree course. For this reason, if the amount of data available is very high as expected, a relational database will be computationally expensive. Then the choice fell on a graph database, which manage to work very well and very fast on a model made with a lot of entities and relations.\\
+This application is based on many join operations between the entities, in order to obtain each professor associated with a subject, or each comment associated with a subject, or yet display all the subjects associated with a degree course. For this reason, if the amount of data available is very high as expected, a relational database will be computationally expensive. Then the choice fell on a graph database, which manage to work very well and very fast on a model made with a lot of entities and relations. Moreover, a graph database is very useful for some specific queries in the application,for example, showing a suggested friends list. \\
 
 % ----- ARCHITECTURE -----
 \subsection{Software Architecture}
@@ -206,6 +206,7 @@ Moreover the relations are modeling using the edges; in our model there are the 
 \item Teaches, connects a professor to a subject
 \item Belongs, connects a subject to a degree
 \item Wrote, connects a student to a comment
+\item Knows, connects a student to a student
 \end{itemize}
 
 
@@ -230,8 +231,8 @@ So this application is tested using these technologies, considering these partic
 
 % ----- CODE -----
 \subsection{Java Classes Description}
-\subsubsection{Entities}
-In this section is listed the classes who model the entities.
+
+In this section are listed the classes who model the entities.
 \begin{itemize}
 \item Student
 \item Professor
@@ -239,35 +240,106 @@ In this section is listed the classes who model the entities.
 \item Comment
 \item Degree
 \end{itemize}
-Each of them have some attributes and the related Get and Set methods, in order to avoid too much redundancy code, it is reported only an example of declaration.
+Each of them have some attributes and the related Get and Set methods.
 
+\subsubsection{Declaration of Student class}
 \begin{verbatim}
   public class Student{
-     private final SimpleIntegerProperty id;
-     private final SimpleBooleanProperty admin;
-     private final SimpleStringProperty username;
-     private final SimpleStringProperty password;
-     private final SimpleObjectProperty<Degree> degree;
+	private final SimpleIntegerProperty id;
+    private final SimpleBooleanProperty admin;
+    private final SimpleStringProperty username;
+    private final SimpleStringProperty password;
+    private final SimpleObjectProperty<Degree> degree;
+    private final SimpleListProperty<Student> friends;
     
-     public Student(int i, String u, String p, Degree d, boolean a) {
-         id = new SimpleIntegerProperty(i);
-         admin = new SimpleBooleanProperty(a);
-         username = new SimpleStringProperty(u);
-         password = new SimpleStringProperty(p);
-         degree = new SimpleObjectProperty(d);		
-     }
+    // CONSTRUCTOR
+    public Student(int i, String u, String p, Degree d, boolean a) {
+        id = new SimpleIntegerProperty(i);
+        admin = new SimpleBooleanProperty(a);
+        username = new SimpleStringProperty(u);
+        password = new SimpleStringProperty(p);
+        degree = new SimpleObjectProperty<Degree>(d);
+        friends = new SimpleListProperty<Student>(null);
+    }
+    //GETTERS AND SETTERS
+    ...
+}
+\end{verbatim}
+
+\subsubsection{Declaration of Subject class}
+\begin{verbatim}
+public class Subject {
+
+    private final SimpleIntegerProperty id;
+    private final SimpleStringProperty name;
+    private final SimpleIntegerProperty credits;
+    private final SimpleStringProperty info;
+    private final SimpleIntegerProperty degree;
+    private final SimpleListProperty<Professor> professors;
+	
+    // CONSTRUCTOR
+    public Subject(int i, String n, int c, String inf, int d) {
+        id = new SimpleIntegerProperty(i);
+        name = new SimpleStringProperty(n);
+        credits = new SimpleIntegerProperty(c);
+        info = new SimpleStringProperty(inf);
+        degree = new SimpleIntegerProperty(d);
+        professors = new SimpleListProperty<Professor>(null);
+	}
+	...
+}
+\end{verbatim}
+
+\subsubsection{Declaration of Professor class}
+\begin{verbatim}
+public class Professor{
+    private final SimpleIntegerProperty id;
+    private final SimpleStringProperty name;
+    private final SimpleStringProperty surname;
+	
+    // CONSTRUCTOR
+    public Professor(int i, String n, String s) {
+        name = new SimpleStringProperty(n);
+        surname = new SimpleStringProperty(s);
+        id = new SimpleIntegerProperty(i);
+    }
+	...
+}
+\end{verbatim}
+
+\subsubsection{Declaration of Degree class}
+\begin{verbatim}
+public class Degree {
+    private final SimpleIntegerProperty id;
+    private final SimpleStringProperty name;
     
-     public int getId(){ return id.get(); }
-     public void setId(int i){ id.set(i); }
-     public boolean getAdmin() { return admin.get(); }
-     public void setAdmin(Boolean b) { admin.set(b); }
-     public String getUsername() { return username.get(); }
-     public void setUsername(String n) { username.set(n); }
-     public String getPassword() { return password.get(); }
-     public void setPassword(String n) { password.set(n); }
-     public Degree getDegree() { return degree.getValue(); }
-     public void setDegree(Degree d) { degree.set(d); }
-  }
+    public Degree(int i, String n) {
+        id = new SimpleIntegerProperty(i);
+        name = new SimpleStringProperty(n);
+    }
+    ...
+}
+\end{verbatim}
+
+\subsubsection{Declaration of Comment class}
+\begin{verbatim}
+public class Comment{
+
+    private final SimpleIntegerProperty id;
+    private final SimpleStringProperty text;
+    private final SimpleIntegerProperty student;
+    private final SimpleStringProperty date;
+    private final SimpleIntegerProperty subject;
+
+    public Comment(int i, String t, int s, int sub, String d) {
+        id = new SimpleIntegerProperty(i);
+        text = new SimpleStringProperty(t);
+        student = new SimpleIntegerProperty(s);
+        date = new SimpleStringProperty(d);
+        subject = new SimpleIntegerProperty(sub);
+    }
+	...
+}
 \end{verbatim}
 
 \subsubsection{Database manager}

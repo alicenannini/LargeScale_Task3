@@ -22,6 +22,7 @@ public class Student{
         degree = new SimpleObjectProperty<Degree>(d);
         friends = new SimpleListProperty<Student>(null);
     }
+    //GETTERS AND SETTERS
     
     public int getId(){ return id.get(); }
     
