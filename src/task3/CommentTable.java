@@ -8,7 +8,7 @@ import javafx.scene.control.cell.*;
 public class CommentTable extends TableView<Comment> {
 
 	ObservableList<Comment> commentsList;
-	TableColumn textColumn, dateColumn;
+	TableColumn textColumn, dateColumn, studentColumn;
 
 	GraphicInterface graphic;
 
@@ -21,8 +21,10 @@ public class CommentTable extends TableView<Comment> {
 		textColumn.setCellValueFactory(new PropertyValueFactory<Comment, String>("text"));
 		dateColumn = new TableColumn("Date");
 		dateColumn.setCellValueFactory(new PropertyValueFactory<Comment, Date>("date"));
+		studentColumn = new TableColumn("Student");
+		studentColumn.setCellValueFactory(new PropertyValueFactory<Comment, Integer>("student"));
 
-		this.getColumns().addAll(textColumn, dateColumn);
+		this.getColumns().addAll(textColumn, dateColumn, studentColumn);
 		this.setItems(commentsList);
 		this.setColumnResizePolicy(CONSTRAINED_RESIZE_POLICY);
 		this.setEditable(true);

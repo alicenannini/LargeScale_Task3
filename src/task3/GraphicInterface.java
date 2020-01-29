@@ -35,6 +35,7 @@ public class GraphicInterface extends Application {
 			searchFriendsBtn;
 	ChoiceBox<String> choosePS; // PS -> ProfessorSubject
 	ChoiceBox<Degree> chooseDegree;
+	ChoiceBox<String> chooseComments;
 	HBox loginBox, logoutBox, commentBox, adminButtonsBox, FieldsAdminBox, chooseBox;
 	VBox leftBox, rightBox, nameSurnameBox, InfoVBox, profIdBox, groupBox;
 	Group root, secondaryRoot;
@@ -196,9 +197,32 @@ public class GraphicInterface extends Application {
         deleteBtn = new Button("Delete");
         updateBtn = new Button("Update");
         searchFriendsBtn = new Button ("Search Friends");
+        chooseComments = new ChoiceBox<>();
+        chooseComments.getItems().addAll("All","Friends");
+        chooseComments.getSelectionModel().selectFirst();
         
         commentBox = new HBox(10);
-        commentBox.getChildren().addAll(comment,commentBtn, deleteBtn, updateBtn, searchFriendsBtn);
+        commentBox.getChildren().addAll(comment,commentBtn, deleteBtn, updateBtn, searchFriendsBtn,chooseComments);
+        
+     // add event to chooseComments changing selection value
+        chooseComments.getSelectionModel().selectedIndexProperty().addListener((ChangeListener<? super Number>) new ChangeListener<Number>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            	int subjectId;
+            	Subject s = (Subject)table.getSelectionModel().getSelectedItem();
+            	if(s != null) 
+            		subjectId = s.getId();
+                else subjectId = -1;
+	            
+                if("All".equals(chooseComments.getItems().get((Integer) newValue))) {
+                	comments.setCommentsList(manager.getComments(subjectId, -1));
+                }
+                else{
+                	comments.setCommentsList(manager.getComments(subjectId, student.getId()));
+                }
+            }
+        });
         
         root = new Group();
         root.getChildren().addAll(loginBox, logoutBox, leftBox, rightBox, adminButtonsBox, commentBox, FieldsAdminBox);
@@ -359,6 +383,7 @@ public class GraphicInterface extends Application {
 
 	private void logoutAction() {
 		chooseDegree.getSelectionModel().selectFirst();
+		chooseComments.getSelectionModel().selectFirst();
 		logoutBox.setVisible(false);
 		loginBox.setVisible(true);
 		adminButtonsBox.setVisible(false);
@@ -366,6 +391,7 @@ public class GraphicInterface extends Application {
 		choosePS.setVisible(false);
 		student = null;
 		table.setSubjectsList(manager.getSubjects(-1));
+		comments.setCommentsList(manager.getComments(-1, -1));
 		updateSizes();
 		this.username.setText("");
 		this.password.setText("");
@@ -392,7 +418,7 @@ public class GraphicInterface extends Application {
 			} else {
 				Subject s = (Subject) o;
 				info.setText(s.getInfo());
-				comments.setCommentsList(manager.getComments(s.getId()));
+				comments.setCommentsList(manager.getComments(s.getId(),filterByFriends()));
 				if (student != null && student.getAdmin()) { // if admin is operating
 					name.setText(s.getName());
 					surnameAndCredits.setText(Integer.toString(s.getCredits()));
@@ -414,7 +440,7 @@ public class GraphicInterface extends Application {
 			Subject s = (Subject) table.getSelectionModel().getSelectedItem();
 
 			manager.createComment(comment.getText(), student, s.getId());
-			comments.setCommentsList(manager.getComments(s.getId()));
+			comments.setCommentsList(manager.getComments(s.getId(),filterByFriends()));
 
 			this.comment.setText("");
 		} else
@@ -431,7 +457,7 @@ public class GraphicInterface extends Application {
 			}
 
 			if (manager.updateComment(sc.getId(), comment.getText(), student.getId()))
-				comments.setCommentsList(manager.getComments(s.getId()));
+				comments.setCommentsList(manager.getComments(s.getId(),filterByFriends()));
 		} else
 			System.err.println("You have to login!\n");
 	}
@@ -442,7 +468,7 @@ public class GraphicInterface extends Application {
 			Comment c = (Comment) comments.getSelectionModel().getSelectedItem();
 
 			if (manager.deleteComment(c.getId(), student.getId(), student.getAdmin()))
-				comments.setCommentsList(manager.getComments(s.getId()));
+				comments.setCommentsList(manager.getComments(s.getId(),filterByFriends()));
 		} else
 			System.err.println("You have to login!\n");
 	}
@@ -549,7 +575,7 @@ public class GraphicInterface extends Application {
 				name.clear();
 				surnameAndCredits.clear();
 				addInfo.clear();
-				comments.setCommentsList(manager.getComments(-1));
+				comments.setCommentsList(manager.getComments(-1,-1));
 				table.setSubjectsList(manager.getSubjects(chooseDegree.getValue().getId()));
 			}
 		} else {
@@ -598,6 +624,13 @@ public class GraphicInterface extends Application {
 			addInfo.setText("");
 			table.setProfessorsList(manager.getProfessorsByDegree(chooseDegree.getValue().getId()));
 		}
+	}
+	
+	private int filterByFriends() {
+		if( "All".equals((String) chooseComments.getValue()) )
+        	return -1;
+        else
+        	return student.getId();
 	}
 
 	public static void main(String[] args) {

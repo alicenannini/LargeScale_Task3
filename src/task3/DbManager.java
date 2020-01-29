@@ -13,8 +13,8 @@ import javafx.collections.FXCollections;
 public class DbManager implements AutoCloseable {
 	private final Driver driver;
 	private final String uri = "bolt://localhost:7687";
-	private final String user = "neo4j";
-	private final String password = "geghi";
+	private final String user = "alice";
+	private final String password = "alice";
 	
 	public DbManager() {
 		driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
@@ -109,8 +109,7 @@ public class DbManager implements AutoCloseable {
 						boolean admin = r.get("s.admin").isNull()? false : r.get("s.admin").asBoolean();
 						
 						student = new Student(r.get("ID(s)").asInt(),r.get("s.username").asString(),
-								r.get("s.password").asString(),new Degree(r.get("ID(d)").asInt(),
-										r.get("d.name").asString()), admin);
+									new Degree(r.get("ID(d)").asInt(),r.get("d.name").asString()), admin);
 						student.setFriends(this.getFriends(student, tx));
 					}
 				}
@@ -195,7 +194,7 @@ public class DbManager implements AutoCloseable {
 		}
 	}
 	
-	public List<Comment> getComments(int subjectId) {
+	public List<Comment> getComments(int subjectId, int userId) {
 		
 		if (subjectId == -1)
 			return null;
@@ -203,17 +202,30 @@ public class DbManager implements AutoCloseable {
 		try(Session session = driver.session()){
 			return session.readTransaction( tx -> {
 				List<Comment> list = new ArrayList<>();
-				StatementResult sr = tx.run( 
-						"MATCH (s:Subject) WHERE id(s) = $idSubject\n" + 
-						"MATCH (c:Comment)-[:ABOUT]->(s)\n" + 
-						"MATCH (st:Student)-[:WROTE]->(c)" +
-						"RETURN ID(c),c.text,c.date,ID(st);", 
-						Values.parameters("idSubject",subjectId) );
+				StatementResult sr;
+				if(userId < 0) {
+					sr = tx.run( 
+							"MATCH (st:Student)-[:WROTE]->" + 
+							"(c:Comment)-[:ABOUT]->(s:Subject) " + 
+							"WHERE id(s) = $idSubject " +
+							"RETURN ID(c),c.text,c.date,ID(st),st.username;", 
+							Values.parameters("idSubject",subjectId) );
+				}else {
+					sr = tx.run( 
+							"MATCH (user:Student)-[:KNOWS]->" +
+							"(st:Student)-[:WROTE]->" + 
+							"(c:Comment)-[:ABOUT]->(s:Subject) " +
+							"WHERE id(s) = $idSubject " +
+							"AND id(user) = $idUser " +
+							"RETURN ID(c),c.text,c.date,ID(st),st.username;", 
+							Values.parameters("idSubject",subjectId,"idUser",userId) );
+				}
 				
 				while(sr.hasNext()) {
 					Record r = sr.next();
 					list.add(new Comment(r.get("ID(c)").asInt(),r.get("c.text").asString(),
-							r.get("ID(st)").asInt(),subjectId,r.get("c.date").asString()));
+							new Student(r.get("ID(st)").asInt(),r.get("st.username").asString(),null, false),
+							subjectId,r.get("c.date").asString()));
 				}
 				return list;
 			});
@@ -340,17 +352,18 @@ public class DbManager implements AutoCloseable {
 		try(Session session = driver.session()){
 			return session.readTransaction( tx -> {
 				List<Student> list = FXCollections.observableArrayList();
-				StatementResult sr = tx.run("MATCH (friend:Student)-[:ATTENDS]->(d:Degree), " +
-											"(s:Student)-[:ATTENDS]->(d:Degree) " +
-											"WHERE ID(s) = $idUser AND " +
-											"NOT (s)-[:KNOWS]-(friend) " +
-											"RETURN ID(friend), friend.username, friend.admin;",
-										Values.parameters("idUser", user.getId()) );
+				StatementResult sr = tx.run(
+						"MATCH (friend:Student)-[*2..4]-(s:Student) \n" + 
+						"WHERE ID(s) = $idUser AND \n" + 
+						"NOT (s)-[:KNOWS]-(friend)  AND \n" + 
+						"NOT ID(friend) = ID(s) \n" + 
+						"RETURN DISTINCT ID(friend), friend.username, friend.admin;",
+					Values.parameters("idUser", user.getId()) );
 			
 				while(sr.hasNext()) {
 					Record r = sr.next();
 					list.add(new Student(r.get("ID(friend)").asInt(),r.get("friend.username").asString(),
-							"",user.getDegree(), false));
+							user.getDegree(), false));
 				}
 				return list;
 			});
@@ -362,12 +375,12 @@ public class DbManager implements AutoCloseable {
 		StatementResult sr = tx.run( 
 				"MATCH (s:Student)-[:KNOWS]->(friend:Student) " +
 				"WHERE id(s) = $studentId " + 
-				"RETURN ID(friend), friend.username, friend.admin;", 
+				"RETURN ID(friend), friend.username;", 
 				Values.parameters("studentId", s.getId()) );
 		while(sr.hasNext()) {
 			Record r = sr.next();
 			list.add(new Student(r.get("ID(friend)").asInt(),r.get("friend.username").asString(),
-					"",s.getDegree(), false));
+					s.getDegree(), false));
 		}
 		return list;
 	}
@@ -377,8 +390,7 @@ public class DbManager implements AutoCloseable {
 			session.writeTransaction( tx -> {
 				tx.run( 	"MATCH (s:Student) WHERE id(s) = $idUser " + 
 							"MATCH (friend:Student) WHERE id(friend) = $idFriend " +
-							"CREATE " + 
-							"(s)-[:KNOWS]->(friend);", 
+							"CREATE (s)-[:KNOWS]->(friend);", 
 					Values.parameters("idUser",user.getId(),"idFriend", friend.getId()) );
 				return null;
 			});

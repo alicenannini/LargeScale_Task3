@@ -1,211 +1,488 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2019.11.22)  28 JAN 2020 10:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.10.5)  29 JAN 2020 10:46
 entering extended mode
-**./documentazione.tex
-(documentazione.tex
-LaTeX2e <2019-10-01> patch level 3
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
-Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
-File: size10.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**documentazione.tex
+(./documentazione.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 30 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) ("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\fontenc.sty
-"
-Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1enc.def"
-File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.sty"
-Package: inputenc 2018/08/11 v1.3c Input encoding file
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-) ("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.st
-y"
-Package: babel 2019/10/15 3.35 The Babel package
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\switch.def
-"
-File: switch.def 2019/10/15 3.35 Babel switching mechanism
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0100 (decimal 256)
+   defining Unicode char U+0101 (decimal 257)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+0108 (decimal 264)
+   defining Unicode char U+0109 (decimal 265)
+   defining Unicode char U+010A (decimal 266)
+   defining Unicode char U+010B (decimal 267)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0112 (decimal 274)
+   defining Unicode char U+0113 (decimal 275)
+   defining Unicode char U+0114 (decimal 276)
+   defining Unicode char U+0115 (decimal 277)
+   defining Unicode char U+0116 (decimal 278)
+   defining Unicode char U+0117 (decimal 279)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011C (decimal 284)
+   defining Unicode char U+011D (decimal 285)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0120 (decimal 288)
+   defining Unicode char U+0121 (decimal 289)
+   defining Unicode char U+0122 (decimal 290)
+   defining Unicode char U+0123 (decimal 291)
+   defining Unicode char U+0124 (decimal 292)
+   defining Unicode char U+0125 (decimal 293)
+   defining Unicode char U+0128 (decimal 296)
+   defining Unicode char U+0129 (decimal 297)
+   defining Unicode char U+012A (decimal 298)
+   defining Unicode char U+012B (decimal 299)
+   defining Unicode char U+012C (decimal 300)
+   defining Unicode char U+012D (decimal 301)
+   defining Unicode char U+012E (decimal 302)
+   defining Unicode char U+012F (decimal 303)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0134 (decimal 308)
+   defining Unicode char U+0135 (decimal 309)
+   defining Unicode char U+0136 (decimal 310)
+   defining Unicode char U+0137 (decimal 311)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013B (decimal 315)
+   defining Unicode char U+013C (decimal 316)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0145 (decimal 325)
+   defining Unicode char U+0146 (decimal 326)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+014C (decimal 332)
+   defining Unicode char U+014D (decimal 333)
+   defining Unicode char U+014E (decimal 334)
+   defining Unicode char U+014F (decimal 335)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0156 (decimal 342)
+   defining Unicode char U+0157 (decimal 343)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015C (decimal 348)
+   defining Unicode char U+015D (decimal 349)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+0168 (decimal 360)
+   defining Unicode char U+0169 (decimal 361)
+   defining Unicode char U+016A (decimal 362)
+   defining Unicode char U+016B (decimal 363)
+   defining Unicode char U+016C (decimal 364)
+   defining Unicode char U+016D (decimal 365)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0172 (decimal 370)
+   defining Unicode char U+0173 (decimal 371)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+01CD (decimal 461)
+   defining Unicode char U+01CE (decimal 462)
+   defining Unicode char U+01CF (decimal 463)
+   defining Unicode char U+01D0 (decimal 464)
+   defining Unicode char U+01D1 (decimal 465)
+   defining Unicode char U+01D2 (decimal 466)
+   defining Unicode char U+01D3 (decimal 467)
+   defining Unicode char U+01D4 (decimal 468)
+   defining Unicode char U+01E2 (decimal 482)
+   defining Unicode char U+01E3 (decimal 483)
+   defining Unicode char U+01E6 (decimal 486)
+   defining Unicode char U+01E7 (decimal 487)
+   defining Unicode char U+01E8 (decimal 488)
+   defining Unicode char U+01E9 (decimal 489)
+   defining Unicode char U+01EA (decimal 490)
+   defining Unicode char U+01EB (decimal 491)
+   defining Unicode char U+01F0 (decimal 496)
+   defining Unicode char U+01F4 (decimal 500)
+   defining Unicode char U+01F5 (decimal 501)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+0232 (decimal 562)
+   defining Unicode char U+0233 (decimal 563)
+   defining Unicode char U+1E02 (decimal 7682)
+   defining Unicode char U+1E03 (decimal 7683)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2010 (decimal 8208)
+   defining Unicode char U+2011 (decimal 8209)
+   defining Unicode char U+2012 (decimal 8210)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2015 (decimal 8213)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+1E20 (decimal 7712)
+   defining Unicode char U+1E21 (decimal 7713)
 )
-*************************************
-* Local config file bblopts.cfg used
-*
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/arabi\bblopts.cfg"
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
- babel
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/babel-english\engl
-ish.ldf"
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2018/02/14 3.18 The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/02/14 3.18 Babel switching mechanism
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.def"
-File: babel.def 2019/10/15 3.35 Babel common definitions
-\babel@savecnt=\count88
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2018/02/14 3.18 Babel common definitions
+\babel@savecnt=\count87
 \U@D=\dimen103
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\txtbabel.d
-ef")
-\bbl@dirlevel=\count89
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count88
 )
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/frontespizio\front
-espizio.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/frontespizio/frontespizio.sty
 Package: frontespizio 2011/09/21 1.4a (Enrico Gregorio)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\afterpage.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/tools/afterpage.sty
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 \AP@output=\toks16
-\AP@partial=\box27
-\AP@footins=\box28
+\AP@partial=\box26
+\AP@footins=\box27
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
-sty"
-Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
-ics.cfg"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 105.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdfte
-x.def"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\atbegsh
-i.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infware
-rr.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds
-.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifpdf.sty"
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
-Package: iftex 2019/11/07 v1.0c TeX engine tests
-)))
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/environ\environ.st
-y"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+))
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/trimspaces\trimspa
-ces.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 \@envbody=\toks18
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifxetex.st
-y"
-Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \front@out=\write3
 \openout3 = `documentazione-frn.tex'.
 
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
-sty"
-\lst@mode=\count90
-\lst@gtempboxa=\box29
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count89
+\lst@gtempboxa=\box28
 \lst@token=\toks19
-\lst@length=\count91
+\lst@length=\count90
 \lst@currlwidth=\dimen106
-\lst@column=\count92
-\lst@pos=\count93
+\lst@column=\count91
+\lst@pos=\count92
 \lst@lostspace=\dimen107
 \lst@width=\dimen108
-\lst@newlines=\count94
-\lst@lineno=\count95
+\lst@newlines=\count93
+\lst@lineno=\count94
 \lst@maxwidth=\dimen109
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmisc.s
-ty"
-File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
-\c@lstnumber=\count96
-\lst@skipnumbers=\count97
-\lst@framebox=\box30
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count95
+\lst@skipnumbers=\count96
+\lst@framebox=\box29
 )
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
-cfg"
-File: listings.cfg 2019/09/10 1.8c listings configuration
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
-Package: listings 2019/09/10 1.8c (Carsten Heinz)
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrext
-end.sty"
-Package: scrextend 2019/10/12 v3.27 KOMA-Script package (extend other classes w
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrextend.sty
+Package: scrextend 2017/09/07 v3.24 KOMA-Script package (extend other classes w
 ith features of KOMA-Script classes)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrkba
-se.sty"
-Package: scrkbase 2019/10/12 v3.27 KOMA-Script package (KOMA-Script-dependent b
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-dependent b
 asics and keyval usage)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrbas
-e.sty"
-Package: scrbase 2019/10/12 v3.27 KOMA-Script package (KOMA-Script-independent 
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrlfi
-le.sty"
-Package: scrlfile 2019/10/12 v3.27 KOMA-Script package (loading files)
-)
-Package scrbase Info: \ifpdftex already defined.
-(scrbase)             If \ifpdftex does not behave like
-(scrbase)             it was described at the KOMA-Script manual, try to
-(scrbase)             load `scrbase.sty' earlier or find out at which
-(scrbase)             package or class \ifpdftex was defined before.
-Package scrbase Info: \ifVTeX already defined.
-(scrbase)             If \ifVTeX does not behave like
-(scrbase)             it was described at the KOMA-Script manual, try to
-(scrbase)             load `scrbase.sty' earlier or find out at which
-(scrbase)             package or class \ifVTeX was defined before.
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2017/09/07 v3.24 KOMA-Script package (loading files)
 )))
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
-sty"
-Package: geometry 2018/04/16 v5.8 Page Geometry
-
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifvtex.sty
-"
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+LaTeX Info: Redefining \textsubscript on input line 1318.
 )
-\Gm@cnth=\count98
-\Gm@cntv=\count99
-\c@Gm@tempcnt=\count100
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count97
+\Gm@cntv=\count98
+\c@Gm@tempcnt=\count99
 \Gm@bindingoffset=\dimen110
 \Gm@wd@mp=\dimen111
 \Gm@odd@mp=\dimen112
@@ -215,17 +492,13 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen116
 \Gm@layoutvoffset=\dimen117
 \Gm@dimlist=\toks20
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
-cfg"))
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.st
-y"
-Package: caption 2019/09/01 v3.3d Customizing captions (AR)
-
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.s
-ty"
-Package: caption3 2019/09/01 v1.8d caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen118
 \captionmargin@=\dimen119
 \captionwidth=\dimen120
@@ -234,75 +507,70 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 \caption@parindent=\dimen123
 \caption@hangindent=\dimen124
 )
-\c@caption@flags=\count101
-\c@ContinuedFloat=\count102
+\c@ContinuedFloat=\count100
 Package caption Info: listings package is loaded.
-) (documentazione.aux
+)
+(./documentazione.aux
 
 LaTeX Warning: Label `fig:analisys_diagram' multiply defined.
 
 )
 \openout1 = `documentazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
-df.mkii"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count103
+\scratchcounter=\count101
 \scratchdimen=\dimen125
-\scratchbox=\box31
-\nofMPsegments=\count104
-\nofMParguments=\count105
+\scratchbox=\box30
+\nofMPsegments=\count102
+\nofMParguments=\count103
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count106
+\MPscratchCnt=\count104
 \MPscratchDim=\dimen126
-\MPnumerator=\count107
-\makeMPintoPDFobject=\count108
+\MPnumerator=\count105
+\makeMPintoPDFobject=\count106
 \everyMPtoPDFconversion=\toks22
-)
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-
-base.sty"
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefin
-ekeys.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 ))
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions
-.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetke
-ys.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcmd
-s.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifluatex.s
-ty"
-Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-))))
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdftexc
-mds.sty"
-Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -315,9 +583,13 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-)
-\AtBeginShipoutBox=\box32
-\c@lstlisting=\count109
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box31
+\c@lstlisting=\count107
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -358,12 +630,12 @@ Package caption Info: End \AtBeginDocument code.
 <documentazione-frn.pdf, id=1, 597.50829pt x 845.0471pt>
 File: documentazione-frn.pdf Graphic file (type pdf)
 <use documentazione-frn.pdf>
-Package pdftex.def Info: documentazione-frn.pdf  used on input line 18.
+Package pdftex.def Info: documentazione-frn.pdf  used on input line 17.
 (pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
 [1
 
- <./documentazione-frn.pdf{C:/Users/Geghi/AppData/Local/MiKTeX/2.9/pdftex/confi
-g/pdftex.map}>] (documentazione.toc
+ <./documentazione-frn.pdf{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}>]
+ (./documentazione.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -373,343 +645,232 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \openout4 = `documentazione.toc'.
 
  [1]
-<./images/diagrams/Mockup.pdf, id=31, 574.5465pt x 401.0985pt>
+<./images/diagrams/Mockup.pdf, id=32, 574.5465pt x 401.0985pt>
 File: ./images/diagrams/Mockup.pdf Graphic file (type pdf)
 <use ./images/diagrams/Mockup.pdf>
-Package pdftex.def Info: ./images/diagrams/Mockup.pdf  used on input line 53.
+Package pdftex.def Info: ./images/diagrams/Mockup.pdf  used on input line 52.
 (pdftex.def)             Requested size: 424.06033pt x 296.0432pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 50--59
+Overfull \hbox (15.0pt too wide) in paragraph at lines 49--58
 []$[]$ 
  []
 
 [1
 
  <./images/diagrams/Mockup.pdf>]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 7
-0.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
 
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 70.
-
-[2
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+ [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
-[]\T1/cmr/m/n/10 Log in,
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+[]\T1/cmr/m/n/10 Admin,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--121
-[]\T1/cmr/m/n/10 Login,
+Underfull \hbox (badness 1137) in paragraph at lines 122--122
+[]\T1/cmr/m/n/10 Browse, Find, Dis-play
  []
 
 
-Underfull \hbox (badness 6157) in paragraph at lines 123--123
-[]\T1/cmr/m/n/10 View all
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+[]\T1/cmr/m/n/10 Admin,
  []
 
 
-Underfull \hbox (badness 6808) in paragraph at lines 123--123
-\T1/cmr/m/n/10 the sub-
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+\T1/cmr/m/n/10 Stu-dent,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--123
-[]\T1/cmr/m/n/10 Browse,
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+[]\T1/cmr/m/n/10 Browse, Find, View
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--123
-\T1/cmr/m/n/10 Find,
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+[]\T1/cmr/m/n/10 Admin,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
-[]\T1/cmr/m/n/10 View
+Underfull \hbox (badness 10000) in paragraph at lines 124--124
+\T1/cmr/m/n/10 Stu-dent,
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 125--125
-\T1/cmr/m/n/10 the com-
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+[]\T1/cmr/m/n/10 Admin,
  []
 
 
-Underfull \hbox (badness 2932) in paragraph at lines 125--125
-\T1/cmr/m/n/10 ments of
+Underfull \hbox (badness 10000) in paragraph at lines 130--130
+[]\T1/cmr/m/n/10 Admin,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
-[]\T1/cmr/m/n/10 Browse,
+Underfull \hbox (badness 1137) in paragraph at lines 132--132
+[]\T1/cmr/m/n/10 Browse, Find, Dis-play
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--125
-\T1/cmr/m/n/10 Find,
+Underfull \hbox (badness 10000) in paragraph at lines 132--132
+[]\T1/cmr/m/n/10 Admin,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--127
-[]\T1/cmr/m/n/10 Add a
+Underfull \hbox (badness 10000) in paragraph at lines 132--132
+\T1/cmr/m/n/10 Stu-dent,
  []
 
 
-Underfull \hbox (badness 5771) in paragraph at lines 131--131
-[]\T1/cmr/m/n/10 Delete a
+Underfull \hbox (badness 1137) in paragraph at lines 140--140
+[]\T1/cmr/m/n/10 Browse, Find, Dis-play
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
-[]\T1/cmr/m/n/10 View
+Underfull \hbox (badness 10000) in paragraph at lines 140--140
+[]\T1/cmr/m/n/10 Student,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
-\T1/cmr/m/n/10 de-gree
+Underfull \hbox (badness 10000) in paragraph at lines 142--142
+[]\T1/cmr/m/n/10 Admin,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
-[]\T1/cmr/m/n/10 Browse,
+Underfull \hbox (badness 10000) in paragraph at lines 142--142
+\T1/cmr/m/n/10 Stu-dent,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
-\T1/cmr/m/n/10 Find,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
-\T1/cmr/m/n/10 Dis-play
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--135
-[]\T1/cmr/m/n/10 Add a
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--135
-\T1/cmr/m/n/10 sub-jec-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 135--135
-\T1/cmr/m/n/10 t/pro-fes-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--137
-[]\T1/cmr/m/n/10 Update
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--137
-\T1/cmr/m/n/10 t/pro-fes-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--137
-[]\T1/cmr/m/n/10 Update
- []
-
-
-Underfull \hbox (badness 5771) in paragraph at lines 139--139
-[]\T1/cmr/m/n/10 Delete a
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
-\T1/cmr/m/n/10 sub-jec-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
-\T1/cmr/m/n/10 t/pro-fes-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 139--139
-[]\T1/cmr/m/n/10 Delete
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
-[]\T1/cmr/m/n/10 View
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
-\T1/cmr/m/n/10 sug-gested
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
-[]\T1/cmr/m/n/10 Browse,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
-\T1/cmr/m/n/10 Find,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--141
-\T1/cmr/m/n/10 Dis-play
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
-[]\T1/cmr/m/n/10 Set find
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
-\T1/cmr/m/n/10 pa-ram-e-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--143
-[]\T1/cmr/m/n/10 By De-
- []
-
-
-Underfull \hbox (badness 2556) in paragraph at lines 143--143
-\T1/cmr/m/n/10 gree, By
- []
-
-
-Overfull \hbox (22.27618pt too wide) in paragraph at lines 117--146
+Overfull \hbox (47.99997pt too wide) in paragraph at lines 116--145
  [][] 
  []
 
-<./images/diagrams/UseCases.jpg, id=44, 1102.1175pt x 906.38625pt>
+<./images/diagrams/UseCases.jpg, id=45, 1102.1175pt x 906.38625pt>
 File: ./images/diagrams/UseCases.jpg Graphic file (type jpg)
 <use ./images/diagrams/UseCases.jpg>
-Package pdftex.def Info: ./images/diagrams/UseCases.jpg  used on input line 151
+Package pdftex.def Info: ./images/diagrams/UseCases.jpg  used on input line 150
 .
 (pdftex.def)             Requested size: 380.56729pt x 312.9803pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 148--156
+Overfull \hbox (15.0pt too wide) in paragraph at lines 147--155
 []$[]$ 
  []
 
 [3
 
 ] [4 <./images/diagrams/UseCases.jpg>]
-<./images/diagrams/AnalysisUML.png, id=51, 544.0325pt x 447.6725pt>
+<./images/diagrams/AnalysisUML.png, id=52, 604.2575pt x 457.71pt>
 File: ./images/diagrams/AnalysisUML.png Graphic file (type png)
 <use ./images/diagrams/AnalysisUML.png>
 Package pdftex.def Info: ./images/diagrams/AnalysisUML.png  used on input line 
-164.
-(pdftex.def)             Requested size: 296.84093pt x 244.27382pt.
+163.
+(pdftex.def)             Requested size: 296.84093pt x 224.84558pt.
  [5
 
  <./images/diagrams/AnalysisUML.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 177--178
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
-<./images/diagrams/architecture_diagram.png, id=57, 353.32pt x 392.46625pt>
+<./images/diagrams/architecture_diagram.png, id=58, 353.32pt x 392.46625pt>
 File: ./images/diagrams/architecture_diagram.png Graphic file (type png)
 <use ./images/diagrams/architecture_diagram.png>
 Package pdftex.def Info: ./images/diagrams/architecture_diagram.png  used on in
-put line 188.
+put line 187.
 (pdftex.def)             Requested size: 169.62154pt x 188.41757pt.
 [6
 
  <./images/diagrams/architecture_diagram.png>]
-<./images/diagrams/graphDb.png, id=62, 810.77907pt x 608.2725pt>
+<./images/diagrams/graphDb.png, id=63, 810.77907pt x 608.2725pt>
 File: ./images/diagrams/graphDb.png Graphic file (type png)
 <use ./images/diagrams/graphDb.png>
-Package pdftex.def Info: ./images/diagrams/graphDb.png  used on input line 216.
+Package pdftex.def Info: ./images/diagrams/graphDb.png  used on input line 215.
 
 (pdftex.def)             Requested size: 424.06033pt x 318.15054pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 213--222
+Overfull \hbox (15.0pt too wide) in paragraph at lines 212--221
 []$[]$ 
  []
 
 [7 <./images/diagrams/graphDb.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 227--231
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 245.
 
- []
 
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-46.
-("C:\Users\Geghi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt.fd"
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-[8
+) [8
 
 ] [9] [10]
-Overfull \hbox (64.07047pt too wide) in paragraph at lines 393--393
+Overfull \hbox (64.07047pt too wide) in paragraph at lines 389--389
 []             \T1/cmtt/m/n/10 Values.parameters("idStudent",student.getId(),"i
 dSubject",subjectId,"text",text,[] 
  []
 
 
-Overfull \hbox (58.82175pt too wide) in paragraph at lines 393--393
+Overfull \hbox (58.82175pt too wide) in paragraph at lines 389--389
 []                   \T1/cmtt/m/n/10 "date",new SimpleDateFormat("yyyy/MM/dd HH
 :mm:ss").format(new Date())) );[] 
  []
 
 
-Overfull \hbox (11.58328pt too wide) in paragraph at lines 414--414
+Overfull \hbox (11.58328pt too wide) in paragraph at lines 410--410
 []         \T1/cmtt/m/n/10 StatementResult sr = tx.run( "MATCH (dd:Degree) RETU
 RN ID(dd), dd.name;");[] 
  []
 
 
-Overfull \hbox (27.32944pt too wide) in paragraph at lines 414--414
+Overfull \hbox (27.32944pt too wide) in paragraph at lines 410--410
 []            \T1/cmtt/m/n/10 list.add(new Degree(r.get("ID(dd)").asInt(),r.get
 ("dd.name").asString()));[] 
  []
 
-[11]
-Overfull \hbox (1.08585pt too wide) in paragraph at lines 445--445
+
+Overfull \hbox (1.08585pt too wide) in paragraph at lines 441--441
 []           \T1/cmtt/m/n/10 tx.run( "MATCH (n:Subject) WHERE id(n) = $idSubjec
 t DETACH DELETE n;",[] 
  []
 
-[12]
-<images/screens/screen0.png, id=83, 1181.41376pt x 709.65125pt>
+[11] [12]
+<images/screens/screen0.png, id=84, 1181.41376pt x 709.65125pt>
 File: images/screens/screen0.png Graphic file (type png)
 <use images/screens/screen0.png>
-Package pdftex.def Info: images/screens/screen0.png  used on input line 453.
+Package pdftex.def Info: images/screens/screen0.png  used on input line 449.
 (pdftex.def)             Requested size: 373.17516pt x 224.15854pt.
-<images/screens/screen1.png, id=84, 1179.40625pt x 711.65875pt>
+<images/screens/screen1.png, id=85, 1179.40625pt x 711.65875pt>
 File: images/screens/screen1.png Graphic file (type png)
 <use images/screens/screen1.png>
-Package pdftex.def Info: images/screens/screen1.png  used on input line 462.
+Package pdftex.def Info: images/screens/screen1.png  used on input line 458.
 (pdftex.def)             Requested size: 373.17516pt x 225.17271pt.
  [13
 
  <./images/screens/screen0.png> <./images/screens/screen1.png>]
-<images/screens/screenLogin.png, id=90, 1180.41pt x 714.67pt>
+<images/screens/screenLogin.png, id=91, 1180.41pt x 714.67pt>
 File: images/screens/screenLogin.png Graphic file (type png)
 <use images/screens/screenLogin.png>
-Package pdftex.def Info: images/screens/screenLogin.png  used on input line 471
+Package pdftex.def Info: images/screens/screenLogin.png  used on input line 467
 .
 (pdftex.def)             Requested size: 373.17516pt x 225.9292pt.
-<images/screens/screen3.png, id=91, 1180.41pt x 713.66624pt>
+<images/screens/screen3.png, id=92, 1180.41pt x 713.66624pt>
 File: images/screens/screen3.png Graphic file (type png)
 <use images/screens/screen3.png>
-Package pdftex.def Info: images/screens/screen3.png  used on input line 482.
+Package pdftex.def Info: images/screens/screen3.png  used on input line 478.
 (pdftex.def)             Requested size: 381.6517pt x 230.7409pt.
-<images/screens/screen4.png, id=92, 1178.4025pt x 710.655pt>
+<images/screens/screen4.png, id=93, 1178.4025pt x 710.655pt>
 File: images/screens/screen4.png Graphic file (type png)
 <use images/screens/screen4.png>
-Package pdftex.def Info: images/screens/screen4.png  used on input line 489.
+Package pdftex.def Info: images/screens/screen4.png  used on input line 485.
 (pdftex.def)             Requested size: 381.6517pt x 230.1577pt.
-<images/screens/screen5.png, id=93, 1179.40625pt x 709.65125pt>
+<images/screens/screen5.png, id=94, 1179.40625pt x 709.65125pt>
 File: images/screens/screen5.png Graphic file (type png)
 <use images/screens/screen5.png>
-Package pdftex.def Info: images/screens/screen5.png  used on input line 499.
+Package pdftex.def Info: images/screens/screen5.png  used on input line 495.
 (pdftex.def)             Requested size: 373.17516pt x 224.53754pt.
 
 
@@ -719,21 +880,21 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  <./images/screens/screenLogin.png>] [15 <./images/screens/screen3.png> <./imag
 es/screens/screen4.png>] [16 <./images/screens/screen5.png>]
-<images/screens/adminLogin.png, id=107, 1211.52625pt x 728.7225pt>
+<images/screens/adminLogin.png, id=108, 1211.52625pt x 728.7225pt>
 File: images/screens/adminLogin.png Graphic file (type png)
 <use images/screens/adminLogin.png>
-Package pdftex.def Info: images/screens/adminLogin.png  used on input line 515.
+Package pdftex.def Info: images/screens/adminLogin.png  used on input line 511.
 
 (pdftex.def)             Requested size: 373.17516pt x 224.45612pt.
-<images/screens/admin0.png, id=108, 1210.5225pt x 733.74126pt>
+<images/screens/admin0.png, id=109, 1210.5225pt x 733.74126pt>
 File: images/screens/admin0.png Graphic file (type png)
 <use images/screens/admin0.png>
-Package pdftex.def Info: images/screens/admin0.png  used on input line 523.
+Package pdftex.def Info: images/screens/admin0.png  used on input line 519.
 (pdftex.def)             Requested size: 373.17516pt x 226.19229pt.
-<images/screens/admin1.png, id=109, 1212.53pt x 727.71875pt>
+<images/screens/admin1.png, id=110, 1212.53pt x 727.71875pt>
 File: images/screens/admin1.png Graphic file (type png)
 <use images/screens/admin1.png>
-Package pdftex.def Info: images/screens/admin1.png  used on input line 531.
+Package pdftex.def Info: images/screens/admin1.png  used on input line 527.
 (pdftex.def)             Requested size: 373.17516pt x 223.96928pt.
 
 
@@ -743,55 +904,54 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
  <./images/screens/adminLogin.png> <./images/screens/admin0.png>] [18 <./images
 /screens/admin1.png>]
-<images/screens/admin2.png, id=120, 1210.5225pt x 729.72626pt>
+<images/screens/admin2.png, id=121, 1210.5225pt x 729.72626pt>
 File: images/screens/admin2.png Graphic file (type png)
 <use images/screens/admin2.png>
-Package pdftex.def Info: images/screens/admin2.png  used on input line 539.
+Package pdftex.def Info: images/screens/admin2.png  used on input line 535.
 (pdftex.def)             Requested size: 373.17516pt x 224.95457pt.
-<images/screens/admin3.png, id=121, 1208.515pt x 726.715pt>
+<images/screens/admin3.png, id=122, 1208.515pt x 726.715pt>
 File: images/screens/admin3.png Graphic file (type png)
 <use images/screens/admin3.png>
-Package pdftex.def Info: images/screens/admin3.png  used on input line 547.
+Package pdftex.def Info: images/screens/admin3.png  used on input line 543.
 (pdftex.def)             Requested size: 373.17516pt x 224.39221pt.
  [19
 
  <./images/screens/admin2.png> <./images/screens/admin3.png>]
-<images/screens/admin4.png, id=127, 1209.51875pt x 726.715pt>
+<images/screens/admin4.png, id=128, 1209.51875pt x 726.715pt>
 File: images/screens/admin4.png Graphic file (type png)
 <use images/screens/admin4.png>
-Package pdftex.def Info: images/screens/admin4.png  used on input line 555.
+Package pdftex.def Info: images/screens/admin4.png  used on input line 551.
 (pdftex.def)             Requested size: 373.17516pt x 224.2148pt.
  [20
 
- <./images/screens/admin4.png>] (documentazione.aux)
+ <./images/screens/admin4.png>] (./documentazione.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 6393 strings out of 492450
- 101439 string characters out of 3120004
- 207120 words of memory out of 3000000
- 10646 multiletter control sequences out of 15000+200000
- 10116 words of font info for 23 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 57i,11n,61p,674b,353s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Geghi\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
-ectt1000.pk> <C:\Users\Geghi\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
-ec/dpi600\ecbx1200.pk> <C:\Users\Geghi\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour
-/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Geghi\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Geghi\AppData\Local\MiKTeX
-\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Geghi\AppData\Lo
-cal\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Geghi\
-AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk><C:/Use
-rs/Geghi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb><C:/Users/Geghi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmr10.pfb><C:/Users/Geghi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmr12.pfb><C:/Users/Geghi/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on documentazione.pdf (22 pages, 1174412 bytes).
+ 6434 strings out of 494333
+ 97298 string characters out of 6164079
+ 189443 words of memory out of 5000000
+ 9670 multiletter control sequences out of 15000+600000
+ 10116 words of font info for 23 fonts, out of 8000000 for 9000
+ 350 hyphenation exceptions out of 8191
+ 51i,11n,46p,672b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600
+pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.60
+0pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.6
+00pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx0900.
+600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000
+.600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx100
+0.600pk> </home/alice/.texlive2017/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx14
+40.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on documentazione.pdf (22 pages, 1155328 bytes).
 PDF statistics:
- 468 PDF objects out of 1000 (max. 8388607)
+ 471 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

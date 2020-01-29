@@ -1,5 +1,4 @@
 \documentclass[a4paper]{article}
-
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -114,29 +113,29 @@ The system has to allow the administrator to carry out basic functions such as:
 \subsubsection{Use Cases Description}
 \begin{table}[h]
 \centering
-\begin{tabular}{p{0.1\textwidth}p{0.1\textwidth}lp{0.5\textwidth}}
+\begin{tabular}{p{0.25\textwidth}p{0.25\textwidth}p{0.1\textwidth}p{0.4\textwidth}}
 \hline
 \textbf{Event} & \textbf{UseCase} & \textbf{Actor(s)} & \textbf{Description}\\ \hline
 
-Log in, Log out & Login,  Logout & Admin, Student & The user logs in/out the application. The system browses the professors' list by the degree course of the logged user and returns it on the interface.\\ \hline
+Log in, Log out & Login,  Logout & Admin, Student & The user logs in/out the application. The system browses the subjects' list by the degree course of the logged user and returns it on the interface.\\ \hline
 
-View all the subjects & Browse, Find, Display S & Admin, Student, Guest & The user chooses that he wants to view the list of all subjects. The system browses the data on the db and returns them on the interface.\\ \hline
+View all the subjects & Browse, Find, Display Subject & Admin, Student, Guest & The user chooses that he wants to view the list of all subjects. The system browses the data on the db and returns them on the interface.\\ \hline
 
-View the comments of a subject & Browse, Find, View C & Admin, Student, Guest & The user clicks on a record of the subject table. The system browses on the db the comments related to that subject and returns them on the interface.\\ \hline
+View the comments of a subject & Browse, Find, View Comment & Admin, Student, Guest & The user clicks on a record of the subject table. The system browses on the db the comments related to that subject and returns them on the interface.\\ \hline
 
-Add a comment & Add C & Admin, Student & The user submits the text of his comment. The system updates the db and the interface.\\ \hline
+Add a comment & Add Comment & Admin, Student & The user submits the text of his comment. The system updates the db and the interface.\\ \hline
 
-Update a comment & Update C & Student & The user selects the comment and commits the new text. The system updates the db and the interface.\\ \hline
+Update a comment & Update Comment & Student & The user selects the comment and commits the new text. The system updates the db and the interface.\\ \hline
 
-Delete a comment & Delete C & Admin, Student & The user selects the comment and submits the delete. The system updates the db and the interface.\\ \hline
+Delete a comment & Delete Comment & Admin, Student & The user selects the comment and submits the delete. The system updates the db and the interface.\\ \hline
 
-View degree courses & Browse, Find, Display D & Admin, Student, Guest & The system browses the degree courses list and returns them on the interface.\\ \hline
+View degree courses & Browse, Find, Display Degree & Admin, Student, Guest & The system browses the degree courses list and returns them on the interface.\\ \hline
 
-Add a subject/professor & Add P/S & Admin & The admin submits the name and other information of the new subject/professor. The system updates the db and the interface.\\ \hline
+Add a professor or a subject & Add Professor/Subject & Admin & The admin submits the name and other information of the new subject/professor. The system updates the db and the interface.\\ \hline
 
-Update a subject/professor & Update P/S & Admin & The user selects the subject/professor and commits the new information. The system updates the db and the interface.\\ \hline
+Update a professor or a subject & Update Prof/Subject & Admin & The user selects the subject/professor and commits the new information. The system updates the db and the interface.\\ \hline
 
-Delete a subject/professor & Delete P/S & Admin & The user selects the subject/professor and submits the delete. The system updates the db and the interface.\\ \hline
+Delete a professor or a subject & Delete Prof/Subject & Admin & The user selects the subject/professor and submits the delete. The system updates the db and the interface.\\ \hline
 
 View suggested friends & Browse, Find, Display Student & Student, Admin & The user chooses that he wants to view the suggested friends. The system browses on the db the students and returns them on the interface.\\ \hline
 
@@ -157,7 +156,7 @@ Set find parameter & By Degree, By Subject & Admin, Student, Guest & The user ch
 \clearpage
 
 \subsection{Analysis of entities}
-This diagram represent the main entities of the application and the relations between them.
+This diagram represents the main entities of the application and the relations between them.
 \begin{minipage}{\linewidth}
 \begin{center}
 \vspace{4mm}
@@ -174,7 +173,7 @@ This diagram represent the main entities of the application and the relations be
 
 % ----- DATABASE -----
 \subsection{Database Choice}
-This application is based on many join operations between the entities, in order to obtain each professor associated with a subject, or each comment associated with a subject, or yet display all the subjects associated with a degree course. For this reason, if the amount of data available is very high as expected, a relational database will be computationally expensive. Then the choice fell on a graph database, which manage to work very well and very fast on a model made with a lot of entities and relations. Moreover, a graph database is very useful for some specific queries in the application,for example, showing a suggested friends list. \\
+This application is based on many join operations between the entities, in order to obtain each professor associated with a subject, or each comment associated with a subject, or yet display all the subjects associated with a degree course. For this reason, if the amount of data available is very high as expected, a relational database will be computationally expensive. Then the choice fell on a graph database, which manage to work very well and very fast on a model made with a lot of entities and relations. Moreover, a graph database is very useful for some specific queries in the application, for example, showing a suggested friends list. \\
 
 % ----- ARCHITECTURE -----
 \subsection{Software Architecture}
@@ -202,11 +201,11 @@ In graph databases the entities are modeling using the vertexes; in our model th
 \end{itemize}
 Moreover the relations are modeling using the edges; in our model there are the following edges:
 \begin{itemize}
-\item Attends, connects a student to a degree
-\item Teaches, connects a professor to a subject
-\item Belongs, connects a subject to a degree
-\item Wrote, connects a student to a comment
-\item Knows, connects a student to a student
+\item ATTENDS, which connects a student to a degree
+\item TEACHES, which connects a professor to a subject
+\item BELONGS, which connects a subject to a degree
+\item WROTE, which connects a student to a comment
+\item KNOWS, which connects a student to a student
 \end{itemize}
 
 
@@ -227,7 +226,7 @@ Moreover the relations are modeling using the edges; in our model there are the 
 The application is developed in java programming language, version 11.0.4, and in JavaFX system to create the GUI, version 11, so it should run on each platform in which JVM is installed, but the application is tested and guardantee on Ubuntu 16 and Window OS. Moreover Maven is used  to build and mantain the project, version 3.8.0. \\
 The java driver for Neo4j manages the comunication between the client application layer and the database backend layer, version 3.2.1.\\ 
 For the backend layer it is used a graph database: Neo4j, version 3.2.1.\\
-So this application is tested using these technologies, considering these particular versions: for other versions the correct execution isn't guaranteed .\\
+So this application is tested using these technologies, considering these particular versions: for other versions the correct execution isn't guaranteed .
 
 % ----- CODE -----
 \subsection{Java Classes Description}
@@ -244,20 +243,18 @@ Each of them have some attributes and the related Get and Set methods.
 
 \subsubsection{Declaration of Student class}
 \begin{verbatim}
-  public class Student{
-	private final SimpleIntegerProperty id;
+public class Student{
+    private final SimpleIntegerProperty id;
     private final SimpleBooleanProperty admin;
     private final SimpleStringProperty username;
-    private final SimpleStringProperty password;
     private final SimpleObjectProperty<Degree> degree;
     private final SimpleListProperty<Student> friends;
     
     // CONSTRUCTOR
-    public Student(int i, String u, String p, Degree d, boolean a) {
+    public Student(int i, String u, Degree d, boolean a) {
         id = new SimpleIntegerProperty(i);
         admin = new SimpleBooleanProperty(a);
         username = new SimpleStringProperty(u);
-        password = new SimpleStringProperty(p);
         degree = new SimpleObjectProperty<Degree>(d);
         friends = new SimpleListProperty<Student>(null);
     }
@@ -269,7 +266,6 @@ Each of them have some attributes and the related Get and Set methods.
 \subsubsection{Declaration of Subject class}
 \begin{verbatim}
 public class Subject {
-
     private final SimpleIntegerProperty id;
     private final SimpleStringProperty name;
     private final SimpleIntegerProperty credits;
@@ -285,8 +281,8 @@ public class Subject {
         info = new SimpleStringProperty(inf);
         degree = new SimpleIntegerProperty(d);
         professors = new SimpleListProperty<Professor>(null);
-	}
-	...
+    }
+    ...
 }
 \end{verbatim}
 
@@ -303,7 +299,7 @@ public class Professor{
         surname = new SimpleStringProperty(s);
         id = new SimpleIntegerProperty(i);
     }
-	...
+    ...
 }
 \end{verbatim}
 
@@ -372,7 +368,7 @@ All crud operations are implemented using the \textbf{Cypher query language}; it
 
 
 \subsubsection{Create}
-This method of the DbManager class guarantees the creation of a comment. A new vertex is inserted on the graph and  is connected with a student node using an incoming edge called WROTE. Moreover it is connected with subject node, using an outgoing edge called ABOUT.
+This method of the DbManager class guarantees the creation of a comment. A new vertex is inserted on the graph and  is connected with a student node using an incoming edge called WROTE. Moreover it is connected with a subject node, using an outgoing edge called ABOUT.
 
 \begin{verbatim}
 public void createComment(String text, Student student, int subjectId) {
