@@ -68,8 +68,8 @@ public class DbManager implements AutoCloseable {
 	
 	private void createTeachingRelation(int profId, int subjectId, Transaction tx) {
 		tx.run( 	"MATCH (p:Professor) WHERE id(p) = $profId " + 
-						"MATCH (s:Subject) WHERE id(s) = $subjectId " +
-						"CREATE (p)-[:TEACHES]->(s);", 
+					"MATCH (s:Subject) WHERE id(s) = $subjectId " +
+					"CREATE (p)-[:TEACHES]->(s);", 
 			Values.parameters("profId",profId,"subjectId",subjectId) );
 	}
 	
@@ -261,7 +261,7 @@ public class DbManager implements AutoCloseable {
 		try(Session session = driver.session()){
 			session.writeTransaction( tx -> {
 				tx.run( "MATCH (n:Subject) WHERE id(n) = $idSubject DETACH DELETE n;",
-						Values.parameters("idSubject",subjectId));
+					Values.parameters("idSubject",subjectId));
 				return null;
 			});
 		}
@@ -276,8 +276,8 @@ public class DbManager implements AutoCloseable {
 			    			Values.parameters("idComment",commentId) );
 			    }else{
 			    	sr = tx.run("MATCH (s:Student)-[:WROTE]->(c:Comment) " +
-					        		"WHERE id(s) = $userId AND id(c) = $idComment " +
-					        		"DETACH DELETE c RETURN id(c)",
+					        	"WHERE id(s) = $userId AND id(c) = $idComment " +
+					        	"DETACH DELETE c RETURN id(c)",
 			    			Values.parameters("userId",userId,"idComment",commentId) );
 			    }
 			    
@@ -300,7 +300,7 @@ public class DbManager implements AutoCloseable {
 				
 				if(!profIdStr.isEmpty()) {
 					tx.run("MATCH (p:Professor)-[r:TEACHES]->(s:Subject) " + 
-								"WHERE id(s) = $subjectId DELETE r",
+							"WHERE id(s) = $subjectId DELETE r",
 		    			Values.parameters("subjectId",subjectId) );
 					
 					String[] professorsId = profIdStr.split("," , 5);
@@ -341,8 +341,8 @@ public class DbManager implements AutoCloseable {
 		try(Session session = driver.session()){
 			session.writeTransaction( tx -> {
 				tx.run("MATCH (p:Professor) WHERE ID(p) = $profId\n" + 
-							"SET p.name = $name, p.surname = $surname;",
-		    			Values.parameters("profId",profId,"name",name,"surname",surname) );
+						"SET p.name = $name, p.surname = $surname;",
+		    		Values.parameters("profId",profId,"name",name,"surname",surname) );
 				return null;
 			});
 		}
