@@ -322,13 +322,13 @@ public class DbManager implements AutoCloseable {
 	public boolean updateComment(int commentId, String text, int userId) {
 		try(Session session = driver.session()){
 			return session.writeTransaction( tx -> {
-				StatementResult sr = session.run(
+				StatementResult sr = tx.run(
 							"MATCH (s:Student)-[:WROTE]->(c:Comment) " +
 							"WHERE ID(s) = $userId AND ID(c) = $commentId " + 
 							"SET c.text = $text, c.date = $date " +
 							"RETURN ID(c);",
 		    			Values.parameters("userId",userId,"commentId",commentId,"text",text,
-		    					"date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
+		    				"date",new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date())) );
 				
 				if(sr.hasNext() && sr.next().get("ID(c)").asInt() >= 0)
 			    	return true;

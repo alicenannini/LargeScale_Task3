@@ -395,6 +395,7 @@ public class GraphicInterface extends Application {
 		updateSizes();
 		this.username.setText("");
 		this.password.setText("");
+		this.info.setText("");
 	}
 
 	private void setSubjProfList(int degree) {
@@ -455,8 +456,8 @@ public class GraphicInterface extends Application {
 				System.err.println("Select a subject and a comment in order to update it");
 				return;
 			}
-
-			if (manager.updateComment(sc.getId(), comment.getText(), student.getId()))
+			boolean updated = manager.updateComment(sc.getId(), comment.getText(), student.getId());
+			if (updated)
 				comments.setCommentsList(manager.getComments(s.getId(),filterByFriends()));
 		} else
 			System.err.println("You have to login!\n");
