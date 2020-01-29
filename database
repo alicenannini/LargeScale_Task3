@@ -4,7 +4,7 @@ CREATE
 (mm:Student {username: "marco", password: "marco" }),
 (ss:Student {username: "stefano", password: "stefano" }),
 (jj:Student {username: "jack", password: "jack" }),
-(ggg:Student {username: "givanni", password: "giovanni" }),
+(ggg:Student {username: "giovanni", password: "giovanni" }),
 (aaa:Student {username: "augusto", password: "augusto" }),
 (ggf:Student {username: "ginevra", password: "ginevra" }),
 (aua:Student {username: "aurelia", password: "aurelia" }),
