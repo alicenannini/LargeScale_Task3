@@ -20,7 +20,7 @@
 \Divisione {Scuola di Ingegneria}
 \Corso [Laurea]{Artificial Intelligence and Data Engineering}
 \Annoaccademico {2019--2020}
-\Titolo { \vspace {35mm}Task3 Documentation}
+\Titolo { \vspace {35mm}Documentation of the\\"Students-Evaluation"\\Application}
 \Filigrana [height=4cm,before=0.28,after=1]{./images/stemma_unipi.png}
 \Rientro {1cm}
 \Candidato {Alice Nannini}
@@ -147,7 +147,7 @@ Set find parameter & By Degree, By Subject & Admin, Student, Guest & The user ch
 \begin{minipage}{\linewidth}
 \begin{center}
 \vspace{8mm}
-\includegraphics[height=11cm]{./images/diagrams/UseCases} 
+\includegraphics[height=14cm]{./images/diagrams/UseCases} 
 \captionof{figure}{Use cases diagram}
 \vspace{3mm}
 \end{center}
@@ -218,17 +218,17 @@ Moreover the relations are modeling using the edges; in our model there are the 
 \label{fig:analisys_diagram}
 \end{center}
 \end{minipage}
-
+\clearpage
 % ----- GRAPH CENTRIC QUERY ------
-\subsection{Query centric}
-In order to make the most of the graph database's potential, we implement some functionality using query centric:
+\subsection{Graph-Centric Queries}
+In order to make the most of the graph database's potential, we've implemented some functionalities using strongly graph-centric queries:
 \begin{itemize}
 \item To suggest friends
-\item To retrieve comments of friends
+\item To retrieve the comments written by friends
 \end{itemize}
 
 \subsubsection{Suggestions of friends}
-The following query is used to propose new friends to the logged user, it returns all Student vertexes for exists a path between two and four hope, in each directions. 
+The following query is used to propose new friends to the logged user. It returns all the Student vertexes for an existing path within two and four hops, in each directions, starting from the user's vertex.
 \begin{verbatim}
   MATCH (friend:Student)-[*2..4]-(s:Student) 
   WHERE ID(s) = $userId AND  
@@ -239,7 +239,7 @@ The following query is used to propose new friends to the logged user, it return
 
 \subsubsection{Retrieving comments}
 The following query retrieves all the comment related to a subject, written by the friends of the logged user.\\
-Please note that do this operation over a graph database is much more efficient than e relational database, in which we should compute a join operation involving 5 tables.
+Please note that doing this operation over a graph database is much more efficient than over a relational database, in which we should compute a join operation involving 5 tables.
 \begin{verbatim}
   MATCH (user:Student)-[:KNOWS]-> 
   (st:Student)-[:WROTE]->  
@@ -501,24 +501,23 @@ If you have a registered account, you can log in to the application, so that the
 
 If you now want to be able to see the comments associated with a particular subject, you have to click on the name of the subject: in the table on the left the list of comments already received will appear (fig.~\ref{fig:screen3}). With this operation, you'll be able to visualize also the information related to that particular subject.
 
-To leave a comment, you need to enter the text in the field below the table and then click on the "Comment" button. The result obtained from these operations is shown in fig.~\ref{fig:screen4}.
-
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{images/screens/screen3}
+\includegraphics[width=0.88\textwidth]{images/screens/screen3}
 \captionof{figure}{Displaying the comments related to a subject}
 \label{fig:screen3}
 \end{figure}
 
+To leave a comment, you need to enter the text in the field below the table and then click on the "Comment" button. The result obtained from these operations is shown in fig.~\ref{fig:screen4}.
+\clearpage
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{images/screens/screen4}
+\includegraphics[width=0.88\textwidth]{images/screens/screen4}
 \captionof{figure}{Interface after adding a comment}
 \label{fig:screen4}
 \end{figure}
 
 You can also decide to modify the comment you just uploaded or another comment you made on a previous session. To do so, you need to click on the comment you want to update, change the text in the field below the table and then click on the "Update" button (fig.~\ref{fig:screen5}).
-Finally you have the chance to delete your comment, by clicking on "Delete" after selecting it. Notice that you can modify or delete just the comments that you made.
 
 \begin{figure}[h]
 \centering
@@ -527,8 +526,25 @@ Finally you have the chance to delete your comment, by clicking on "Delete" afte
 \label{fig:screen5}
 \end{figure}
 
-To log out, just click on the appropriate button at the top, next to the user label.
+Finally you have the chance to delete your comment, by clicking on "Delete" after selecting it. Notice that you can modify or delete just the comments that you made.\\
+A user can also visualize suggestions about friends to add, by clicking on the "Search Friends" button (fig.~\ref{fig:screen6}). After adding a friend, the user can choose to display only the comments written by friends, by selecting the appropriate value on the right-bottom choice-box (fig.~\ref{fig:screen7}).
+\clearpage
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{images/screens/screen6}
+\captionof{figure}{Screen of the application's interface from which you can add one or more suggested friends}
+\label{fig:screen6}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.88\textwidth]{images/screens/screen7}
+\captionof{figure}{Displaying the comments related to a subject, written only by the user's friends}
+\label{fig:screen7}
+\end{figure}
+
+To log out, just click on the appropriate button at the top, next to the user label.\\
 Moreover, if you don't have a registered username, you can still browse through the application, search for subjects' information and read all comments. You are just unable to leave or change any comments.
 
 \clearpage
@@ -552,13 +568,14 @@ As an administrator, there's one extra table available, that you can view by cho
 \end{figure}
 
 You can choose to add a new professor, using the input fields at the bottom left. You have to specify the name and the surname, then press the "Add" button (fig.~\ref{fig:admin1}).
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.88\textwidth]{images/screens/admin1}
 \captionof{figure}{Adding a new professor}
 \label{fig:admin1}
 \end{figure}
-\clearpage
+
 You can also modify the data related to a professor: click on the professor you are interested in and change the information shown in the apposite input fields. Finally, you have the chance to delete a professor by clicking on the "Delete" button after selecting the wanted professor (fig.~\ref{fig:admin2}).
 \begin{figure}[h]
 \centering
@@ -568,13 +585,14 @@ You can also modify the data related to a professor: click on the professor you 
 \end{figure}
 
 All these operations are available for the subjects as well. The only difference is that when you want to add a new subject you also need to specify the id of the professor teaching it (or a list of ids, separeted by commas, if there are more professors teaching it). Moreover, you must have precisely displayed in the table the subjects of the same degree course of the new one (fig.~\ref{fig:admin3}).
+\clearpage
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.88\textwidth]{images/screens/admin3}
 \captionof{figure}{Interface after adding a new subject, ready to modify or delete it}
 \label{fig:admin3}
 \end{figure}
-\clearpage
+
 The administrator can delete comments posted by all the users, too. Just click on the comment and then on the "Delete" button (fig.~\ref{fig:admin4}).
 \begin{figure}[h]
 \centering
