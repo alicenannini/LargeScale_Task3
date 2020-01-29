@@ -218,6 +218,36 @@ Moreover the relations are modeling using the edges; in our model there are the 
 \label{fig:analisys_diagram}
 \end{center}
 \end{minipage}
+
+% ----- GRAPH CENTRIC QUERY ------
+\subsection{Query centric}
+In order to make the most of the graph database's potential, we implement some functionality using query centric:
+\begin{itemize}
+\item To suggest friends
+\item To retrieve comments of friends
+\end{itemize}
+
+\subsubsection{Suggestions of friends}
+The following query is used to propose new friends to the logged user, it returns all Student vertexes for exists a path between two and four hope, in each directions. 
+\begin{verbatim}
+  MATCH (friend:Student)-[*2..4]-(s:Student) 
+  WHERE ID(s) = $userId AND  
+  NOT (s)-[:KNOWS]-(friend)  AND
+  NOT ID(friend) = ID(s) 
+  RETURN DISTINCT ID(friend), friend.username, friend.admin;
+\end{verbatim}
+
+\subsubsection{Retrieving comments}
+The following query retrieves all the comment related to a subject, written by the friends of the logged user.\\
+Please note that do this operation over a graph database is much more efficient than e relational database, in which we should compute a join operation involving 5 tables.
+\begin{verbatim}
+  MATCH (user:Student)-[:KNOWS]-> 
+  (st:Student)-[:WROTE]->  
+  (c:Comment)-[:ABOUT]->(s:Subject)  
+  WHERE id(s) = $idSubject  
+  AND id(user) = $idUser  
+  RETURN ID(c),c.text,c.date,ID(st),st.username;
+\end{verbatim}
 \clearpage
 % ----- IMPLEMENTATION -----
 \section{Implementation}
