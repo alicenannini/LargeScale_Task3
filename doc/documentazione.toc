@@ -12,8 +12,8 @@
 \contentsline {subsection}{\numberline {3.1}Database Choice}{6}
 \contentsline {subsection}{\numberline {3.2}Software Architecture}{6}
 \contentsline {subsection}{\numberline {3.3}Structure of the database}{6}
-\contentsline {subsection}{\numberline {3.4}Graph-Centric Queries}{7}
-\contentsline {subsubsection}{\numberline {3.4.1}Suggestions of friends}{7}
+\contentsline {subsection}{\numberline {3.4}Graph-Centric Queries}{8}
+\contentsline {subsubsection}{\numberline {3.4.1}Suggestions of friends}{8}
 \contentsline {subsubsection}{\numberline {3.4.2}Retrieving comments}{8}
 \contentsline {section}{\numberline {4}Implementation}{9}
 \contentsline {subsection}{\numberline {4.1}Used Technologies}{9}
